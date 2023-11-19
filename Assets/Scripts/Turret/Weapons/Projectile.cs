@@ -13,11 +13,13 @@ public class Projectile : MonoBehaviour
     private Transform _transform;
     private float _timeToDisable;
     private WaitForSeconds _disableDelay;
+    private WaitForSeconds _onEnemyCollisionDelay;
 
     private void Awake()
     {
         _timeToDisable = 3;
         _disableDelay = new WaitForSeconds(_timeToDisable);
+        _onEnemyCollisionDelay = new WaitForSeconds(_collisionParticle.main.duration);
         _transform = transform;
         _startPosition = _transform.position;
         _rigidbody = GetComponent<Rigidbody>();
@@ -39,10 +41,11 @@ public class Projectile : MonoBehaviour
         if (other.TryGetComponent(out Enemy enemy))
         {
             enemy.Damager.TakeDamage(_damage);
-            ParticleSystem burst = Instantiate(_collisionParticle, _transform.position, Quaternion.identity);
-            burst.Play();
-            _transform.position = _startPosition;
-            gameObject.SetActive(false);
+
+            if(_coroutine != null)
+                StopCoroutine(_coroutine);
+
+            _coroutine = StartCoroutine(DisableOnEnemyCollision());
         }
     }
 
@@ -55,6 +58,14 @@ public class Projectile : MonoBehaviour
     public IEnumerator DisableAfterDelay()
     {
         yield return _disableDelay;
+        gameObject.SetActive(false);
+    }
+
+    public IEnumerator DisableOnEnemyCollision()
+    {
+        _collisionParticle.Play();
+        yield return _onEnemyCollisionDelay;
+        _transform.position = _startPosition;
         gameObject.SetActive(false);
     }
 }
