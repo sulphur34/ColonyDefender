@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _health = new Health(20);
+        _health = new Health(200);
         Health.Died += OnDie;
     }
 
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
     
     public void OnDie()
     {
-        float destroyDelay = 0.01f;
+        float destroyDelay = 0.1f;
         IsAlive = false;
         Died.Invoke(this);
         Destroy(gameObject, destroyDelay);

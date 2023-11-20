@@ -52,7 +52,10 @@ public class Turret : MonoBehaviour
     {
         _weaponSystem.Deactivate();
         _currentEnemy = null;
-        StopCoroutine(_coroutine);
+
+        if(_coroutine != null)
+            StopCoroutine(_coroutine);
+
         _coroutine = StartCoroutine(SearchForEnemy());
     }
 }

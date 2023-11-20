@@ -29,12 +29,12 @@ Transform:
   m_GameObject: {fileID: 87324986201117920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.068, z: 0.537}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2626221662485529741}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3062594593734187460
 MeshFilter:
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _capacity: 20
   _container: {fileID: 0}
-  _projectile: {fileID: 4026191194867536928, guid: cf7293f152b27d1478c3cca150db2937, type: 3}
+  _projectile: {fileID: 5513630160582833002, guid: cf7293f152b27d1478c3cca150db2937, type: 3}
   _shootingPoint: {fileID: 2626221662485529741}
-  _fireDelay: 1
+  _fireDelay: 3
   _fireForce: 1000
 --- !u!64 &5626041687375534674
 MeshCollider:

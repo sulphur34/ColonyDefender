@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6983630675891617998}
   - component: {fileID: 5003313803759557273}
   - component: {fileID: 7147831663648291613}
-  - component: {fileID: 322541240040719192}
   m_Layer: 0
   m_Name: RocketLauncherBarrel
   m_TagString: Untagged
@@ -34,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 7933200865507581319}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6983630675891617998
 MeshFilter:
@@ -100,32 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _capacity: 20
   _container: {fileID: 0}
-  _projectile: {fileID: 4026191194867536928, guid: cf7293f152b27d1478c3cca150db2937, type: 3}
+  _projectile: {fileID: 5981806591403770737, guid: 8d8b970e880b2174384e82035d8461b6, type: 3}
   _shootingPoint: {fileID: 7933200865507581319}
   _fireDelay: 1
-  _fireForce: 1000
---- !u!64 &322541240040719192
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5430337345667517930}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5994874518689293864, guid: a7efb5c542db9124d9b80c82fa3f570d, type: 3}
+  _fireForce: 500
 --- !u!1 &7150147804499607249
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,11 @@ public class Healthbar : MonoBehaviour
     private Coroutine _coroutine;
     private Enemy _enemy;
     private IHealth _health;
+    private Transform _transform;
         
     private void Start()
     {
+        _transform = transform;
         _enemy = GetComponentInParent<Enemy>();
         _health = _enemy.Health;
         _health.HealthChanged += OnHealthChanged;
@@ -23,7 +25,7 @@ public class Healthbar : MonoBehaviour
 
     private void Update()
     {
-        transform.forward = Camera.main.transform.forward;
+        _transform.forward = Camera.main.transform.forward;
     }
 
     private void OnDisable()
