@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Wave Data", fileName = "new wave data", order = 54)]
+[CreateAssetMenu(menuName = "Wave Data", fileName = "new wave data", order = 55)]
 public class WaveData : ScriptableObject
 {
-    [SerializeField] SpawnPositionsData spawnPositionsData;
+    [SerializeField] SpawnPositionsData _spawnPositionsData;
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rocket : Projectile
+public class RocketTurret : Projectile
 {
-    private float _damageRadius = 20f;
+    private readonly float _damageRadius = 20f;
 
     protected override void InflictDamage(Enemy enemy)
     {

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(TrailRenderer))]
@@ -42,6 +41,11 @@ public class Projectile : MonoBehaviour
         _trailRenderer.ResetBounds();
         _trailRenderer.enabled = true;
         _coroutine = StartCoroutine(DisableAfterDelay(_disableDelay));
+    }
+
+    public void Initialize(float damage)
+    {
+        _damage = damage;
     }
 
     private void OnDisable()

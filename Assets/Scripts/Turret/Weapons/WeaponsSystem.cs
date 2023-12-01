@@ -1,22 +1,38 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponsSystem: MonoBehaviour
+[RequireComponent(typeof(MeshRenderer))]
+public class WeaponsSystem: MonoBehaviour, IWeaponSystem
 {
     [SerializeField] private float _timeToNextWeaponActivation = 1;
 
     private Transform _transform;
+    private MeshRenderer _meshRenderer;
     private Transform _target;
     private Coroutine _aimCoroutine;
     private Coroutine _activationCoroutine;
     private WaitForSeconds _weaponsActivationDelay;
-    private IWeapon[] _weapons;
+    private List<IWeapon> _weapons;
 
     private void Awake()
     {
         _transform = transform;
+        _meshRenderer = GetComponent<MeshRenderer>();
         _weaponsActivationDelay = new WaitForSeconds(_timeToNextWeaponActivation);
-        Initialize();
+        _weapons = new List<IWeapon>();
+    }
+    
+    public void Initialize(Material material, Weapon weapon, GunScheme gunsPosition, WeaponMultipliers weaponParameters)
+    {
+        _meshRenderer.material = material;
+
+        foreach (Vector3 gunPosition in gunsPosition)
+        {
+            Weapon newWeapon = Instantiate(weapon, gunPosition, Quaternion.identity, _transform);
+            newWeapon.Initialize(weaponParameters.Damage, weaponParameters.FireRate);
+            _weapons.Add(newWeapon);
+        }
     }
 
     public void Activate(Transform target)
@@ -31,11 +47,6 @@ public class WeaponsSystem: MonoBehaviour
         StopCoroutine(_aimCoroutine);
         StopCoroutine(_activationCoroutine);        
         StartCoroutine(DeactivateAll());
-    }
-
-    private void Initialize()
-    {
-        _weapons = GetComponentsInChildren<Weapon>();
     }
 
     private IEnumerator StayOnTarget()

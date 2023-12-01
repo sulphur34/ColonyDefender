@@ -352,6 +352,7 @@ PlayerSettings:
   openGLRequireES32: 0
   m_TemplateCustomTags:
     MOBILE_RENDER_SCALE: 1.6
+    PRODUCT_DESCRIPTION: 
     RENDER_SCALE: 2.0
   mobileMTRendering:
     Android: 1
@@ -747,7 +748,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 0
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0

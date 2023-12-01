@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 3608731990200946127}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 5.8212, y: 6.9156}
+  m_SizeDelta: {x: 42.73, y: 9.4716}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2897140611940667671
 MonoBehaviour:
@@ -126,9 +126,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1}
-  m_SizeDelta: {x: 1.8905, y: 0.4799}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -360.00775, y: -638.9855}
+  m_SizeDelta: {x: -718.2196, y: -1279.6053}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1784958702211126115
 Canvas:
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &140329865086321222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,10 +270,10 @@ RectTransform:
   m_Father: {fileID: 4579019793559554818}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.24686389, y: 0.22081846}
-  m_AnchorMax: {x: 0.7654817, y: 0.7792278}
-  m_AnchoredPosition: {x: -0.5311605, y: -0.08991277}
-  m_SizeDelta: {x: 41.42, y: 8.6814}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.483, y: 1.159}
+  m_SizeDelta: {x: 22.499, y: 2.318}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8879447835722999612
 GameObject:
