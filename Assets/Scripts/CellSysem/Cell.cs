@@ -25,8 +25,7 @@ public class Cell : MonoBehaviour, ICell
     public void AddTurret(Turret turret)
     {
         _turret = turret;
-
-        StopCoroutine(_animationCoroutine);
+                
         _animationCoroutine = 
         StartCoroutine(_cellAnimator.MoveTurret(_turret, Position, (_turret) => _turret.transform.position = Position));
     }
@@ -37,8 +36,7 @@ public class Cell : MonoBehaviour, ICell
     }
 
     public void RemoveTurret()
-    {
-        StopCoroutine(_animationCoroutine);
+    {        
         _animationCoroutine = 
             StartCoroutine(_cellAnimator.ShrinkTurret(_turret, (_turret) => Destroy(_turret.gameObject)));                
         Clear();        
