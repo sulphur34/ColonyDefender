@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _health = new Health(200);
+        _health = new Health(20);
         Health.Died += OnDie;
     }
 

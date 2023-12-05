@@ -6,8 +6,8 @@ public class Weapon : ObjectPool, IWeapon
     [SerializeField] private Projectile _projectile;
     [SerializeField] private Transform _shootingPoint;
     [SerializeField] private float _fireForce;
-
-    private float _fireRate;
+    [SerializeField] private float _fireRate;
+        
     private WaitForSeconds _delayTime;
     private Coroutine _coroutine;
     private Transform _transform;
@@ -18,9 +18,9 @@ public class Weapon : ObjectPool, IWeapon
         _transform = transform;
     }
 
-    public void Initialize(float damage, float fireRate)
+    public void Initialize(float damage, float fireRateMultiplier)
     {
-        _fireRate = fireRate;
+        _fireRate = _fireRate * fireRateMultiplier;
         base.Initialize(_projectile, damage);
     }
 

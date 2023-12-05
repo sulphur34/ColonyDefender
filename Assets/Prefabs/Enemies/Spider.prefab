@@ -722,8 +722,8 @@ GameObject:
   - component: {fileID: 2862832794671589736}
   - component: {fileID: -9145124669631168873}
   - component: {fileID: 1340892923927681298}
-  - component: {fileID: 3736430712263130709}
   - component: {fileID: 3305890615736210079}
+  - component: {fileID: 910453277960700457}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -793,7 +793,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 1924036319857821411, guid: c081e8574f817b442b2a9db3082c94fa, type: 3}
+  m_Mesh: {fileID: 1924036319857821411, guid: 0f2ee91a3b57dc44fa3e5ce51296470e, type: 3}
   m_Bones:
   - {fileID: 2136988828805595903}
   - {fileID: 5071074634776435247}
@@ -870,28 +870,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!64 &3736430712263130709
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5698286019478190701}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1924036319857821411, guid: c081e8574f817b442b2a9db3082c94fa, type: 3}
 --- !u!54 &3305890615736210079
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -919,6 +897,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!65 &910453277960700457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698286019478190701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.46, y: 2.19, z: 2.51}
+  m_Center: {x: 0, y: 1.09, z: 0.52}
 --- !u!1 &6099827093697811142
 GameObject:
   m_ObjectHideFlags: 0

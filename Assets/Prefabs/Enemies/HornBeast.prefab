@@ -76,8 +76,8 @@ GameObject:
   - component: {fileID: 6700385684185921463}
   - component: {fileID: 1673276031654768751}
   - component: {fileID: 5720346743368699096}
-  - component: {fileID: 5243686855659922983}
   - component: {fileID: 2578573121694219392}
+  - component: {fileID: 6957585502032575254}
   m_Layer: 0
   m_Name: HornBeast
   m_TagString: Untagged
@@ -215,28 +215,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!64 &5243686855659922983
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759313243537318536}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -462981019419857548, guid: 87edf86a85aebf14e89456fef1ef0854, type: 3}
 --- !u!54 &2578573121694219392
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -264,6 +242,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!65 &6957585502032575254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759313243537318536}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.55, y: 1.65, z: 2.11}
+  m_Center: {x: 0, y: 0.07, z: -0.43}
 --- !u!1 &791920951807687368
 GameObject:
   m_ObjectHideFlags: 0

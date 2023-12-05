@@ -653,9 +653,9 @@ GameObject:
   - component: {fileID: 6459046629944796746}
   - component: {fileID: 4810193176989238528}
   - component: {fileID: 8643770737773039}
-  - component: {fileID: 5862607290226276641}
   - component: {fileID: 2976602485243441873}
   - component: {fileID: 4830951906847236951}
+  - component: {fileID: 2942932504417081354}
   m_Layer: 0
   m_Name: FlyingMonster
   m_TagString: Untagged
@@ -768,28 +768,6 @@ MonoBehaviour:
   Died:
     m_PersistentCalls:
       m_Calls: []
---- !u!64 &5862607290226276641
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5924410317679861927}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4711208715938537054, guid: 96ca29d4dbc66214baef1cd70da19a70, type: 3}
 --- !u!95 &2976602485243441873
 Animator:
   serializedVersion: 5
@@ -838,6 +816,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!65 &2942932504417081354
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924410317679861927}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.43, y: 4.59, z: 3.41}
+  m_Center: {x: -0.008563223, y: 0, z: 0}
 --- !u!1 &6096577371824412191
 GameObject:
   m_ObjectHideFlags: 0

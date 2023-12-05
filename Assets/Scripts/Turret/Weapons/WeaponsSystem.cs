@@ -22,7 +22,12 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
         _weaponsActivationDelay = new WaitForSeconds(_timeToNextWeaponActivation);
         _weapons = new List<IWeapon>();
     }
-    
+
+    private void OnDestroy()
+    {
+        DeactivateGuns();
+    }
+
     public void Initialize(Material material, Weapon weapon, GunScheme gunsPosition, WeaponMultipliers weaponParameters)
     {
         _meshRenderer.material = material;
@@ -39,28 +44,33 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
     {        
         _target = target;
         _aimCoroutine = StartCoroutine(StayOnTarget());
-        _activationCoroutine = StartCoroutine(ActivateAll());
+        _activationCoroutine = StartCoroutine(ActivateGuns());
     }
 
-    public void Deactivate() 
+    public void Deactivate()
     {
-        StopCoroutine(_aimCoroutine);
-        StopCoroutine(_activationCoroutine);        
-        StartCoroutine(DeactivateAll());
+        if(_aimCoroutine != null)
+            StopCoroutine(_aimCoroutine);
+
+        if( _activationCoroutine != null)
+            StopCoroutine(_activationCoroutine);
+
+        DeactivateGuns();
     }
 
     private IEnumerator StayOnTarget()
     {
         GameObject targetObject = _target.gameObject;
 
-        while (targetObject.activeSelf)
-        {    
-            _transform.LookAt(_target.position);
+        while (targetObject != null)
+        {
+            Debug.Log(_target.transform.position);
+            _transform.LookAt(_target.transform.position);
             yield return null;
         }
     }
 
-    private IEnumerator ActivateAll()
+    private IEnumerator ActivateGuns()
     {
         foreach (var weapon in _weapons)
         {
@@ -69,12 +79,11 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
         }            
     }
 
-    private IEnumerator DeactivateAll()
+    private void DeactivateGuns()
     {
         foreach (var weapon in _weapons)
         {
             weapon.EndFire();
-            yield return null;
         }
     }
 }

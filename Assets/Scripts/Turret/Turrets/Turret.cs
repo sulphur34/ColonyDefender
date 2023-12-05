@@ -44,7 +44,7 @@ public class Turret : MonoBehaviour
 
             yield return null;
         }
-
+                
         EnemyFound.Invoke();
     }
 

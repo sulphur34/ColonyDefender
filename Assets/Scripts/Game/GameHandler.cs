@@ -18,7 +18,7 @@ public class GameHandler : MonoBehaviour
 
     private void Awake()
     {
-        _minTurretLevel = 4;
+        _minTurretLevel = 1;
         _enhancementSystem = GetComponent<EnhancementSystem>();
         _turretFactory = GetComponent<TurretFactory>();
         _barrier.EnemyInvaded += OnGameLost;

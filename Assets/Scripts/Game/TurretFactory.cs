@@ -18,8 +18,8 @@ public class TurretFactory : MonoBehaviour, IFactory<Turret>
 
         Material material = _materials[upgradeIndex.GradeIndex];
         GunScheme gunsPositions = currentTurretData.GunsSchemes[upgradeIndex.GunsIndex];
-        WeaponMultipliers weaponParameters = GetWeaponMultipliers(upgradeIndex);
-        turret.WeaponSystem.Initialize(material, currentTurretData.WeaponPrefab, gunsPositions, weaponParameters);
+        WeaponMultipliers weaponMultipliers = GetWeaponMultipliers(upgradeIndex);
+        turret.WeaponSystem.Initialize(material, currentTurretData.WeaponPrefab, gunsPositions, weaponMultipliers);
 
         return turret;
     }

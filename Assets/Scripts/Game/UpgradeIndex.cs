@@ -37,7 +37,7 @@ public class UpgradeIndex
 
     private void CountIndexes(int levelIndex) 
     {
-        for (int i = 0; i < levelIndex; i++)
+        for (int i = 1; i < levelIndex; i++)
         {
             if(TurretIndex < _maxTurretIndex - 1)
             {

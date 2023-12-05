@@ -2,11 +2,12 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(TrailRenderer))]
 [RequireComponent (typeof(Collider))]
+[RequireComponent(typeof(MeshRenderer))]
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _collisionParticle;
+    [SerializeField] private ParticleSystem _projectileParticle;
     [SerializeField] private float _damage;
 
     private Rigidbody _rigidbody;
@@ -14,32 +15,31 @@ public class Projectile : MonoBehaviour
     private Vector3 _startPosition;
     private Coroutine _coroutine;
     private Transform _transform;
+    private MeshRenderer _meshRenderer;
     private float _timeToDisable;
     private WaitForSeconds _disableDelay;
     private WaitForSeconds _onEnemyCollisionDelay;
-    private TrailRenderer _trailRenderer;
 
     protected Vector3 CurrentPosition => _transform.position;
 
     private void Awake()
     {
         _timeToDisable = 3f;
-        _trailRenderer = GetComponent<TrailRenderer>();
         _disableDelay = new WaitForSeconds(_timeToDisable);
         _onEnemyCollisionDelay = new WaitForSeconds(_collisionParticle.main.duration);
         _transform = transform;
         _collider = GetComponent<Collider>();
         _startPosition = _transform.position;
         _rigidbody = GetComponent<Rigidbody>();
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
     private void OnEnable()
     {
+        _meshRenderer.enabled = true;
         _collider.enabled = true;
         _transform.position = _startPosition;
-        _trailRenderer.Clear();
-        _trailRenderer.ResetBounds();
-        _trailRenderer.enabled = true;
+        _projectileParticle.Play();
         _coroutine = StartCoroutine(DisableAfterDelay(_disableDelay));
     }
 
@@ -100,11 +100,17 @@ public class Projectile : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void DisableOnEnemyCollision()
+    protected void PlayCollisionParticle()
     {
         _collisionParticle.Play();
+    }
+
+    private void DisableOnEnemyCollision()
+    {
+        _projectileParticle.Clear();
+        _meshRenderer.enabled = false;
+        PlayCollisionParticle();
         _collider.enabled = false;
-        _trailRenderer.enabled = false;
         _coroutine = StartCoroutine(DisableAfterDelay(_onEnemyCollisionDelay));
     }    
 }
