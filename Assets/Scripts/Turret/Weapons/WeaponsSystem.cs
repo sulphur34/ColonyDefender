@@ -64,7 +64,6 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
 
         while (targetObject != null)
         {
-            Debug.Log(_target.transform.position);
             _transform.LookAt(_target.transform.position);
             yield return null;
         }

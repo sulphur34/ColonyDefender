@@ -18,10 +18,10 @@ public class Weapon : ObjectPool, IWeapon
         _transform = transform;
     }
 
-    public void Initialize(float damage, float fireRateMultiplier)
+    public void Initialize(float damageMultiplier, float fireRateMultiplier)
     {
         _fireRate = _fireRate * fireRateMultiplier;
-        base.Initialize(_projectile, damage);
+        base.Initialize(_projectile, damageMultiplier);
     }
 
     public void StartFire()

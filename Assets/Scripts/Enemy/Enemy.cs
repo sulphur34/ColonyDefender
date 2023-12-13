@@ -1,28 +1,33 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private float _speed;
+
     private Health _health;
+    private Transform _transform;
+        
+    public event Action<Enemy> Died;
+
     public bool IsAlive { get; private set; }
-    
-    public UnityEvent<Enemy> Died;
     public IHealth Health => _health;
     public IDamageable Damager => _health;
 
     private void Awake()
     {
-        _health = new Health(20);
-        Health.Died += OnDie;
+        _transform = transform;
     }
 
     private void Update()
     {
-        transform.Translate(-transform.forward * Time.deltaTime);
+        transform.Translate(-transform.forward * Time.deltaTime * _speed);
     }
         
-    public void Initialize(EnemyData enemyData)
+    public void Initialize(float healthValue, float scale)
     {
+        _transform.localScale = new Vector3 (scale, scale, scale);
+        _health = new Health(healthValue);
         Health.Died += OnDie;
     }
     

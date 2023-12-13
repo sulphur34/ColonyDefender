@@ -7,7 +7,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _collisionParticle;
-    [SerializeField] private ParticleSystem _projectileParticle;
+    [SerializeField] private ParticleSystem _projectileParticle;    
     [SerializeField] private float _damage;
 
     private Rigidbody _rigidbody;
@@ -43,9 +43,9 @@ public class Projectile : MonoBehaviour
         _coroutine = StartCoroutine(DisableAfterDelay(_disableDelay));
     }
 
-    public void Initialize(float damage)
+    public void Initialize(float damageMultiplier)
     {
-        _damage = damage;
+        _damage *= damageMultiplier;
     }
 
     private void OnDisable()
