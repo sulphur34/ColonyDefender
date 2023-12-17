@@ -1,5 +1,8 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Agava.YandexGames;
 
 [RequireComponent (typeof(EnhancementSystem))]
 [RequireComponent(typeof(TurretFactory))]
@@ -11,53 +14,75 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private int _minTurretLevel = 1;
     [SerializeField] private int _currentLevel = 1;
     [SerializeField] private int _levelBatchValue = 5;
+    [SerializeField] private int _buildingTime;
+    [SerializeField] private SaveHandler _saveHandler;
         
     private EnhancementSystem _enhancementSystem;
     private IFactory<Turret> _turretFactory;
     private IFactory<IWave> _waveFactory;
     private int _turretsLimit;
     private IWave _currentWave;
+    private int _timeLeftToBuild;
+    private Coroutine _timerCoroutine;
 
-    public UnityEvent Started;
     public UnityEvent Lost;
     public UnityEvent Win;
-    public UnityEvent BaseBuilt;
+    public event Action Started;
+    public event Action<int> TurretAdded;
+    public event Action<int> TimerChange;
+    public event Action BaseBuilt;
 
     public int CurrentLevel => _currentLevel;
     public int MinLevelInBatch => GetMinLevelInBatch();
     public int MaxLevelInBatch => GetMaxLevelInBatch();
+    public int LevelBatchValue => _levelBatchValue;
+    public int TimeLeftToBuild => _timeLeftToBuild;
 
     private void Awake()
-    {      
+    {         
         _enhancementSystem = GetComponent<EnhancementSystem>();
         _turretFactory = GetComponent<TurretFactory>();
         _waveFactory = GetComponent<WaveFactory>();
         _barrier.EnemyInvaded += OnGameLost;
+        _saveHandler.ProgressReseted += OnProgresReset;
         _cellBoard.Merged.AddListener(OnMerge);
-        BaseBuilt.AddListener(OnBaseBuilt);
+        BaseBuilt += OnBaseBuilt;
+        
+        if (PlayerPrefs.HasKey(SaveData.ProgressLevel))
+            _currentLevel = PlayerPrefs.GetInt(SaveData.ProgressLevel);
     }
 
     public void StartGame()
     {
+        Started.Invoke();
+        _timerCoroutine = StartCoroutine(InitiateBuildTimer());
         _turretsLimit = _currentLevel - _minTurretLevel + 1;
         _currentWave = _waveFactory.Build(_currentLevel);
         _currentWave.EnemiesDestroyed += OnGameWin;
+        TurretAdded.Invoke(_turretsLimit);
     }
 
     public void OnColumnClick(int columnIndex)
     {
-        if (_turretsLimit > 0)
+        if (_turretsLimit > 0 && _timeLeftToBuild > 0)
         {
             OnMerge(_minTurretLevel, columnIndex);
             _turretsLimit--;
+            TurretAdded.Invoke(_turretsLimit);
         }
         
         if (_turretsLimit == 0)
             BaseBuilt?.Invoke();
     }
 
+    private void GetSavedData()
+    {
+        
+    }
+
     private void OnBaseBuilt()
     {
+        StopCoroutine(_timerCoroutine);
         _currentWave.Activate();
     }
 
@@ -69,20 +94,30 @@ public class GameHandler : MonoBehaviour
 
     private void OnGameWin()
     {
-        Reset();
-        Win?.Invoke();
         _currentLevel++;
+        PlayerPrefs.SetInt(SaveData.ProgressLevel, _currentLevel);
+        PlayerPrefs.Save();
+        ResetLevel();
+        Win?.Invoke();        
     }
 
     private void OnGameLost()
     {
-        Reset();
+        ResetLevel();
         Lost?.Invoke();
     }
 
-    private void Reset()
+    private void ResetLevel()
     {
+        _cellBoard.Clear();
+        _currentWave.Clear();
         _currentWave.EnemiesDestroyed -= OnGameWin;
+    }
+
+    private void OnProgresReset()
+    {
+        _currentLevel = 1;
+        _minTurretLevel = 1;
         _cellBoard.Clear();
         _currentWave.Clear();
     }
@@ -96,11 +131,26 @@ public class GameHandler : MonoBehaviour
     {
         int maxLevel = _currentLevel;
 
-        while (_currentLevel % _levelBatchValue != 0)
+        while (maxLevel % _levelBatchValue != 0)
         {
             maxLevel ++;
         }
 
         return maxLevel;
+    }
+
+    private IEnumerator InitiateBuildTimer()
+    {        
+        _timeLeftToBuild = _buildingTime;
+        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
+
+        while (_timeLeftToBuild > 0)
+        {
+            TimerChange?.Invoke(_timeLeftToBuild);
+            yield return waitForSeconds;
+            _timeLeftToBuild--;            
+        }
+
+        BaseBuilt.Invoke();
     }
 }

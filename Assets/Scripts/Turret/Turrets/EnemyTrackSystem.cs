@@ -26,6 +26,9 @@ public class EnemyTrackSystem : MonoBehaviour
             OrderBy(enemyInZone => Vector3.Distance(enemyInZone.transform.position, originalPosition))
             .FirstOrDefault();
 
+        if(enemy == null) 
+            return false;
+
         return true;
     }
 

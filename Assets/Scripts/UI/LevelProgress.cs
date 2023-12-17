@@ -6,8 +6,9 @@ public class LevelProgress : MonoBehaviour
     [SerializeField] private GameHandler _gameHandler;
     [SerializeField] private Color _current;
     [SerializeField] private Color _pass;
+    [SerializeField] private Color _default;
 
-    private void Start()
+    private void OnEnable()
     {
         Reset();
     }
@@ -17,8 +18,9 @@ public class LevelProgress : MonoBehaviour
         int currentLevel = _gameHandler.CurrentLevel;
         int minLevel = _gameHandler.MinLevelInBatch;
         int maxLevel = _gameHandler.MaxLevelInBatch;
+        int batchValue = _gameHandler.LevelBatchValue;
 
-        for (int i = 0; i < maxLevel; i++)
+        for (int i = 0; i < batchValue; i++)
         {
             int levelValue = i + minLevel;
 
@@ -28,6 +30,8 @@ public class LevelProgress : MonoBehaviour
                 _levelLabels[i].SetColor(_pass);
             else if (levelValue == currentLevel)
                 _levelLabels[i].SetColor(_current);
+            else
+                _levelLabels[i].SetColor(_default);
         }
     }
 }

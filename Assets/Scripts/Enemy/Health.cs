@@ -21,7 +21,7 @@ public class Health : IHealth, IDamageable
         _currentValue = MathF.Max(_minValue, _currentValue - damage);
         HealthChanged.Invoke();
 
-        if (_currentValue == _minValue)
+        if (_currentValue <= _minValue)
             Died.Invoke();
     }
 }
