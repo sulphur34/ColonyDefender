@@ -9,6 +9,11 @@ public class TextSetter : MonoBehaviour
         _label.text = amount.ToString();
     }
 
+    protected void SetText(float amount)
+    {
+        _label.text = amount.ToString();
+    }
+
     protected void SetColor(Color color)
     {
         _label.color = color;

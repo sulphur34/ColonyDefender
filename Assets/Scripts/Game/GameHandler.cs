@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using Agava.YandexGames;
 
-[RequireComponent (typeof(EnhancementSystem))]
+[RequireComponent(typeof(EnhancementSystem))]
 [RequireComponent(typeof(TurretFactory))]
 [RequireComponent(typeof(WaveFactory))]
-public class GameHandler : MonoBehaviour
+public class GameHandler : MonoBehaviour, IGameHandler
 {
     [SerializeField] private Barrier _barrier;
     [SerializeField] private CellBoard _cellBoard;
@@ -16,7 +16,7 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private int _levelBatchValue = 5;
     [SerializeField] private int _buildingTime;
     [SerializeField] private SaveHandler _saveHandler;
-        
+
     private EnhancementSystem _enhancementSystem;
     private IFactory<Turret> _turretFactory;
     private IFactory<IWave> _waveFactory;
@@ -55,14 +55,14 @@ public class GameHandler : MonoBehaviour
     public void StartGame()
     {
         Started.Invoke();
-        _timerCoroutine = StartCoroutine(InitiateBuildTimer());
-        _turretsLimit = _currentLevel - _minTurretLevel + 1;
+        _timerCoroutine = StartCoroutine(InitiateBuildTimer());        
         _currentWave = _waveFactory.Build(_currentLevel);
         _currentWave.EnemiesDestroyed += OnGameWin;
+        _turretsLimit = _currentLevel - _minTurretLevel + 1;
         TurretAdded.Invoke(_turretsLimit);
     }
 
-    public void OnColumnClick(int columnIndex)
+    private void OnColumnClick(int columnIndex)
     {
         if (_turretsLimit > 0 && _timeLeftToBuild > 0)
         {
