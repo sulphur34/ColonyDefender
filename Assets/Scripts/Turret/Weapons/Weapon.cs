@@ -19,7 +19,7 @@ public class Weapon : ObjectPool, IWeapon
 
     public void Initialize(float damageMultiplier, float fireRateMultiplier)
     {
-        _fireRate = _fireRate * fireRateMultiplier;
+        _fireRate = _fireRate / fireRateMultiplier;
         _delayTime = new WaitForSeconds(_fireRate);
         base.Initialize(_projectile, damageMultiplier);
     }
