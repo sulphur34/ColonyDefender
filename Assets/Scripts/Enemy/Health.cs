@@ -19,7 +19,7 @@ public class Health : IHealth, IDamageable
     public void TakeDamage(float damage)
     {
         _currentValue = MathF.Max(_minValue, _currentValue - damage);
-        HealthChanged.Invoke();
+        HealthChanged?.Invoke();
 
         if (_currentValue <= _minValue)
             Died.Invoke();

@@ -16,7 +16,7 @@ public class Turret : MonoBehaviour
     public UnityAction EnemyFound;
 
     public IWeaponSystem WeaponSystem => _weaponSystem;
-    public int TurretLevel { get; private set; }
+    public float TurretLevel { get; private set; }
     
     private void Awake()
     {
@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour
         EnemyFound += AttackEnemy;  
     }
 
-    public void Initialize(EnemyTrackSystem enemyTrackSystem, int turretLevel)
+    public void Initialize(EnemyTrackSystem enemyTrackSystem, float turretLevel)
     {
         _enemyTrackSystem = enemyTrackSystem;
         TurretLevel = turretLevel;

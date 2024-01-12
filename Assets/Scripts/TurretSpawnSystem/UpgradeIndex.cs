@@ -1,11 +1,11 @@
 public class UpgradeIndex 
 {
-    private readonly int _maxTurretIndex;
-    private readonly int _maxGradeIndex;
-    private readonly int _maxGunsIndex;
-    private readonly int _maxLevel;
+    private readonly float _maxTurretIndex;
+    private readonly float _maxGradeIndex;
+    private readonly float _maxGunsIndex;
+    private readonly float _maxLevel;
 
-    public UpgradeIndex(int levelIndex, int maxTurretIndex, int maxGradeIndex, int maxGunsIndex)
+    public UpgradeIndex(float levelIndex, float maxTurretIndex, float maxGradeIndex, float maxGunsIndex)
     {
         LevelIndex = levelIndex;
         _maxGradeIndex = maxGradeIndex;
@@ -15,7 +15,7 @@ public class UpgradeIndex
         SetIndexes();
     }
 
-    public int LevelIndex { get; private set; }
+    public float LevelIndex { get; private set; }
     public int TurretIndex { get; private set; }
     public int GradeIndex { get; private set; }
     public int GunsIndex { get; private set; }
@@ -32,10 +32,10 @@ public class UpgradeIndex
         else
             CountIndexes(LevelIndex);
 
-        DamageMultiplier = (float)LevelIndex / (float)_maxGradeIndex / ((float)GunsIndex + 1);
+        DamageMultiplier = LevelIndex / _maxGradeIndex / (GunsIndex + 1);
     }
 
-    private void CountIndexes(int levelIndex) 
+    private void CountIndexes(float levelIndex) 
     {
         for (int i = 1; i < levelIndex; i++)
         {

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class EnemyTrackSystem : MonoBehaviour
 {
-    [SerializeField] GameHandler _gameHandler;
+    [SerializeField] private DefenceState _defenceState;
 
     private List<Enemy> _enemiesInAttackZone;
 
     private void Awake()
     {
         _enemiesInAttackZone = new List<Enemy>();
-        _gameHandler.Win.AddListener(Reset);
-        _gameHandler.Lost.AddListener(Reset);
+        _defenceState.Exited += Reset;
     }
 
     public bool TryGetNearestEnemy(Vector3 originalPosition, out Enemy enemy)
@@ -48,6 +47,14 @@ public class EnemyTrackSystem : MonoBehaviour
 
     private void Reset()
     {
+        if (_enemiesInAttackZone.Count == 0) 
+            return;
+
+        foreach (Enemy enemy in _enemiesInAttackZone)
+        {
+            Destroy(enemy.gameObject);
+        }
+
         _enemiesInAttackZone.Clear();
     }
 }

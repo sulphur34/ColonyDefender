@@ -7,7 +7,7 @@ public class TurretFactory : MonoBehaviour, IFactory<Turret>
     [SerializeField] private EnhancementSystem _enhancementSystem;
     [SerializeField] private EnemyTrackSystem _enemyTrackSystem;
         
-    public Turret Build(int turretLevel)
+    public Turret Build(float turretLevel)
     {
         UpgradeIndex upgradeIndex =
             new UpgradeIndex(turretLevel, _turretsData.Length, _materials.Length,
@@ -26,8 +26,8 @@ public class TurretFactory : MonoBehaviour, IFactory<Turret>
 
     private WeaponMultipliers GetWeaponMultipliers(UpgradeIndex upgradeIndex)
     {
-        float fireRate = _enhancementSystem.FireRateMultiplier;
-        float damageMultiplier = _enhancementSystem.DamageMultiplier + upgradeIndex.DamageMultiplier;
+        float fireRate = _enhancementSystem.FireRateValue;
+        float damageMultiplier = _enhancementSystem.DamageValue + upgradeIndex.DamageMultiplier;
         return new WeaponMultipliers(fireRate, damageMultiplier);
     }    
 }

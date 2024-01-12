@@ -31,11 +31,11 @@ public class Enemy : MonoBehaviour
         Health.Died += OnDie;
     }
     
-    public void OnDie()
+    private void OnDie()
     {
         float destroyDelay = 0.1f;
         IsAlive = false;
-        Died.Invoke(this);
+        Died.Invoke(this);        
         Destroy(gameObject, destroyDelay);
     }
 }

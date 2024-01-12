@@ -95,8 +95,9 @@ public class Projectile : MonoBehaviour
     }
 
     private IEnumerator DisableAfterDelay(WaitForSeconds delay)
-    {
+    {        
         yield return delay;
+        _projectileParticle.Clear();
         gameObject.SetActive(false);
     }
 

@@ -80,6 +80,9 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
 
     private void DeactivateGuns()
     {
+        if (_weapons == null || _weapons.Count == 0)
+            return;
+
         foreach (var weapon in _weapons)
         {
             weapon.EndFire();

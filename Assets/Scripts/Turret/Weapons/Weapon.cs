@@ -14,13 +14,13 @@ public class Weapon : ObjectPool, IWeapon
 
     private void Awake()
     {
-        _delayTime = new WaitForSeconds(_fireRate);
         _transform = transform;
     }
 
     public void Initialize(float damageMultiplier, float fireRateMultiplier)
     {
         _fireRate = _fireRate * fireRateMultiplier;
+        _delayTime = new WaitForSeconds(_fireRate);
         base.Initialize(_projectile, damageMultiplier);
     }
 
@@ -53,7 +53,7 @@ public class Weapon : ObjectPool, IWeapon
 
     protected override GameObject GetObjectWithParameter<T>(T prefab, float parameter) 
     {
-        GameObject projectile = Instantiate(prefab.gameObject, transform);
+        GameObject projectile = Instantiate(prefab.gameObject);
         projectile.GetComponent<Projectile>().Initialize(parameter);
         return projectile;
     }

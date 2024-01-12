@@ -5,7 +5,7 @@ public interface ICell
     int Row { get; }
     int Column { get; }
     Vector3 Position { get; }    
-    int TurretLevel { get; }
+    float TurretLevel { get; }
 
     void Initialize(int row, int column);
 

@@ -4,7 +4,7 @@ public class WaveData
     private readonly int _stageIndex = 5;
     private readonly float _defaultHealth;
 
-    public WaveData(int level, int maxCapacity, int modelsAmount, float defaultHealth)
+    public WaveData(float level, int maxCapacity, int modelsAmount, float defaultHealth)
     {
         _defaultHealth = defaultHealth;
         Initialize(level, maxCapacity, modelsAmount);
@@ -22,24 +22,24 @@ public class WaveData
     public int LargeEnemyAmount { get; private set; }
     public bool IsBossLevel { get; private set; }
     public int ModelIndex { get; private set; }
-    public int LevelExceedMultiplier { get; private set; }
+    public float LevelExceedMultiplier { get; private set; }
 
-    private void Initialize(int level, int maxCapacity, int modelsAmount)
+    private void Initialize(float level, int maxCapacity, int modelsAmount)
     {
         SmallEnemyMultiplier = 1;
         MediumEnemyMultiplier = 4;
         LargeEnemyMultiplier = 9;
-        ModelIndex = ((level - 1) % (modelsAmount * _stageIndex)) / _stageIndex;
+        ModelIndex = (((int)level - 1) % (modelsAmount * _stageIndex)) / _stageIndex;
 
         if (level > maxCapacity)
         {
             LevelExceedMultiplier = level / maxCapacity + 1;
-            _waveSize = level % maxCapacity;
+            _waveSize = (int)level % maxCapacity;
         }
         else
         {
             LevelExceedMultiplier = 1;
-            _waveSize = level;
+            _waveSize = (int)level;
         }
 
         if (_waveSize % _stageIndex == 0)

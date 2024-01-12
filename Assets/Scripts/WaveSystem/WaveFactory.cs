@@ -10,7 +10,7 @@ public class WaveFactory : MonoBehaviour, IFactory<IWave>
 
     private delegate SpawnTile Spawn();
 
-    public IWave Build(int level)
+    public IWave Build(float level)
     {
         Wave newWave = new Wave();        
         WaveData waveData = new WaveData(level, _spawnGrid.MaxCapacity, _enemyData.Length, _defaultHealthValue);

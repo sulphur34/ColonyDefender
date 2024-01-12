@@ -2,12 +2,11 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using Agava.YandexGames;
 
 [RequireComponent(typeof(EnhancementSystem))]
 [RequireComponent(typeof(TurretFactory))]
 [RequireComponent(typeof(WaveFactory))]
-public class GameHandler : MonoBehaviour, IGameHandler
+public class GameHandler : MonoBehaviour
 {
     [SerializeField] private Barrier _barrier;
     [SerializeField] private CellBoard _cellBoard;
@@ -45,7 +44,6 @@ public class GameHandler : MonoBehaviour, IGameHandler
         _waveFactory = GetComponent<WaveFactory>();
         _barrier.EnemyInvaded += OnGameLost;
         _saveHandler.ProgressReseted += OnProgresReset;
-        _cellBoard.Merged.AddListener(OnMerge);
         BaseBuilt += OnBaseBuilt;
         
         if (PlayerPrefs.HasKey(SaveData.ProgressLevel))
@@ -62,36 +60,25 @@ public class GameHandler : MonoBehaviour, IGameHandler
         TurretAdded.Invoke(_turretsLimit);
     }
 
-    private void OnColumnClick(int columnIndex)
+    public void OnColumnClick(int columnIndex)
     {
         if (_turretsLimit > 0 && _timeLeftToBuild > 0)
         {
-            OnMerge(_minTurretLevel, columnIndex);
+            _cellBoard.AddTurret(columnIndex, _minTurretLevel);
             _turretsLimit--;
             TurretAdded.Invoke(_turretsLimit);
         }
         
         if (_turretsLimit == 0)
             BaseBuilt?.Invoke();
-    }
-
-    private void GetSavedData()
-    {
-        
-    }
+    }   
 
     private void OnBaseBuilt()
     {
         StopCoroutine(_timerCoroutine);
         _currentWave.Activate();
     }
-
-    private void OnMerge(int turretLevel, int columnIndex)
-    {
-        if(_cellBoard.Columns[columnIndex].TryGetFreeCell(out ICell cell))
-            _cellBoard.AddTurret(cell, _turretFactory.Build(turretLevel));
-    }
-
+    
     private void OnGameWin()
     {
         _currentLevel++;

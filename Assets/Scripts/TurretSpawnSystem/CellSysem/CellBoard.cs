@@ -1,33 +1,38 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class CellBoard : MonoBehaviour
 {
     [SerializeField] private Column[] _cells;
+    [SerializeField] private TurretFactory _turretFactory;
 
-    private readonly int _rows = 5;
-    private readonly int _columns = 5;
+    private readonly float _rows = 5;
+    private readonly float _columns = 5;
 
-    public UnityEvent<int, int> Merged;
-
-    public IColumn[] Columns => _cells;
-
+    public float MaxTurretLevel { get; private set; }
+            
     private void Awake()
     {
         Initialize();
     }
 
-    public void AddTurret(ICell cell, Turret turret)
+    public void AddTurret(int columnIndex, float turretLevel)
     {
-        turret.transform.position = _cells[cell.Column].SpawnPosition;
-        cell.AddTurret(turret);
-        TryMerge(cell);
-        CollapseAll();
+        if (_cells[columnIndex].TryGetFreeCell(out ICell cell))
+        {
+            SetMaxTurreteLevel(turretLevel);
+            Turret turret = _turretFactory.Build(turretLevel);
+            turret.transform.position = _cells[cell.Column].SpawnPosition;
+            cell.AddTurret(turret);
+            TryMerge(cell);
+            CollapseAll();
+        }            
     }
 
     public void Clear()
     {
+        MaxTurretLevel = 0;
+
         for (int i = 0; i < _rows; i++)
         {
             for (int j = 0; j < _columns; j++)
@@ -80,13 +85,13 @@ public class CellBoard : MonoBehaviour
     {
         if (TryGetMergeableCells(cell, out List<ICell> mergeableCells))
         {
-            int mergedTurretLevel = 2 * mergeableCells.Count + (cell.TurretLevel - 1);
+            float mergedTurretLevel = 2 * mergeableCells.Count + (cell.TurretLevel - 1);
             cell.RemoveTurret();
 
             foreach (ICell mergedCell in mergeableCells)
                 mergedCell.RemoveTurret();
 
-            Merged.Invoke(mergedTurretLevel, cell.Column);
+            AddTurret(cell.Column, mergedTurretLevel);
         }
 
         return false;
@@ -98,5 +103,10 @@ public class CellBoard : MonoBehaviour
         {
             column.Collapse();
         }
+    }
+
+    private void SetMaxTurreteLevel(float turretLevel)
+    {
+        MaxTurretLevel = MaxTurretLevel < turretLevel ? turretLevel : MaxTurretLevel;
     }
 }

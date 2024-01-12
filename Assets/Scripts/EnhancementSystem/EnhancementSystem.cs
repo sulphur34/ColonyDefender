@@ -1,60 +1,57 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnhancementSystem : MonoBehaviour, IEnhancementSystem
+public class EnhancementSystem : MonoBehaviour
 {
-    [SerializeField] private float _damageMultiplier;
-    [SerializeField] private float _damageUpgradeStep;
-    [SerializeField] private float _fireRateMultiplier;
-    [SerializeField] private float _fireRateUpgradeStep;
-    [SerializeField] private float _timeMultiplier;
-    [SerializeField] private float _timeUpgradeStep;
-    [SerializeField] private float _currencyMultiplier;
-    [SerializeField] private float _currencyUpgradeStep;
-    [SerializeField] private float _turretLevelMultiplier;
-    [SerializeField] private float _turretLevelUpgradeStep;
-    [SerializeField] GameHandler _gameHandler;
+    [SerializeField] private Dictionary<Type, Enhancement> _enchancements;
+    [SerializeField] private float _levelBatchValue = 5;
 
-    public float DamageMultiplier => _damageMultiplier;
-    public float FireRateMultiplier => _fireRateMultiplier;
-    public float TimeToBuildMultiplier => _timeMultiplier;
-    public float CurrencyIncomeMultiplier => _currencyMultiplier;
-    public float TurretLevel => _turretLevelMultiplier;
-           
+    public float FireRateValue => Get<FireRate>().CurrentValue;
+    public float DamageValue => Get<Damage>().CurrentValue;
+    public float ResourcesIncomeValue => Get<ResourceIncome>().CurrentValue * GameLevelValue;
+    public float BuiltTimeValue => Get<BuildTime>().CurrentValue;
+    public float BaseTurretLevelValue => Get<BaseTurretLevel>().CurrentValue;
+    public float GameLevelValue => Get<GameLevel>().CurrentValue;
+    public float LevelBatchValue => _levelBatchValue;
+    public float MaxTurretLevelValue { get; private set; }
 
-    public void IncreaseDamage()
+    public void Awake()
     {
-        IncreaseParameter(DamageMultiplier, _damageUpgradeStep);
+        Initialize();
     }
 
-    public void IncreaseFireRate()
+    private void Initialize()
     {
-        IncreaseParameter(FireRateMultiplier, _fireRateUpgradeStep);
-    }
-    public void IncreaseIncome()
-    {
-        IncreaseParameter(CurrencyIncomeMultiplier, _currencyUpgradeStep);
-    }
-    public void IncreaseBuiltTime()
-    {
-        IncreaseParameter(TimeToBuildMultiplier, _timeUpgradeStep);
+        _enchancements = new Dictionary<Type, Enhancement>();
+
+        foreach (var enhancement in GetComponents<Enhancement>())
+        {
+            _enchancements.Add(enhancement.GetType(), enhancement);
+        }
     }
 
-    private void IncreaseParameter(float parameter, float value)
+    public void Reset()
     {
-        parameter += value;
-    }
-    private void IncreaseParameter(int parameter, int value)
-    {
-        parameter += value;
+        foreach (KeyValuePair<Type, Enhancement> enhancement in _enchancements)
+        {
+            enhancement.Value.Reset();
+        }
     }
 
-    private void Reset()
+    private Enhancement Get<T>() where T : Enhancement
+    {        
+        return _enchancements.TryGetValue(typeof(T), out Enhancement enhancement) ? enhancement : null;
+    }
+    
+    public void Upgrade<T>() where T : Enhancement
     {
-        int defaultValue = 1;
-        _damageMultiplier = defaultValue;
-        _fireRateMultiplier = defaultValue;
-        _currencyMultiplier= defaultValue;
-        _timeMultiplier = defaultValue;
-        _turretLevelMultiplier = defaultValue;
+        Enhancement enhancement = Get<T>();
+        enhancement?.Increase();
+    }
+
+    public void SetMaxTurretLevel(CellBoard cellBoard)
+    {
+        MaxTurretLevelValue = cellBoard.MaxTurretLevel;
     }
 }
