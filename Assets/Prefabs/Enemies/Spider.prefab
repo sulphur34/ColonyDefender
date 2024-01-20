@@ -724,6 +724,8 @@ GameObject:
   - component: {fileID: 1340892923927681298}
   - component: {fileID: 3305890615736210079}
   - component: {fileID: 910453277960700457}
+  - component: {fileID: 2227983110892293207}
+  - component: {fileID: 8328755868602908089}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -744,7 +746,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 381123261509835988}
-  - {fileID: 476388606451999060}
+  - {fileID: 735536652347287851}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -846,7 +848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40e02680845a07444a6477a56c994648, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.25
 --- !u!95 &1340892923927681298
 Animator:
   serializedVersion: 5
@@ -916,6 +917,40 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.46, y: 2.76, z: 3.5188708}
   m_Center: {x: 0, y: 0.9546062, z: 0.01556468}
+--- !u!195 &2227983110892293207
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698286019478190701}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 2.7761142
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1.64
+  m_BaseOffset: 0.09
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &8328755868602908089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698286019478190701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcf6285d43d5a041b1e632e2831508d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6099827093697811142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1293,7 +1328,7 @@ Transform:
   m_Father: {fileID: 2136988828805595903}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3785471516948917403
+--- !u!1001 &4044773494892045540
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1301,14 +1336,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3012807174121696722}
     m_Modifications:
-    - target: {fileID: 2771447779434798470, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2771447779434798470, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1323,11 +1350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1339,11 +1366,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1.8905
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.4799
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1379,7 +1406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1393,17 +1420,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4049119026977850728, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7232514435731560562, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
       propertyPath: m_Name
       value: HealthbarCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973791904497278415, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973791904497278415, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
---- !u!224 &476388606451999060 stripped
+--- !u!224 &735536652347287851 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3608731990200946127, guid: 0e37719b376a5634db875ca474b5b22d, type: 3}
-  m_PrefabInstance: {fileID: 3785471516948917403}
+  m_PrefabInstance: {fileID: 4044773494892045540}
   m_PrefabAsset: {fileID: 0}

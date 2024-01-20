@@ -1,4 +1,4 @@
 public interface IFactory<T>
 {
-    public T Build(float Level);
+    public T Build(float levelIndex);
 }

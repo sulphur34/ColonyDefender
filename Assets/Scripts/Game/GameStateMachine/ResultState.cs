@@ -15,7 +15,7 @@ public abstract class ResultState : GameState
 
     private void Start()
     {
-        _rewardGenerator = new RewardGenerator(_enhancementSystem);
+        _rewardGenerator = new RewardGenerator(EnhancementSystem);
         _aDButton.RewardGained += MultiplyReward;
         _skipButton.Skipped += MultiplyReward;
         _rewardMultiplied += Switcher.SwitchState<PauseState>;
@@ -31,7 +31,7 @@ public abstract class ResultState : GameState
     {
         base.Exit();
         _resourceSystem.Add(Reward);
-        _cellBoard.Clear();
+        CellBoard.Clear();
     }
 
     protected abstract float GenerateReward();

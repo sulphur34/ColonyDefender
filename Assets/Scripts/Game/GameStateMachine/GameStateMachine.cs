@@ -9,6 +9,11 @@ public class GameStateMachine : MonoBehaviour
         Initialize();
     }
 
+    private void Start()
+    {
+        SwitchState<PauseState>();
+    }
+
     private void Initialize()
     {
         _stateMachine = new StateMachine();

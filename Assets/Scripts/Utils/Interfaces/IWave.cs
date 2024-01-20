@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
 
 public interface IWave
 {
     public event Action EnemiesDestroyed;
-    void Activate();
+
+    IReadOnlyList<float> RouteData { get; }
+    bool IsSpawned { get; }
+    Enemy GetNextEnenmyToSpawn();
 
     void Clear();
 }

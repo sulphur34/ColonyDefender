@@ -28,7 +28,7 @@ public class UpgradeIndex
         GradeIndex = 0;
 
         if (LevelIndex > _maxLevel)
-            CountIndexes(LevelIndex - _maxLevel);
+            CountIndexes(LevelIndex % _maxLevel);
         else
             CountIndexes(LevelIndex);
 

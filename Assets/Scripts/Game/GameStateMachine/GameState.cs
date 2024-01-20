@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class GameState : State
 {
-    [SerializeField] protected EnhancementSystem _enhancementSystem;
-    [SerializeField] protected CellBoard _cellBoard;
+    [SerializeField] protected EnhancementSystem EnhancementSystem;
+    [SerializeField] protected CellBoard CellBoard;
+    [SerializeField] protected LevelFactory LevelFactory;
 
     public event Action Entered;
     public event Action Exited;

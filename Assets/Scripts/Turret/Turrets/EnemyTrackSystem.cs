@@ -52,7 +52,8 @@ public class EnemyTrackSystem : MonoBehaviour
 
         foreach (Enemy enemy in _enemiesInAttackZone)
         {
-            Destroy(enemy.gameObject);
+            if(enemy != null)
+                Destroy(enemy.gameObject);
         }
 
         _enemiesInAttackZone.Clear();

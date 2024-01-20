@@ -3,7 +3,18 @@ using UnityEngine;
 
 public class TextSetter : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _label;
+    [SerializeField] private TextMeshProUGUI _label;
+
+    public void Show()
+    {
+        _label.enabled = true;
+    }
+
+    public void Hide()
+    {
+        _label.enabled = false;
+    }
+
     protected void SetText(int amount)
     {
         _label.text = amount.ToString();

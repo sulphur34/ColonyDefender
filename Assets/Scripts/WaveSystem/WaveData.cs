@@ -1,71 +1,69 @@
+using UnityEngine;
+
 public class WaveData
 {
-    private int _waveSize;
     private readonly int _stageIndex = 5;
-    private readonly float _defaultHealth;
+    private float _levelIndex;
 
-    public WaveData(float level, int maxCapacity, int modelsAmount, float defaultHealth)
+    public WaveData(float levelIndex)
     {
-        _defaultHealth = defaultHealth;
-        Initialize(level, maxCapacity, modelsAmount);
+        _levelIndex = levelIndex;
+        Initialize();
+        GenerateEnemiesData();
     }
 
-    public int SmallEnemyMultiplier { get; private set; }
-    public int MediumEnemyMultiplier { get; private set; }
-    public int LargeEnemyMultiplier { get; private set; }
-    public float SmallEnemyHealth => SmallEnemyMultiplier * _defaultHealth;
-    public float MediumEnemyHealth => MediumEnemyMultiplier * _defaultHealth;
-    public float LargeEnemyHealth => LargeEnemyMultiplier * _defaultHealth;
-    public float BossHealth => _waveSize * _defaultHealth;
-    public int SmallEnemyAmount { get; private set; }
-    public int MediumEnemyAmount { get; private set; }
-    public int LargeEnemyAmount { get; private set; }
+    public float SmallEnemyMultiplier { get; private set; }
+    public float MediumEnemyMultiplier { get; private set; }
+    public float LargeEnemyMultiplier { get; private set; }
+    public float SmallEnemyAmount { get; private set; }
+    public float MediumEnemyAmount { get; private set; }
+    public float LargeEnemyAmount { get; private set; }
     public bool IsBossLevel { get; private set; }
-    public int ModelIndex { get; private set; }
-    public float LevelExceedMultiplier { get; private set; }
 
-    private void Initialize(float level, int maxCapacity, int modelsAmount)
+    private void Initialize()
     {
         SmallEnemyMultiplier = 1;
         MediumEnemyMultiplier = 4;
         LargeEnemyMultiplier = 9;
-        ModelIndex = (((int)level - 1) % (modelsAmount * _stageIndex)) / _stageIndex;
+        SmallEnemyAmount = 0;
+        MediumEnemyAmount = 0;
+        LargeEnemyAmount = 0;
+    }
 
-        if (level > maxCapacity)
-        {
-            LevelExceedMultiplier = level / maxCapacity + 1;
-            _waveSize = (int)level % maxCapacity;
-        }
-        else
-        {
-            LevelExceedMultiplier = 1;
-            _waveSize = (int)level;
-        }
+    private void GenerateEnemiesData()
+    {
+        float enemiesPool = _levelIndex;
 
-        if (_waveSize % _stageIndex == 0)
+        if (_levelIndex % _stageIndex == 0)
+        {
             IsBossLevel = true;
-        else
-            SetAmount();
-
-    }
-
-    private void SetAmount()
-    {
-        LargeEnemyAmount = GetEnemyAmount(LargeEnemyMultiplier);
-        MediumEnemyAmount = GetEnemyAmount(MediumEnemyMultiplier);
-        SmallEnemyAmount = GetEnemyAmount(SmallEnemyMultiplier);
-    }
-
-    private int GetEnemyAmount(int size)
-    {
-       int amount = 0;
-
-        while (_waveSize >= size)
-        {
-            amount++;
-            _waveSize -= size;
+            return;
         }
 
-        return amount;
+        while (enemiesPool > 0)
+        {
+            if (CanAddEnemy(enemiesPool, LargeEnemyMultiplier))
+            {
+                enemiesPool -= LargeEnemyMultiplier;
+                LargeEnemyAmount++;
+            }
+            else if (CanAddEnemy(enemiesPool, MediumEnemyMultiplier))
+            {
+                enemiesPool -= MediumEnemyMultiplier;
+                MediumEnemyAmount++;
+            }
+            else
+            {
+                SmallEnemyAmount = enemiesPool;
+                enemiesPool = 0;
+            }                
+        }
+    }
+
+    private bool CanAddEnemy(float poolValue, float enemieMultiplier)
+    {
+        float percentageMultiplier = 100;
+        float probability = (1 - (enemieMultiplier / poolValue)) * percentageMultiplier;
+        return Random.Range(0, percentageMultiplier) <= probability;
     }
 }

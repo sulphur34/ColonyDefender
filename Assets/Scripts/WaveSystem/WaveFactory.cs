@@ -1,64 +1,88 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class WaveFactory : MonoBehaviour, IFactory<IWave>
+public class WaveFactory : IFactory<IWave>
 {
-    [SerializeField] private float _defaultHealthValue;
-    [SerializeField] private SpawnGrid _spawnGrid;
-    [SerializeField] private EnemyData[] _enemyData;
+    private Location _location;
+    private EnemyData _enemyData;
+    private float _defaultHealth = 60;
+    private List<Queue<Enemy>> _enemiesByRoute;
 
-    private delegate SpawnTile Spawn();
-
-    public IWave Build(float level)
+    public WaveFactory(Location location, EnemyData enemyData)
     {
-        Wave newWave = new Wave();        
-        WaveData waveData = new WaveData(level, _spawnGrid.MaxCapacity, _enemyData.Length, _defaultHealthValue);
-        EnemyData enemyData = _enemyData[waveData.ModelIndex];
-        Enemy enemyPrefab = enemyData.EnemyPrefab;
-        IEnumerable<Enemy> enemiesInWave = new List<Enemy>();
+        _location = location;
+        _enemyData = enemyData;
+    }
+
+    public IWave Build(float levelIndex)
+    {
+        WaveData waveData = new WaveData(levelIndex);
+        Enemy enemyPrefab = _enemyData.EnemyPrefab;
+        _enemiesByRoute = new List<Queue<Enemy>>();
+
+        for (int i = 0; i < _location.RoutesAmount; i++)
+            _enemiesByRoute.Add(new Queue<Enemy>());
 
         if (waveData.IsBossLevel)
         {
-            enemiesInWave =
-                CreateEnemies(enemyPrefab, enemyData.Boss, waveData.BossHealth, _spawnGrid.GetBossPlace);
+            GenerateBoss(enemyPrefab, _enemyData.Boss, _defaultHealth * levelIndex);
         }
         else
         {
-            enemiesInWave = enemiesInWave
-                .Concat(CreateEnemies(enemyPrefab, enemyData.Large, 
-                waveData.LargeEnemyHealth, _spawnGrid.GetLargeTile, waveData.LargeEnemyAmount))
-                .Concat(CreateEnemies(enemyPrefab, enemyData.Medium, 
-                waveData.MediumEnemyHealth, _spawnGrid.GetMediumTile, waveData.MediumEnemyAmount))
-                .Concat(CreateEnemies(enemyPrefab, enemyData.Small, 
-                waveData.SmallEnemyHealth, _spawnGrid.GetSmallTile, waveData.SmallEnemyAmount));
+            GenerateEnemies(enemyPrefab, _enemyData.Large,
+                _defaultHealth * waveData.LargeEnemyMultiplier, waveData.LargeEnemyAmount);
+            GenerateEnemies(enemyPrefab, _enemyData.Medium,
+                _defaultHealth * waveData.MediumEnemyMultiplier, waveData.MediumEnemyAmount);
+            GenerateEnemies(enemyPrefab, _enemyData.Small,
+                _defaultHealth * waveData.SmallEnemyMultiplier, waveData.SmallEnemyAmount);
         }
 
-        newWave.Initialize(enemiesInWave.ToList());
-        _spawnGrid.Clear();
-
+        Wave newWave = new Wave(_enemiesByRoute);
         return newWave;
     }
 
-    private List<Enemy> CreateEnemies(Enemy enemyPrefab, EnemyParameters enemyParameters, float health, Spawn positionGetter, int amount = 1) 
+    private void GenerateEnemies(Enemy enemyPrefab, EnemyParameters enemyParameters, float health, float amount = 1)
     {
-        List<Enemy> enemies = new List<Enemy>();
-
         for (int i = 0; i < amount; i++)
         {
-            SpawnTile tile = positionGetter.Invoke();
-
-            if (tile != null)
-            {
-                Vector3 spawnPlace = new Vector3(tile.SpawnPosition.x, enemyParameters.Height, tile.SpawnPosition.y);
-                Enemy enemy = Instantiate(enemyPrefab, spawnPlace, Quaternion.identity);
-                enemy.Initialize(health, enemyParameters.Scale);
-                enemies.Add(enemy);
-            }
+            IRoute route = GetRandomRoute(out int routeIndex);
+            AddEnemyToWave(CreateEnemy(enemyPrefab, enemyParameters, health, route), routeIndex);
         }
+    }
+    
+    private void GenerateBoss(Enemy enemyPrefab, EnemyParameters enemyParameters, float health)
+    {
+        int middlePointMultiplier = 2;
+        int routeIndex = Mathf.CeilToInt(_location.RoutesAmount / middlePointMultiplier);
+        IRoute route;
+        _location.TryGetRoute(routeIndex, out route);
+        AddEnemyToWave(CreateEnemy(enemyPrefab, enemyParameters, health, route), routeIndex);
+    }
 
-        return enemies;
+    private void AddEnemyToWave(Enemy enemy, int routeIndex)
+    {        
+        _enemiesByRoute[routeIndex].Enqueue(enemy);
+    }
+
+    private Enemy CreateEnemy(Enemy enemyPrefab, EnemyParameters enemyParameters, float health, IRoute route)
+    {
+        Enemy enemy = MonoBehaviour.Instantiate(enemyPrefab);
+        Transform transform = enemy.transform; 
+        float scale = enemyParameters.Scale;
+        transform.localScale = new Vector3(scale, scale, -scale);
+        transform.position = new Vector3(route.SpawnPoint.x, enemyParameters.Height, route.SpawnPoint.z);
+        enemy.Initialize(health, route);
+        return enemy;
+    }
+
+    private IRoute GetRandomRoute(out int routeIndex)
+    {
+        int routesAmount = _location.RoutesAmount;
+        routeIndex = Random.Range(0, routesAmount-1);
+
+        if (_location.TryGetRoute(routeIndex, out IRoute route))
+            return route;
+        
+        return null;
     }
 }
-
-

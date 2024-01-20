@@ -1,12 +1,14 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(AIMover))]
+[RequireComponent (typeof(SkinnedMeshRenderer))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _speed;
-
     private Health _health;
+    private AIMover _mover;
     private Transform _transform;
+    private SkinnedMeshRenderer _meshRenderer;
         
     public event Action<Enemy> Died;
 
@@ -14,28 +16,38 @@ public class Enemy : MonoBehaviour
     public IHealth Health => _health;
     public IDamageable Damager => _health;
 
+
     private void Awake()
     {
         _transform = transform;
-    }
-
-    private void Update()
-    {
-        transform.Translate(-transform.forward * Time.deltaTime * _speed);
-    }
+        _mover = GetComponent<AIMover>();
+        _meshRenderer = GetComponent<SkinnedMeshRenderer>();
+    }    
         
-    public void Initialize(float healthValue, float scale)
-    {
-        _transform.localScale = new Vector3 (scale, scale, scale);
+    public void Initialize(float healthValue, IRoute route)
+    { 
         _health = new Health(healthValue);
         Health.Died += OnDie;
+        _mover.Initialize(route);
+        _meshRenderer.enabled = false;
+    }
+
+    public void Move()
+    {
+        _meshRenderer.enabled = true;
+        _mover.Activate();
     }
     
+    public void Stop()
+    {
+        _mover.Deactivate();
+    }
+
     private void OnDie()
     {
+        Died.Invoke(this);        
         float destroyDelay = 0.1f;
         IsAlive = false;
-        Died.Invoke(this);        
         Destroy(gameObject, destroyDelay);
     }
 }
