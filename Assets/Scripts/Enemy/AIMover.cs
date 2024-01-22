@@ -9,10 +9,8 @@ public class AIMover : MonoBehaviour
     private IRoute _route;
     private NavMeshAgent _navMeshAgent;
     private Vector3 _currentPoint;
-    private float _distanceTolerance = 5f;
+    private float _distanceTolerance = 0.1f;
     private Coroutine _coroutine;
-
-    public event Action RootCompleted;
 
     private void Awake()
     {

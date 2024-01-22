@@ -51,7 +51,7 @@ public class Turret : MonoBehaviour
     private void AttackEnemy()
     {
         _weaponSystem.Activate(_currentEnemy.transform);
-        _currentEnemy.Health.Died += StopAttack;
+        _currentEnemy.Health.Died += Restart;
     }
 
     private void StopAttack()
@@ -61,7 +61,11 @@ public class Turret : MonoBehaviour
 
         if(_coroutine != null)
             StopCoroutine(_coroutine);
+    }
 
+    private void Restart()
+    {
+        StopAttack();
         _coroutine = StartCoroutine(SearchForEnemy());
     }
 }

@@ -30,7 +30,8 @@ public class Healthbar : MonoBehaviour
 
     private void OnDisable()
     {
-        _health.HealthChanged -= OnHealthChanged;
+        if (_health != null)
+            _health.HealthChanged -= OnHealthChanged;
     }
 
     public void SetStartValues()

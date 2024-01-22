@@ -5,6 +5,8 @@ public class SaveHandler : MonoBehaviour
 {
     public event Action ProgressReseted;
 
+
+
     public void ResetProgress()
     {
         PlayerPrefs.DeleteAll();

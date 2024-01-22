@@ -5,6 +5,8 @@ using UnityEngine;
 public class BuildState : GameState
 {
     [SerializeField] private List<ColumnUI> _columnButtons;
+    [SerializeField] private AddTurretADButton _addTurretButton;
+    [SerializeField] private OffTimerADButton _offTimerButton;
     [SerializeField] private Timer _timer;
     [SerializeField] private EnemyPowerUI _enemyPowerUI;
 
@@ -18,6 +20,8 @@ public class BuildState : GameState
     private void Awake()
     {
         LevelFactory.Built += SetRouteData;
+        _addTurretButton.RewardGained += OnAddTurretADGain;
+        _offTimerButton.RewardGained += OnOffTimerADGain;
 
         foreach (var column in _columnButtons)
         {
@@ -69,5 +73,15 @@ public class BuildState : GameState
     private void SetRouteData(Level level)
     {
         _routeData = level.Wave.RouteData;
+    }
+
+    private void OnAddTurretADGain()
+    {
+        _turretsLimit++;
+    }
+
+    private void OnOffTimerADGain()
+    {
+        _timer.Pause();
     }
 }

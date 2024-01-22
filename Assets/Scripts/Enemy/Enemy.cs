@@ -21,7 +21,6 @@ public class Enemy : MonoBehaviour
     {
         _transform = transform;
         _mover = GetComponent<AIMover>();
-        _meshRenderer = GetComponent<SkinnedMeshRenderer>();
     }    
         
     public void Initialize(float healthValue, IRoute route)
@@ -29,12 +28,10 @@ public class Enemy : MonoBehaviour
         _health = new Health(healthValue);
         Health.Died += OnDie;
         _mover.Initialize(route);
-        _meshRenderer.enabled = false;
     }
 
     public void Move()
     {
-        _meshRenderer.enabled = true;
         _mover.Activate();
     }
     

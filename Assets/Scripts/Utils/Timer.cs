@@ -48,11 +48,15 @@ public class Timer : MonoBehaviour
         Changed?.Invoke(TimeLeft);
     }
 
+    public void Pause()
+    {
+        if (_timerCoroutine != null)
+            StopCoroutine(_timerCoroutine);
+    }
+
     public void Stop()
     {
         Ended?.Invoke();
-        
-        if(_timerCoroutine != null)
-            StopCoroutine(_timerCoroutine);
+        Pause();
     }
 }

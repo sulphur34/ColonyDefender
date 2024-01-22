@@ -8,7 +8,7 @@ public class ADButton : MonoBehaviour
 {
     [SerializeField] private VideoAD _videoAD;
 
-    private Button _button;    
+    private Button _button;
 
     private void Awake()
     {

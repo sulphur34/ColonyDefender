@@ -40,7 +40,10 @@ public class DefenceState : GameState
             Enemy enemy = _wave.GetNextEnenmyToSpawn();
 
             if (enemy != null)
+            {
+                enemy.gameObject.SetActive(true);
                 enemy.Move();
+            }
 
             yield return null;
         }

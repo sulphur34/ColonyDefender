@@ -79,6 +79,9 @@ public class Wave : IWave
         }
 
         foreach (Enemy enemy in _enemies)
+        {
             enemy.Died += RemoveOnDeath;
+            enemy.gameObject.SetActive(false);
+        }
     }
 }
