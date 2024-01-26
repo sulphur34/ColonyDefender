@@ -7,19 +7,19 @@ public class MainMenu : Menu
 
     private void OnEnable()
     {
-        _pauseState.Entered += Activate;
-        _pauseState.Exited += Deactivate;
+        _pauseState.Entered += Open;
+        _pauseState.Exited += Close;
     }
 
     private void OnDisable()
     {
-        _pauseState.Entered -= Activate;
-        _pauseState.Exited -= Deactivate;
+        _pauseState.Entered -= Open;
+        _pauseState.Exited -= Close;
     }
 
-    public override void Activate()
+    public override void Open()
     {
-        base.Activate();
+        base.Open();
         _levelProgressUI.Reset();
     }
 }

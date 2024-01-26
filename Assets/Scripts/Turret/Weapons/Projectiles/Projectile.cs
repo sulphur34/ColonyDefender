@@ -3,7 +3,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent (typeof(Collider))]
-[RequireComponent(typeof(MeshRenderer))]
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _collisionParticle;
@@ -15,14 +14,13 @@ public class Projectile : MonoBehaviour
     private Vector3 _startPosition;
     private Coroutine _coroutine;
     private Transform _transform;
-    private MeshRenderer _meshRenderer;
     private float _timeToDisable;
     private WaitForSeconds _disableDelay;
     private WaitForSeconds _onEnemyCollisionDelay;
 
     protected Vector3 CurrentPosition => _transform.position;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _timeToDisable = 3f;
         _disableDelay = new WaitForSeconds(_timeToDisable);
@@ -31,12 +29,10 @@ public class Projectile : MonoBehaviour
         _collider = GetComponent<Collider>();
         _startPosition = _transform.position;
         _rigidbody = GetComponent<Rigidbody>();
-        _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
-        _meshRenderer.enabled = true;
         _collider.enabled = true;
         _transform.position = _startPosition;
         _projectileParticle.Play();
@@ -106,10 +102,9 @@ public class Projectile : MonoBehaviour
         _collisionParticle.Play();
     }
 
-    private void DisableOnEnemyCollision()
+    protected virtual void DisableOnEnemyCollision()
     {
         _projectileParticle.Clear();
-        _meshRenderer.enabled = false;
         PlayCollisionParticle();
         _collider.enabled = false;
         _coroutine = StartCoroutine(DisableAfterDelay(_onEnemyCollisionDelay));

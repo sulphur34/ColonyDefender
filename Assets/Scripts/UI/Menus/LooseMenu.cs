@@ -6,13 +6,13 @@ public class LooseMenu : Menu
 
     private void OnEnable()
     {
-        _looseState.Entered += Activate;
-        _looseState.Exited += Deactivate;
+        _looseState.Entered += Open;
+        _looseState.Exited += Close;
     }
 
     private void OnDisable()
     {
-        _looseState.Entered -= Activate;
-        _looseState.Exited -= Deactivate;
+        _looseState.Entered -= Open;
+        _looseState.Exited -= Close;
     }
 }

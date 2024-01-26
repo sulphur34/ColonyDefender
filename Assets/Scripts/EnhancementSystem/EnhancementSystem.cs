@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnhancementSystem : MonoBehaviour
+public class EnhancementSystem : MonoBehaviour, ISaveable
 {
     [SerializeField] private Dictionary<Type, Enhancement> _enchancements;
     [SerializeField] private float _levelBatchValue = 5;
@@ -40,10 +40,10 @@ public class EnhancementSystem : MonoBehaviour
     }
 
     private Enhancement Get<T>() where T : Enhancement
-    {        
+    {
         return _enchancements.TryGetValue(typeof(T), out Enhancement enhancement) ? enhancement : null;
     }
-    
+
     public void Upgrade<T>() where T : Enhancement
     {
         Enhancement enhancement = Get<T>();
@@ -53,5 +53,18 @@ public class EnhancementSystem : MonoBehaviour
     public void SetMaxTurretLevel(CellBoard cellBoard)
     {
         MaxTurretLevelValue = cellBoard.MaxTurretLevel;
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetFloat(SaveData.MaxTurretBuilt, MaxTurretLevelValue);
+    }
+
+    public void Load()
+    {
+        if (PlayerPrefs.HasKey(SaveData.MaxTurretBuilt))
+            MaxTurretLevelValue = PlayerPrefs.GetFloat(SaveData.MaxTurretBuilt);
+        else
+            MaxTurretLevelValue = 0;
     }
 }

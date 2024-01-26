@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameLevel : Enhancement
 {
+    private void Awake()
+    {
+        SaveToken = SaveData.ProgressLevel;
+    }
 }

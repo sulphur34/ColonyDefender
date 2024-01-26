@@ -50,6 +50,9 @@ public class Turret : MonoBehaviour
 
     private void AttackEnemy()
     {
+        if (_currentEnemy == null)
+            Restart();
+
         _weaponSystem.Activate(_currentEnemy.transform);
         _currentEnemy.Health.Died += Restart;
     }

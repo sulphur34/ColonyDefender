@@ -17,6 +17,11 @@ public class Weapon : ObjectPool, IWeapon
         _transform = transform;
     }
 
+    private void OnDestroy()
+    {
+        Clear();
+    }
+
     public void Initialize(float damageMultiplier, float fireRateMultiplier)
     {
         _fireRate = _fireRate / fireRateMultiplier;

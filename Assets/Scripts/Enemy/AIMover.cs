@@ -43,6 +43,8 @@ public class AIMover : MonoBehaviour
 
         while (isContinue)
         {
+            Debug.DrawRay(transform.position, _currentPoint);
+
             if (_navMeshAgent.remainingDistance <= _distanceTolerance)
             {
                 _currentPoint = _route.GetNextPoint();

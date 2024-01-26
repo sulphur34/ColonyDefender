@@ -19,6 +19,14 @@ public abstract class ObjectPool : MonoBehaviour
         }
     }
 
+    public void Clear()
+    {
+        foreach (var item in _pool)
+        {
+            Destroy(item);
+        }
+    }
+
     protected void Initialize<T>(T prefab, float parameter) where T : MonoBehaviour
     {
         _pool = new List<GameObject>();

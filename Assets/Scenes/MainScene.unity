@@ -572,6 +572,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33243911}
   m_CullTransparentMesh: 1
+--- !u!1 &60596682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 60596683}
+  - component: {fileID: 60596684}
+  m_Layer: 0
+  m_Name: EnhancementMenu\BuildTimeLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &60596683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60596682}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &60596684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60596682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0412\u0440\u0435\u043C\u044F \u043F\u043E\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Construction time
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "\u0130n\u015Faat s\xFCresi"
+    Object: {fileID: 0}
 --- !u!1 &77149064
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,8 +717,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77149064}
-  m_LocalRotation: {x: -0.13917309, y: 0, z: -0, w: 0.9902681}
-  m_LocalPosition: {x: 0, y: 0, z: 24.999743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -673,7 +728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.11353555}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &77149069
@@ -1122,9 +1177,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f99e56688d8b3bc45b666809618d6fdc, type: 3}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: FallbackText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: translationName
+      value: EnhancementMenu\EnergyGatheringLabel
+      objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_text
-      value: "\u0421\u0431\u043E\u0440 \u044D\u043D\u0435\u0440\u0433\u0438\u0438"
+      value: Firerate
       objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_fontSize
@@ -1433,7 +1496,7 @@ Transform:
   - {fileID: 315064734}
   - {fileID: 77149068}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &259313090
 GameObject:
@@ -1446,6 +1509,7 @@ GameObject:
   - component: {fileID: 259313091}
   - component: {fileID: 259313093}
   - component: {fileID: 259313092}
+  - component: {fileID: 259313094}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1493,7 +1557,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u043F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
+  m_text: "\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
   m_sharedMaterial: {fileID: -4367223255068891767, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
@@ -1570,6 +1634,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259313090}
   m_CullTransparentMesh: 1
+--- !u!114 &259313094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259313090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ResultMenu\SkipButton
+  FallbackText: Atlamak
 --- !u!1 &282950373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1789,6 +1867,7 @@ GameObject:
   - component: {fileID: 301360393}
   - component: {fileID: 301360395}
   - component: {fileID: 301360394}
+  - component: {fileID: 301360396}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1913,6 +1992,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301360392}
   m_CullTransparentMesh: 1
+--- !u!114 &301360396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301360392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Overall\BackButton
+  FallbackText: "\u041D\u0430\u0437\u0430\u0434"
 --- !u!1 &315064730
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,7 +2193,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316787427}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -2930,10 +3023,10 @@ RectTransform:
   m_Father: {fileID: 2141134300}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421224846
 MonoBehaviour:
@@ -2984,6 +3077,7 @@ GameObject:
   - component: {fileID: 428706979}
   - component: {fileID: 428706981}
   - component: {fileID: 428706980}
+  - component: {fileID: 428706982}
   m_Layer: 5
   m_Name: TimerTextLabel
   m_TagString: Untagged
@@ -3108,6 +3202,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428706978}
   m_CullTransparentMesh: 1
+--- !u!114 &428706982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428706978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: InGameUI\BuildBaseLabel
+  FallbackText: "Bir \xFCs in\u015Fa et"
+--- !u!1 &439450201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439450202}
+  - component: {fileID: 439450203}
+  m_Layer: 0
+  m_Name: InGameUI\BuildBaseLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &439450202
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439450201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &439450203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439450201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421\u0442\u0440\u043E\u0439 \u0431\u0430\u0437\u0443"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Build a base
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Bir \xFCs in\u015Fa et"
+    Object: {fileID: 0}
 --- !u!1 &461150176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3220,7 +3383,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 1920, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &465431393
 MonoBehaviour:
@@ -3866,7 +4029,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1441386878}
         m_TargetAssemblyTypeName: SaveHandler, Assembly-CSharp
-        m_MethodName: ResetProgress
+        m_MethodName: Reset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3914,6 +4077,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600573165}
   m_CullTransparentMesh: 1
+--- !u!1 &626090739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 626090740}
+  - component: {fileID: 626090741}
+  m_Layer: 0
+  m_Name: ResultMenu\WinLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &626090740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626090739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &626090741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626090739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0412\u044B \u0412\u044B\u0438\u0433\u0440\u0430\u043B\u0438\n\u0412\u0430\u043C
+      \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0441\u043E\u0431\u0440\u0430\u0442\u044C"
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Sen kazand\u0131n\nToplamay\u0131 ba\u015Fard\u0131n"
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'You Won
+
+      You managed to collect'
+    Object: {fileID: 0}
 --- !u!224 &627576323 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5917723283457247600, guid: abb39845e348f9e4e9f6ae5f7800ace3, type: 3}
@@ -3965,7 +4186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 73892.83}
+  m_AnchoredPosition: {x: 0, y: 236044.47}
   m_SizeDelta: {x: 29.3428, y: 1088.645}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &628687576
@@ -4002,7 +4223,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628687573}
   m_CullTransparentMesh: 1
---- !u!1 &671854625
+--- !u!1 &665909803
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4010,56 +4231,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 671854627}
-  - component: {fileID: 671854626}
+  - component: {fileID: 665909804}
+  - component: {fileID: 665909805}
   m_Layer: 0
-  m_Name: LeanLocalization
+  m_Name: ResultMenu\LooseLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &671854626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671854625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLanguage: Russian
-  detectLanguage: 1
-  defaultLanguage: 
-  saveLoad: 1
-  prefabs:
-  - Root: {fileID: 765358623864573794, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
-    sources:
-    - {fileID: -4933353152916006438, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
-  - Root: {fileID: 765358623864573794, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
-    sources:
-    - {fileID: -4933353152916006438, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
-  - Root: {fileID: 765358623864573794, guid: 6f11380d3085dcc4bac8a667314be70f, type: 3}
-    sources:
-    - {fileID: -4933353152916006438, guid: 6f11380d3085dcc4bac8a667314be70f, type: 3}
---- !u!4 &671854627
+--- !u!4 &665909804
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671854625}
+  m_GameObject: {fileID: 665909803}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &665909805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665909803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0412\u044B \u043F\u0440\u043E\u0438\u0433\u0440\u0430\u043B\u0438\n\u0412\u0430\u043C
+      \u0443\u0434\u0430\u043B\u043E\u0441\u044C \u0441\u043E\u0431\u0440\u0430\u0442\u044C"
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'You lost
+
+      You managed to collect'
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Kaybettin\nToplamay\u0131 ba\u015Fard\u0131n"
+    Object: {fileID: 0}
 --- !u!1 &691907233
 GameObject:
   m_ObjectHideFlags: 0
@@ -4245,7 +4466,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 33.2, y: -15.7, z: 10.906}
 --- !u!1001 &705655038
 PrefabInstance:
@@ -4905,6 +5126,7 @@ GameObject:
   - component: {fileID: 756349657}
   - component: {fileID: 756349659}
   - component: {fileID: 756349658}
+  - component: {fileID: 756349660}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5029,6 +5251,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756349656}
   m_CullTransparentMesh: 1
+--- !u!114 &756349660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756349656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Overall\BackButton
+  FallbackText: "\u041D\u0430\u0437\u0430\u0434"
 --- !u!224 &762757518 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5917723283457247600, guid: abb39845e348f9e4e9f6ae5f7800ace3, type: 3}
@@ -5538,9 +5774,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d505b23d341095649bac6e93f783b15a, type: 3}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: FallbackText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: translationName
+      value: EnhancementMenu\BuildTimeLabel
+      objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_text
-      value: "\u0412\u0440\u0435\u043C\u044F \u043F\u043E\u0434\u0433\u043E\u0442\u043E\u0432\u043A\u0438"
+      value: Firerate
       objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_fontSize
@@ -6036,6 +6280,7 @@ GameObject:
   - component: {fileID: 976783219}
   - component: {fileID: 976783221}
   - component: {fileID: 976783220}
+  - component: {fileID: 976783222}
   m_Layer: 5
   m_Name: WinLabel
   m_TagString: Untagged
@@ -6161,6 +6406,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976783218}
   m_CullTransparentMesh: 1
+--- !u!114 &976783222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976783218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ResultMenu\WinLabel
+  FallbackText: "Sen kazand\u0131n\nToplamay\u0131 ba\u015Fard\u0131n"
 --- !u!1 &980974183
 GameObject:
   m_ObjectHideFlags: 0
@@ -6573,7 +6832,7 @@ GameObject:
   - component: {fileID: 1024902987}
   - component: {fileID: 1024902986}
   m_Layer: 0
-  m_Name: Localisation
+  m_Name: Localization
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6587,11 +6846,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024902984}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.804481, y: 2.5409381, z: 1.3087239}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1622866012}
+  - {fileID: 1093498616}
+  - {fileID: 626090740}
+  - {fileID: 665909804}
+  - {fileID: 1281815244}
+  - {fileID: 1810618888}
+  - {fileID: 1202072194}
+  - {fileID: 60596683}
+  - {fileID: 1876055956}
+  - {fileID: 2129281388}
+  - {fileID: 1083219406}
+  - {fileID: 439450202}
+  - {fileID: 1035661493}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6611,7 +6882,16 @@ MonoBehaviour:
   detectLanguage: 1
   defaultLanguage: 
   saveLoad: 1
-  prefabs: []
+  prefabs:
+  - Root: {fileID: 765358623864573794, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+    sources:
+    - {fileID: -4933353152916006438, guid: 971ef8207f535194faf411d40b27fb77, type: 3}
+  - Root: {fileID: 765358623864573794, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+    sources:
+    - {fileID: -4933353152916006438, guid: adef00e2be323654ca5fa825a2cc3c72, type: 3}
+  - Root: {fileID: 765358623864573794, guid: 6f11380d3085dcc4bac8a667314be70f, type: 3}
+    sources:
+    - {fileID: -4933353152916006438, guid: 6f11380d3085dcc4bac8a667314be70f, type: 3}
 --- !u!114 &1024902987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6624,6 +6904,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c628529a4c205469046479d58a3638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1035661492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1035661493}
+  - component: {fileID: 1035661494}
+  m_Layer: 0
+  m_Name: SeupMenu\ResetProgressButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1035661493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035661492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1035661494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035661492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Reset progress
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "\u0130lerlemeyi s\u0131f\u0131rla"
+    Object: {fileID: 0}
 --- !u!1 &1061691147
 GameObject:
   m_ObjectHideFlags: 0
@@ -6891,6 +7226,61 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1083219405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1083219406}
+  - component: {fileID: 1083219407}
+  m_Layer: 0
+  m_Name: EnhancementMenu\TurretLevelRequirementLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1083219406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083219405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1083219407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083219405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: 'Build Turret '
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0442\u0443\u0440\u0435\u043B\u044C "
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Bir taret in\u015Fa edin "
+    Object: {fileID: 0}
 --- !u!1 &1086113649
 GameObject:
   m_ObjectHideFlags: 0
@@ -7313,6 +7703,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091502839}
   m_CullTransparentMesh: 1
+--- !u!1 &1093498615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1093498616}
+  - component: {fileID: 1093498617}
+  m_Layer: 0
+  m_Name: ResultMenu\SkipButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1093498616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093498615}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1093498617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1093498615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Skip
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: Atlamak
+    Object: {fileID: 0}
 --- !u!1001 &1103362432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7708,7 +8153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 591efba9e79d6bb4bafdf45e2a249ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultValue: 6
+  _defaultValue: 1
   _upgradeStep: 1
 --- !u!114 &1154679560
 MonoBehaviour:
@@ -7855,6 +8300,7 @@ GameObject:
   - component: {fileID: 1175684988}
   - component: {fileID: 1175684990}
   - component: {fileID: 1175684989}
+  - component: {fileID: 1175684991}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7979,6 +8425,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1175684987}
   m_CullTransparentMesh: 1
+--- !u!114 &1175684991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175684987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Overall\BackButton
+  FallbackText: "\u041D\u0430\u0437\u0430\u0434"
 --- !u!1 &1180542923
 GameObject:
   m_ObjectHideFlags: 0
@@ -8251,6 +8711,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194897686}
   m_CullTransparentMesh: 1
+--- !u!1 &1202072193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1202072194}
+  - component: {fileID: 1202072195}
+  m_Layer: 0
+  m_Name: EnhancementMenu\DamageLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1202072194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202072193}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1202072195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1202072193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0423\u0440\u043E\u043D"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Damage
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: Zarar
+    Object: {fileID: 0}
 --- !u!1 &1214657855
 GameObject:
   m_ObjectHideFlags: 0
@@ -8480,7 +8995,6 @@ GameObject:
   - component: {fileID: 1248032066}
   - component: {fileID: 1248032068}
   - component: {fileID: 1248032067}
-  - component: {fileID: 1248032069}
   - component: {fileID: 1248032070}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -8606,20 +9120,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1248032065}
   m_CullTransparentMesh: 1
---- !u!114 &1248032069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248032065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d52b33a5902e643bced0385fa6840b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  translationName: MainMenu\StartButton
-  FallbackFont: {fileID: 11400000, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
 --- !u!114 &1248032070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8724,8 +9224,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271861418}
-  m_LocalRotation: {x: -0.13917309, y: 0, z: -0, w: 0.9902681}
-  m_LocalPosition: {x: 0, y: 0, z: 24.999743}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8736,7 +9236,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.11353555}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1271861423
@@ -8757,6 +9257,61 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2865217428936438151, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
   m_PrefabInstance: {fileID: 705655038}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1281815243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1281815244}
+  - component: {fileID: 1281815245}
+  m_Layer: 0
+  m_Name: Overall\BackButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1281815244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281815243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1281815245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281815243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u041D\u0430\u0437\u0430\u0434"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Back
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: Geri
+    Object: {fileID: 0}
 --- !u!1 &1288771597
 GameObject:
   m_ObjectHideFlags: 0
@@ -9283,6 +9838,7 @@ GameObject:
   - component: {fileID: 1364684274}
   - component: {fileID: 1364684276}
   - component: {fileID: 1364684275}
+  - component: {fileID: 1364684277}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9330,7 +9886,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u043F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
+  m_text: "\u041F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
   m_sharedMaterial: {fileID: -4367223255068891767, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
@@ -9407,6 +9963,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364684273}
   m_CullTransparentMesh: 1
+--- !u!114 &1364684277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364684273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ResultMenu\SkipButton
+  FallbackText: Atlamak
 --- !u!1 &1383882438
 GameObject:
   m_ObjectHideFlags: 0
@@ -9674,6 +10244,7 @@ GameObject:
   - component: {fileID: 1401216824}
   - component: {fileID: 1401216826}
   - component: {fileID: 1401216825}
+  - component: {fileID: 1401216827}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -9798,6 +10369,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401216823}
   m_CullTransparentMesh: 1
+--- !u!114 &1401216827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401216823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: SeupMenu\ResetProgressButton
+  FallbackText: "\u0421\u0431\u0440\u043E\u0441\u0438\u0442\u044C \u043F\u0440\u043E\u0433\u0440\u0435\u0441\u0441"
 --- !u!1 &1404241600
 GameObject:
   m_ObjectHideFlags: 0
@@ -10177,6 +10762,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28899d8364ee434faa161e9e68be8ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enhancements:
+  - {fileID: 1154679563}
+  - {fileID: 1154679562}
+  - {fileID: 1154679561}
+  - {fileID: 1154679560}
+  - {fileID: 1154679559}
+  - {fileID: 1154679558}
+  _resourceSystem: {fileID: 2099326288}
+  _enhancementSystem: {fileID: 1154679556}
+  _resultStates:
+  - {fileID: 282950374}
+  - {fileID: 282950375}
+  _enhancementMenu: {fileID: 77149069}
 --- !u!1 &1466188901
 GameObject:
   m_ObjectHideFlags: 0
@@ -10193,7 +10791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1466188902
 Transform:
   m_ObjectHideFlags: 0
@@ -10606,9 +11204,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8c7ee7a4046084343a357be7ce61042c, type: 3}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: FallbackText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: translationName
+      value: EnhancementMenu\DamageLabel
+      objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_text
-      value: "\u0423\u0440\u043E\u043D"
+      value: Firerate
       objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_fontSize
@@ -10937,7 +11543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: {fileID: 1613738955}
   _baseTurretLevel: {fileID: 1154679563}
-  _prefix: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0442\u0443\u0440\u0435\u043B\u044C "
 --- !u!1 &1622866011
 GameObject:
   m_ObjectHideFlags: 0
@@ -11155,6 +11760,7 @@ GameObject:
   - component: {fileID: 1637678975}
   - component: {fileID: 1637678977}
   - component: {fileID: 1637678976}
+  - component: {fileID: 1637678978}
   m_Layer: 5
   m_Name: LooseLabel
   m_TagString: Untagged
@@ -11280,6 +11886,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637678974}
   m_CullTransparentMesh: 1
+--- !u!114 &1637678978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637678974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: ResultMenu\LooseLabel
+  FallbackText: "Kaybettin\nToplamay\u0131 ba\u015Fard\u0131n"
 --- !u!1 &1637802611
 GameObject:
   m_ObjectHideFlags: 0
@@ -12024,8 +12644,63 @@ Transform:
   - {fileID: 1154679557}
   - {fileID: 1397718658}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1810618887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810618888}
+  - component: {fileID: 1810618889}
+  m_Layer: 0
+  m_Name: EnhancementMenu\FirerateLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1810618888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810618887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1810618889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810618887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Firerate
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043E\u0433\u043D\u044F"
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Ate\u015F oran\u0131"
+    Object: {fileID: 0}
 --- !u!1 &1817284190
 GameObject:
   m_ObjectHideFlags: 0
@@ -12102,6 +12777,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817284190}
   m_CullTransparentMesh: 1
+--- !u!1 &1876055955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1876055956}
+  - component: {fileID: 1876055957}
+  m_Layer: 0
+  m_Name: EnhancementMenu\EnergyGatheringLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1876055956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876055955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1876055957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876055955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: English
+    Text: Energy gathering
+    Object: {fileID: 0}
+  - Language: Russian
+    Text: "\u0421\u0431\u043E\u0440 \u044D\u043D\u0435\u0440\u0433\u0438\u0438"
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: Enerji toplama
+    Object: {fileID: 0}
 --- !u!1001 &1883586624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13114,8 +13844,12 @@ PrefabInstance:
       value: 0.8509804
       objectReference: {fileID: 0}
     - target: {fileID: 2440607920824264954, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2440607920824264954, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_fontSize
-      value: 37.75
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 2865217428936438151, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_Pivot.x
@@ -13209,9 +13943,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f0d34fca60e477e4795c2ce7832cba43, type: 3}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: FallbackText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5966465540970701240, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
+      propertyPath: translationName
+      value: EnhancementMenu\TurretLevelLabel
+      objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_text
-      value: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C \u0442\u0443\u0440\u0435\u043B\u0438"
+      value: Firerate
       objectReference: {fileID: 0}
     - target: {fileID: 6285038320842333963, guid: 517a070bf3569bd40b2f4bc215c61890, type: 3}
       propertyPath: m_fontSize
@@ -13821,6 +14563,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123117269}
   m_CullTransparentMesh: 1
+--- !u!1 &2129281387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2129281388}
+  - component: {fileID: 2129281389}
+  m_Layer: 0
+  m_Name: EnhancementMenu\TurretLevelLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2129281388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129281387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1024902985}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2129281389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129281387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0423\u0440\u043E\u0432\u0435\u043D\u044C \u0422\u0443\u0440\u0435\u043B\u0438"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Turret Level
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: Taret Seviyesi
+    Object: {fileID: 0}
 --- !u!1 &2136693351
 GameObject:
   m_ObjectHideFlags: 0
@@ -14779,8 +15576,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7, y: 0.1, z: 0.3}
-  m_Center: {x: 0, y: 0.06, z: 0.7}
+  m_Size: {x: 7, y: 1, z: 0.3}
+  m_Center: {x: 0, y: 0.5, z: 0.7}
 --- !u!114 &5334037120177432364
 MonoBehaviour:
   m_ObjectHideFlags: 0

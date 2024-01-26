@@ -11,19 +11,19 @@ public class InGameMenu : Menu
 
     private void OnEnable()
     {
-        _buildState.Entered += Activate;
-        _defenceState.Exited += Deactivate;
+        _buildState.Entered += Open;
+        _defenceState.Exited += Close;
     }
 
     private void OnDisable()
     {
-        _buildState.Entered -= Activate;
-        _defenceState.Exited -= Deactivate;
+        _buildState.Entered -= Open;
+        _defenceState.Exited -= Close;
     }
 
-    public override void Activate()
+    public override void Open()
     {
-        base.Activate();
+        base.Open();
         _turretsAmountLabel.gameObject.SetActive(true);
         _buildingTimerLabel.gameObject.SetActive(true);
     }

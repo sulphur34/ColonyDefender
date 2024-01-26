@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ResourceSystem : MonoBehaviour
+public class ResourceSystem : MonoBehaviour, ISaveable
 {
     [SerializeField] private float _availableRecourcesValue;
 
@@ -29,5 +29,18 @@ public class ResourceSystem : MonoBehaviour
     {
         _availableRecourcesValue += rewardValue;
         AmountChanged.Invoke(_availableRecourcesValue);
+    }
+
+    public void Save()
+    {
+        PlayerPrefs.SetFloat(SaveData.AvailableResourses, _availableRecourcesValue);
+    }
+
+    public void Load()
+    {
+        if(PlayerPrefs.HasKey(SaveData.AvailableResourses))
+            Add(PlayerPrefs.GetFloat(SaveData.AvailableResourses));
+        else
+            _availableRecourcesValue = 0;
     }
 }

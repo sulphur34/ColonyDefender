@@ -1,5 +1,6 @@
 using Agava.YandexGames;
 using Lean.Localization;
+using Lean;
 using UnityEngine;
 
 namespace Source.Yandex
@@ -7,8 +8,11 @@ namespace Source.Yandex
     public class Localisation : MonoBehaviour
     {
         private const string EnglishCode = "en";
+        private const string English = "English";
         private const string RussianCode = "ru";
+        private const string Russian = "Russian";
         private const string TurkishCode = "tr";
+        private const string Turkish = "Turkish";
 
         private void Awake()
         {
@@ -23,13 +27,13 @@ namespace Source.Yandex
 
             string language = languageCode switch
             {
-                //EnglishCode => Language.English.ToString(),
-                //RussianCode => Language.Russian.ToString(),
-                //TurkishCode => Language.Turkish.ToString(),
-                //_ => Language.English.ToString()
+                EnglishCode => English,
+                RussianCode => Russian,
+                TurkishCode =>Turkish,
+                _ => English
             };
 
-            LeanLocalization.SetCurrentLanguageAll(language);
+            LeanLocalization.SetCurrentLanguageAll(language);            
         }
     }
 }

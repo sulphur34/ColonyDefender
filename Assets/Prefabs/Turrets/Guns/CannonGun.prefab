@@ -102,7 +102,7 @@ MonoBehaviour:
   _projectile: {fileID: 5513630160582833002, guid: cf7293f152b27d1478c3cca150db2937, type: 3}
   _shootingPoint: {fileID: 2626221662485529741}
   _fireForce: 1000
-  _fireRate: 0.2
+  _fireRate: 0.15
 --- !u!64 &5626041687375534674
 MeshCollider:
   m_ObjectHideFlags: 0

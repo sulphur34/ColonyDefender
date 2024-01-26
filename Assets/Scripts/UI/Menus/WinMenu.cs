@@ -6,13 +6,13 @@ public class WinMenu : Menu
 
     private void OnEnable()
     {
-        _winState.Entered += Activate;
-        _winState.Exited += Deactivate;
+        _winState.Entered += Open;
+        _winState.Exited += Close;
     }
 
     private void OnDisable()
     {
-        _winState.Entered -= Activate;
-        _winState.Exited -= Deactivate;
+        _winState.Entered -= Open;
+        _winState.Exited -= Close;
     }
 }
