@@ -12,12 +12,14 @@ public class InGameMenu : Menu
     private void OnEnable()
     {
         _buildState.Entered += Open;
+        _buildState.Exited += DeactivateBuildStateUI;
         _defenceState.Exited += Close;
     }
 
     private void OnDisable()
     {
         _buildState.Entered -= Open;
+        _buildState.Exited -= DeactivateBuildStateUI;
         _defenceState.Exited -= Close;
     }
 
@@ -26,5 +28,11 @@ public class InGameMenu : Menu
         base.Open();
         _turretsAmountLabel.gameObject.SetActive(true);
         _buildingTimerLabel.gameObject.SetActive(true);
+    }
+
+    private void DeactivateBuildStateUI()
+    {
+        _turretsAmountLabel.gameObject.SetActive(false);
+        _buildingTimerLabel.gameObject.SetActive(false);
     }
 }

@@ -4,7 +4,6 @@ public class WinState : ResultState
     {
         base.Enter();
         float reward = _rewardGenerator.GetLevelWinReward();
-        EnhancementSystem.SetMaxTurretLevel(CellBoard);
         EnhancementSystem.Upgrade<GameLevel>();
     }
 

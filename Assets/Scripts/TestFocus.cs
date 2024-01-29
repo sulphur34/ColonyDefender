@@ -33,11 +33,11 @@ public class TestFocus : MonoBehaviour
 
     private void MuteAudio(bool value)
     {
-        _audioSource.volume = value ? 1f : 0f;
+        _audioSource.volume = value ? 0f : 1f;
     }
 
     private void PauseGame(bool value)
     {
-        Time.timeScale = value ? 1f : 0f;
+        Time.timeScale = value ? 0f : 1f;
     }
 }

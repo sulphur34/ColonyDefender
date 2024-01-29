@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,24 +17,16 @@ public class EnhansementPanel : MonoBehaviour
     private Purchase _purchase;
     private Image _image;
 
+    public event Action EnhancementPurchased;
+
     private void Awake()
     {
         _purchase = GetComponent<Purchase>();
         _image = GetComponent<Image>();
-        _purchase.Completed += SetState;
-        _resourceSystem.AmountChanged += SetState;
         Initialize();
-    }    
+    }
 
-    private void Initialize()
-    {
-        _purchase.Initialize(_resourceSystem, _enhancement);
-        _purchaseButton.Initialize(_purchase);
-        _enchancementLeveLabel.Initialize(_enhancement);
-        _costLabel.Initialize(_purchase);
-    }   
-
-    private void SetState()
+    public void SetState()
     {
         if (_purchase.CanBuy)
         {
@@ -47,10 +40,21 @@ public class EnhansementPanel : MonoBehaviour
             _upgradeAvailableImage.enabled = false;
             _image.color = _disableColor;
         }
+
+        _costLabel.SetLabelValue();
     }
 
-    private void SetState(float withdrawalValue)
+    private void Initialize()
     {
-        SetState();
+        _purchase.Initialize(_resourceSystem, _enhancement);
+        _purchaseButton.Initialize(_purchase);
+        _enchancementLeveLabel.Initialize(_enhancement);
+        _costLabel.Initialize(_purchase);
+        _purchase.Completed += OnPurchaseCompleted;
+    }
+    
+    private void OnPurchaseCompleted()
+    {
+        EnhancementPurchased?.Invoke();
     }
 }

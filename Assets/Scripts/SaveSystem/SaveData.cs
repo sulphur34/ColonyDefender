@@ -8,4 +8,5 @@ public struct SaveData
     public const string ResourceIncomeUpgrade = "IncomeUpgrade";
     public const string MaxTurretBuilt = "MaxTurretBuilt";
     public const string AvailableResourses = "AvailableResourses";
+    public const string VolumeLevel = "VolumeLevel";
 }

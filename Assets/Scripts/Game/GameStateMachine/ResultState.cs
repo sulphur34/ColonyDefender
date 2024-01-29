@@ -31,7 +31,6 @@ public abstract class ResultState : GameState
     {
         base.Exit();
         _resourceSystem.Add(Reward);
-        CellBoard.Clear();
     }
 
     protected abstract float GenerateReward();

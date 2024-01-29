@@ -9,7 +9,6 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private Image _healthLine;
     [SerializeField] private float _changeStep;
 
-    private Coroutine _coroutine;
     private Enemy _enemy;
     private IHealth _health;
     private Transform _transform;
@@ -43,19 +42,7 @@ public class Healthbar : MonoBehaviour
 
     public void OnHealthChanged()
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(AnimateHealthChange(_health.CurrentHealth));
-    }
-
-    private IEnumerator AnimateHealthChange(float value)
-    {
-        while (_slider.value != value)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, value, _changeStep * Time.deltaTime);
-            _healthLine.color = _gradient.Evaluate(_slider.normalizedValue);
-            yield return null;
-        }
+        _slider.value = _health.CurrentHealth;
+        _healthLine.color = _gradient.Evaluate(_slider.normalizedValue);
     }
 }

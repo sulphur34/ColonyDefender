@@ -35,26 +35,36 @@ public class EnemyTrackSystem : MonoBehaviour
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
-            _enemiesInAttackZone.Add(enemy);
-            enemy.Died += OnEnemyDeath;
+            AddEnemy(enemy);
         }
     }
 
-    private void OnEnemyDeath(Enemy enemy)
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            RemoveEnemy(enemy);
+        }
+    }
+
+    private void AddEnemy(Enemy enemy)
+    {
+        _enemiesInAttackZone.Add(enemy);
+        enemy.Died += RemoveEnemy;
+        enemy.Destroyed += RemoveEnemy;
+    }
+
+    private void RemoveEnemy(Enemy enemy)
     {
         _enemiesInAttackZone.Remove(enemy);
+        enemy.Died -= RemoveEnemy;
+        enemy.Destroyed -= RemoveEnemy;
     }
 
     private void Reset()
     {
         if (_enemiesInAttackZone.Count == 0) 
             return;
-
-        foreach (Enemy enemy in _enemiesInAttackZone)
-        {
-            if(enemy != null)
-                Destroy(enemy.gameObject);
-        }
 
         _enemiesInAttackZone.Clear();
     }

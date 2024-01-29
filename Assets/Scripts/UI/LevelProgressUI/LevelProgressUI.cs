@@ -3,19 +3,25 @@ using UnityEngine;
 public class LevelProgressUI : MonoBehaviour
 {
     [SerializeField] private LevelIcon[] _levelLabels = new LevelIcon[5];
+    [SerializeField] private GameLevel _gameLevel;
     [SerializeField] private EnhancementSystem _enhancementSystem;
     [SerializeField] private Color _current;
     [SerializeField] private Color _pass;
     [SerializeField] private Color _default;
 
-    private void Awake()
+    private void Start()
     {
         Reset();
+        _gameLevel.ValueChanged += SetValues;
     }
 
     public void Reset()
     {
-        float currentLevel = _enhancementSystem.GameLevelValue;
+        SetValues(_gameLevel.CurrentValue);
+    }
+
+    private void SetValues(float currentLevel)
+    {
         float batchValue = _enhancementSystem.LevelBatchValue;
         Range levelRange = RangeCalculator.GetRangeByDivider(currentLevel, batchValue);
 

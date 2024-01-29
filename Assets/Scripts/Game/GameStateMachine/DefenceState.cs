@@ -1,28 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DefenceState : GameState
 {
-    [SerializeField] private WaveFactory _waveFactory;
     [SerializeField] private Barrier _barrier;
 
     private IWave _wave;
-    private float _spawnDelay = 0.1f;
-    private WaitForSeconds _waitForSeconds;
     private Coroutine _coroutine;
 
     private void Awake()
     {
         LevelFactory.Built += (level) => _wave = level.Wave;
-        _waitForSeconds = new WaitForSeconds(_spawnDelay);
     }
 
     public override void Enter()
     {
         base.Enter();
-        _barrier.EnemyInvaded += Switcher.SwitchState<LooseState>;
-        _wave.EnemiesDestroyed += Switcher.SwitchState<WinState>;
+        _barrier.EnemyInvaded += OnLoose;
+        _wave.EnemiesDestroyed += OnWin;
         _coroutine = StartCoroutine(Spawn());
     }
 
@@ -30,9 +25,10 @@ public class DefenceState : GameState
     {
         StopCoroutine(_coroutine);
         _wave.Clear();
+        CellBoard.Clear();
         base.Exit();
     }
-    
+
     public IEnumerator Spawn()
     {
         while (_wave.IsSpawned == false)
@@ -47,5 +43,16 @@ public class DefenceState : GameState
 
             yield return null;
         }
+    }
+
+    private void OnWin()
+    {
+        EnhancementSystem.SetMaxTurretLevel(CellBoard);
+        Switcher.SwitchState<WinState>();
+    }
+
+    private void OnLoose()
+    {
+        Switcher.SwitchState<LooseState>();
     }
 }

@@ -56,7 +56,6 @@ public class Timer : MonoBehaviour
 
     public void Stop()
     {
-        Ended?.Invoke();
         Pause();
     }
 }

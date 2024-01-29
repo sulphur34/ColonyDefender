@@ -6,6 +6,7 @@ public class SaveHandler : MonoBehaviour
     [SerializeField] private Enhancement[] _enhancements;
     [SerializeField] private ResourceSystem _resourceSystem;
     [SerializeField] private EnhancementSystem _enhancementSystem;
+    [SerializeField] private AudioManager _audioManager;
     [SerializeField] private ResultState[] _resultStates;
     [SerializeField] private EnhancementMenu _enhancementMenu;
 
@@ -63,6 +64,7 @@ public class SaveHandler : MonoBehaviour
 
         _saveables.Add(_enhancementSystem);
         _saveables.Add(_resourceSystem);
+        _saveables.Add(_audioManager);
         _enhancementMenu.Closed += SaveAll;
 
         foreach (ResultState resultState in _resultStates)

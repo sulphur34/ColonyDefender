@@ -9,6 +9,7 @@ public class Wave : IWave
     private List<Enemy> _enemies;
     private List<float> _routeData;
     private int _nextEnemyIndex;
+    private int _enemiesAmount;
 
     public event Action EnemiesDestroyed;
 
@@ -59,11 +60,11 @@ public class Wave : IWave
         else
             _nextEnemyIndex = 0;
     }
-    private void RemoveOnDeath(Enemy enemy)
+    private void OnDeath(Enemy enemy)
     {
-        _enemies.Remove(enemy);
+        _enemiesAmount--;
 
-        if (_enemies.Count == 0)
+        if (_enemiesAmount == 0)
             EnemiesDestroyed?.Invoke();
     }
 
@@ -80,8 +81,10 @@ public class Wave : IWave
 
         foreach (Enemy enemy in _enemies)
         {
-            enemy.Died += RemoveOnDeath;
+            enemy.Died += OnDeath;
             enemy.gameObject.SetActive(false);
         }
+
+        _enemiesAmount = _enemies.Count;
     }
 }

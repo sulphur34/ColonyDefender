@@ -43,6 +43,7 @@ public class BuildState : GameState
     { 
         base.Exit();
         _enemyPowerUI.Hide();
+        _timer.Stop();
     }
 
     private void OnColumnClick(int columnIndex)

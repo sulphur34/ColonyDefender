@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     private SkinnedMeshRenderer _meshRenderer;
         
     public event Action<Enemy> Died;
+    public event Action<Enemy> Destroyed;
 
     public bool IsAlive { get; private set; }
     public IHealth Health => _health;
@@ -21,8 +22,13 @@ public class Enemy : MonoBehaviour
     {
         _transform = transform;
         _mover = GetComponent<AIMover>();
-    }    
-        
+    }
+
+    private void OnDestroy()
+    {
+        Destroyed?.Invoke(this);
+    }
+
     public void Initialize(float healthValue, IRoute route)
     { 
         _health = new Health(healthValue);
@@ -45,6 +51,7 @@ public class Enemy : MonoBehaviour
         Died.Invoke(this);        
         float destroyDelay = 0.1f;
         IsAlive = false;
-        Destroy(gameObject, destroyDelay);
+        gameObject.SetActive(false);
+        //Destroy(gameObject, destroyDelay);
     }
 }

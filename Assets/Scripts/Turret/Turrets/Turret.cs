@@ -13,8 +13,6 @@ public class Turret : MonoBehaviour
     private Vector3 _currentPosition;
     private Coroutine _coroutine;
 
-    public UnityAction EnemyFound;
-
     public IWeaponSystem WeaponSystem => _weaponSystem;
     public float TurretLevel { get; private set; }
     
@@ -22,7 +20,15 @@ public class Turret : MonoBehaviour
     {
         _weaponSystem = GetComponentInChildren<WeaponsSystem>();
         _currentPosition = transform.position;
-        EnemyFound += AttackEnemy;  
+    }
+
+    private void Update()
+    {
+        if (_currentEnemy == null)
+            Debug.Log("Enemy null");
+
+        if (_coroutine == null)
+            Debug.Log("Coroutine null");
     }
 
     public void Initialize(EnemyTrackSystem enemyTrackSystem, float turretLevel)
@@ -44,8 +50,8 @@ public class Turret : MonoBehaviour
 
             yield return null;
         }
-                
-        EnemyFound.Invoke();
+
+        AttackEnemy();
     }
 
     private void AttackEnemy()

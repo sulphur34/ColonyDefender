@@ -10,7 +10,7 @@ public class TurretLevelRequirementLabel : CostLabel
         LeanLocalization.OnLocalizationChanged += SetLabelValue;
     }
 
-    protected override void SetLabelValue()
+    public override void SetLabelValue()
     {
         string prefix = LeanLocalization.GetTranslationText("EnhancementMenu\\TurretLevelRequirementLabel");
         SetTextWithPrefix(prefix, _baseTurretLevel.UpgradeRequirement);
