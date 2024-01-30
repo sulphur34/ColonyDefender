@@ -100,7 +100,7 @@ MonoBehaviour:
   _capacity: 6
   _projectile: {fileID: 5981806591403770737, guid: 8d8b970e880b2174384e82035d8461b6, type: 3}
   _shootingPoint: {fileID: 7933200865507581319}
-  _fireForce: 1000
+  _fireForce: 1500
   _fireRate: 1
 --- !u!1 &7150147804499607249
 GameObject:

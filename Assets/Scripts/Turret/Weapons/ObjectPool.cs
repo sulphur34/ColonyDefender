@@ -38,7 +38,6 @@ public abstract class ObjectPool : MonoBehaviour
             spawned.SetActive(false);
             _pool.Add(spawned);
         }
-
     }
 
     protected abstract GameObject GetObjectWithParameter<T>(T prefab, float parameter) where T : MonoBehaviour;

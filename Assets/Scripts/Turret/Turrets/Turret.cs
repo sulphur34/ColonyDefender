@@ -20,16 +20,7 @@ public class Turret : MonoBehaviour
     {
         _weaponSystem = GetComponentInChildren<WeaponsSystem>();
         _currentPosition = transform.position;
-    }
-
-    private void Update()
-    {
-        if (_currentEnemy == null)
-            Debug.Log("Enemy null");
-
-        if (_coroutine == null)
-            Debug.Log("Coroutine null");
-    }
+    }    
 
     public void Initialize(EnemyTrackSystem enemyTrackSystem, float turretLevel)
     {
@@ -56,8 +47,16 @@ public class Turret : MonoBehaviour
 
     private void AttackEnemy()
     {
+        if (!_currentEnemy.IsAlive)
+        {
+            _currentEnemy = null;
+        }
+
         if (_currentEnemy == null)
+        {
             Restart();
+            return;
+        }
 
         _weaponSystem.Activate(_currentEnemy.transform);
         _currentEnemy.Health.Died += Restart;

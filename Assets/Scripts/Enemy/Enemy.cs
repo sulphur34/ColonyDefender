@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public event Action<Enemy> Died;
     public event Action<Enemy> Destroyed;
 
-    public bool IsAlive { get; private set; }
+    public bool IsAlive => Health.CurrentHealth > 0;
     public IHealth Health => _health;
     public IDamageable Damager => _health;
 
@@ -50,7 +50,6 @@ public class Enemy : MonoBehaviour
     {
         Died.Invoke(this);        
         float destroyDelay = 0.1f;
-        IsAlive = false;
         gameObject.SetActive(false);
         //Destroy(gameObject, destroyDelay);
     }

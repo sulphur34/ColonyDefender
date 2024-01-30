@@ -16,11 +16,6 @@ public class VolumeSlider : MonoBehaviour
         _menu.Opened += SetSlider;
     }
 
-    private void OnEnable()
-    {
-        SetSlider(_audioManager.Volume);
-    }
-
     private void SetSlider(float value)
     {
         _slider.value = value;
