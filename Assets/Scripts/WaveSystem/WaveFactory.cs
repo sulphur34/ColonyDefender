@@ -7,6 +7,7 @@ public class WaveFactory : IFactory<IWave>
     private EnemyData _enemyData;
     private float _defaultHealth = 60;
     private List<Queue<Enemy>> _enemiesByRoute;
+    private float _healthMultiplier;
 
     public WaveFactory(Location location, EnemyData enemyData)
     {
@@ -19,33 +20,38 @@ public class WaveFactory : IFactory<IWave>
         WaveData waveData = new WaveData(levelIndex);
         Enemy enemyPrefab = _enemyData.EnemyPrefab;
         _enemiesByRoute = new List<Queue<Enemy>>();
-        float healthIndex = GetHealthIndex(levelIndex);
+        SetHealthMultiplier(levelIndex);
 
         for (int i = 0; i < _location.RoutesAmount; i++)
             _enemiesByRoute.Add(new Queue<Enemy>());
 
         if (waveData.IsBossLevel)
         {
-            GenerateBoss(enemyPrefab, _enemyData.Boss, _defaultHealth * levelIndex + healthIndex);
+            GenerateBoss(enemyPrefab, _enemyData.Boss,  GetHealthValue(levelIndex));
         }
         else
         {
             GenerateEnemies(enemyPrefab, _enemyData.Large,
-                _defaultHealth * waveData.LargeEnemyMultiplier + healthIndex, waveData.LargeEnemyAmount);
+                GetHealthValue(waveData.LargeEnemyMultiplier), waveData.LargeEnemyAmount);
             GenerateEnemies(enemyPrefab, _enemyData.Medium,
-                _defaultHealth * waveData.MediumEnemyMultiplier + healthIndex, waveData.MediumEnemyAmount);
+                GetHealthValue(waveData.MediumEnemyMultiplier), waveData.MediumEnemyAmount);
             GenerateEnemies(enemyPrefab, _enemyData.Small,
-                _defaultHealth * waveData.SmallEnemyMultiplier + healthIndex, waveData.SmallEnemyAmount);
+                GetHealthValue(waveData.SmallEnemyMultiplier), waveData.SmallEnemyAmount);
         }
 
         Wave newWave = new Wave(_enemiesByRoute);
         return newWave;
     }
 
-    private float GetHealthIndex(float levelIndex)
+    private void SetHealthMultiplier(float levelIndex)
     {
-        float healthMultiplier = 25;
-        return levelIndex * levelIndex / healthMultiplier;
+        float healthRate = 25;
+        _healthMultiplier = levelIndex * levelIndex / healthRate;
+    }
+
+    private float GetHealthValue(float enemyTypeMultiplier)
+    {
+        return _defaultHealth * enemyTypeMultiplier + _healthMultiplier;
     }
 
     private void GenerateEnemies(Enemy enemyPrefab, EnemyParameters enemyParameters, float health, float amount = 1)

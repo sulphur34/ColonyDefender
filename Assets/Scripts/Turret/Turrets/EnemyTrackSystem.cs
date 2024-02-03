@@ -14,11 +14,6 @@ public class EnemyTrackSystem : MonoBehaviour
         _defenceState.Exited += Reset;
     }
 
-    private void Update()
-    {
-        Debug.Log(_enemiesInAttackZone.Count);
-    }
-
     public bool TryGetNearestEnemy(Vector3 originalPosition, out Enemy enemy)
     {
         enemy = null;

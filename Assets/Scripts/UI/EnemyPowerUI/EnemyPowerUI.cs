@@ -25,7 +25,7 @@ public class EnemyPowerUI : MonoBehaviour
         {
             if (_powerValues[i] > 0)
             {
-                _powerIcons[i].Set(_powerValues[i]);
+                _powerIcons[i].Set(Mathf.Round(_powerValues[i]));
                 _powerIcons[i].Show();
             }
             else
