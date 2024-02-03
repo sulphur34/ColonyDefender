@@ -19,26 +19,33 @@ public class WaveFactory : IFactory<IWave>
         WaveData waveData = new WaveData(levelIndex);
         Enemy enemyPrefab = _enemyData.EnemyPrefab;
         _enemiesByRoute = new List<Queue<Enemy>>();
+        float healthIndex = GetHealthIndex(levelIndex);
 
         for (int i = 0; i < _location.RoutesAmount; i++)
             _enemiesByRoute.Add(new Queue<Enemy>());
 
         if (waveData.IsBossLevel)
         {
-            GenerateBoss(enemyPrefab, _enemyData.Boss, _defaultHealth * levelIndex);
+            GenerateBoss(enemyPrefab, _enemyData.Boss, _defaultHealth * levelIndex + healthIndex);
         }
         else
         {
             GenerateEnemies(enemyPrefab, _enemyData.Large,
-                _defaultHealth * waveData.LargeEnemyMultiplier, waveData.LargeEnemyAmount);
+                _defaultHealth * waveData.LargeEnemyMultiplier + healthIndex, waveData.LargeEnemyAmount);
             GenerateEnemies(enemyPrefab, _enemyData.Medium,
-                _defaultHealth * waveData.MediumEnemyMultiplier, waveData.MediumEnemyAmount);
+                _defaultHealth * waveData.MediumEnemyMultiplier + healthIndex, waveData.MediumEnemyAmount);
             GenerateEnemies(enemyPrefab, _enemyData.Small,
-                _defaultHealth * waveData.SmallEnemyMultiplier, waveData.SmallEnemyAmount);
+                _defaultHealth * waveData.SmallEnemyMultiplier + healthIndex, waveData.SmallEnemyAmount);
         }
 
         Wave newWave = new Wave(_enemiesByRoute);
         return newWave;
+    }
+
+    private float GetHealthIndex(float levelIndex)
+    {
+        float healthMultiplier = 25;
+        return levelIndex * levelIndex / healthMultiplier;
     }
 
     private void GenerateEnemies(Enemy enemyPrefab, EnemyParameters enemyParameters, float health, float amount = 1)
@@ -67,10 +74,12 @@ public class WaveFactory : IFactory<IWave>
     private Enemy CreateEnemy(Enemy enemyPrefab, EnemyParameters enemyParameters, float health, IRoute route)
     {
         Enemy enemy = MonoBehaviour.Instantiate(enemyPrefab);
+        SkinnedMeshRenderer skinnedMeshRenderer = enemy.GetComponent<SkinnedMeshRenderer>();
+        skinnedMeshRenderer.material = enemyParameters.Material;
         Transform transform = enemy.transform; 
         float scale = enemyParameters.Scale;
-        transform.localScale = new Vector3(scale, scale, -scale);
-        transform.position = new Vector3(route.SpawnPoint.x, enemyParameters.Height, route.SpawnPoint.z);
+        transform.localScale = new Vector3(scale, scale, scale);
+        transform.position = route.SpawnPoint;
         enemy.Initialize(health, route);
         return enemy;
     }

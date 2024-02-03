@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1031ec5a37c68b74ea873f0c84b38c7d, type: 3}
+  m_Name: Robot
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 7847149131892904686, guid: fa2659893b228a240b59610e6e54dd64, type: 3}
+  _small:
+    _scale: 0.75
+    _material: {fileID: 2100000, guid: bc65444585a54b24f852e5be1d202dbd, type: 2}
+  _medium:
+    _scale: 1
+    _material: {fileID: 2100000, guid: 8ffdc23b7d4c9de4fb3ea2c70daf6434, type: 2}
+  _large:
+    _scale: 1.25
+    _material: {fileID: 2100000, guid: cd222ad438c9cac4eae1705626e65073, type: 2}
+  _boss:
+    _scale: 2.25
+    _material: {fileID: 2100000, guid: e45279d49a4c0264eb7a5eaa7a37adf0, type: 2}

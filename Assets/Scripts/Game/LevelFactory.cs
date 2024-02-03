@@ -1,10 +1,11 @@
 using System;
+using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
 
 public class LevelFactory : MonoBehaviour, IFactory<Level>
 {
-    [SerializeField] private Location[] _locations;
+    [SerializeField] private LocationData[] _locationsData;
     [SerializeField] private EnemyData[] _enemies;
     [SerializeField] private Barrier barrier;
     [SerializeField] private NavMeshSurface _surface;
@@ -14,14 +15,16 @@ public class LevelFactory : MonoBehaviour, IFactory<Level>
 
     public Level Build(float levelIndex)
     {
-        Location terrain = Instantiate(GetElement(levelIndex, _locations));
+        LocationData locationData = GetElement(levelIndex, _locationsData);
+        Location location = Instantiate(locationData.Location);
+        RenderSettings.skybox = locationData.skyboxMaterial;
         barrier.gameObject.SetActive(false);
         _surface.BuildNavMesh();
         barrier.gameObject.SetActive(true);
         EnemyData enemyData = GetElement(levelIndex, _enemies);
-        _waveFactory = new WaveFactory(terrain, enemyData);
+        _waveFactory = new WaveFactory(location, enemyData);
         IWave wave = _waveFactory.Build(levelIndex);
-        Level level = new Level(terrain, wave);
+        Level level = new Level(location, wave);
         Built.Invoke(level);
         return level;
     }

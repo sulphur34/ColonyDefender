@@ -5,8 +5,8 @@ using UnityEngine;
 public struct EnemyParameters
 {
     [SerializeField] private float _scale;
-    [SerializeField] private float _height;
+    [SerializeField] private Material _material;
 
     public float Scale => _scale;
-    public float Height => _height;
+    public Material Material => _material;
 }

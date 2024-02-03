@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1031ec5a37c68b74ea873f0c84b38c7d, type: 3}
+  m_Name: HornBeast
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 6934301707266327093, guid: c5620b5b3b855164d8b7ce7a95b2661d, type: 3}
+  _small:
+    _scale: 1.9
+    _material: {fileID: 2100000, guid: a8d91c90d0308da4db7088fd9ae0675a, type: 2}
+  _medium:
+    _scale: 2.375
+    _material: {fileID: 2100000, guid: 1ae4fa961d563154d972ea243c0ac3ef, type: 2}
+  _large:
+    _scale: 2.96875
+    _material: {fileID: 2100000, guid: b49f060d59a86f94fae19cfbb6946bbc, type: 2}
+  _boss:
+    _scale: 7
+    _material: {fileID: 2100000, guid: 2e7a0ead7edc61c4787f9c5549e44510, type: 2}

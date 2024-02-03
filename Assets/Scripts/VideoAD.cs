@@ -28,4 +28,6 @@ public class VideoAD : MonoBehaviour
         AudioListener.volume = 1f;
         Closed.Invoke();
     }
+
+
 }

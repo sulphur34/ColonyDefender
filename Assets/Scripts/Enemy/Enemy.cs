@@ -7,8 +7,6 @@ public class Enemy : MonoBehaviour
 {
     private Health _health;
     private AIMover _mover;
-    private Transform _transform;
-    private SkinnedMeshRenderer _meshRenderer;
         
     public event Action<Enemy> Died;
     public event Action<Enemy> Destroyed;
@@ -20,7 +18,6 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _transform = transform;
         _mover = GetComponent<AIMover>();
     }
 
@@ -48,9 +45,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDie()
     {
-        Died.Invoke(this);        
-        float destroyDelay = 0.1f;
+        Died.Invoke(this);    
         gameObject.SetActive(false);
-        //Destroy(gameObject, destroyDelay);
     }
 }

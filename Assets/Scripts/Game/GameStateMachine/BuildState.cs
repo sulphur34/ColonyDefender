@@ -37,6 +37,8 @@ public class BuildState : GameState
         _timer.Initialize(_buildTime);
         _timer.Begin();
         _timer.Ended += Switcher.SwitchState<DefenceState>;
+        _addTurretButton.gameObject.SetActive(true);
+        _offTimerButton.gameObject.SetActive(true);
     }
 
     public override void Exit() 
@@ -44,6 +46,8 @@ public class BuildState : GameState
         base.Exit();
         _enemyPowerUI.Hide();
         _timer.Stop();
+        _addTurretButton.gameObject.SetActive(false);
+        _offTimerButton.gameObject.SetActive(false);
     }
 
     private void OnColumnClick(int columnIndex)
@@ -79,6 +83,7 @@ public class BuildState : GameState
     private void OnAddTurretADGain()
     {
         _turretsLimit++;
+        TurretsAmountChanged.Invoke(_turretsLimit);
     }
 
     private void OnOffTimerADGain()
