@@ -8,7 +8,7 @@ public class LeaderboardView : MonoBehaviour
 
     private List<LeaderboardElement> _spawnedElements = new();
 
-    internal void ConstructLeaderboard(List<LeaderboardPlayer> leaderboardPlayers)
+    public void ConstructLeaderboard(List<LeaderboardPlayer> leaderboardPlayers)
     {
         foreach (LeaderboardPlayer player in leaderboardPlayers)
         {

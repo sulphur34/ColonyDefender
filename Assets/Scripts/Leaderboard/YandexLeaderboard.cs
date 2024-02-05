@@ -2,7 +2,7 @@ using Agava.YandexGames;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Leaderboard : MonoBehaviour
+public class YandexLeaderboard : MonoBehaviour
 {
     private const string AnonymousName = "Anonymous";
     private const string LeaderboardName = "Leaderboard";
@@ -10,15 +10,18 @@ public class Leaderboard : MonoBehaviour
     [SerializeField] private LeaderboardView _leaderboardView;
 
     private readonly List<LeaderboardPlayer> _leaderboardPlayers = new();
-    
-    public void Player(int score)
+
+    public void SetPLayerScore(int score)
     {
+        Debug.Log("Score value - " + score);
+
         if (PlayerAccount.IsAuthorized == false)
             return;
 
-        Agava.YandexGames.Leaderboard.GetPlayerEntry(LeaderboardName, _ =>
+        Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
         {
-            Agava.YandexGames.Leaderboard.SetScore(LeaderboardName, score);
+            if (result.score < score)
+                Leaderboard.SetScore(LeaderboardName, score);
         });
     }
 
@@ -26,10 +29,14 @@ public class Leaderboard : MonoBehaviour
     {
         _leaderboardPlayers.Clear();
 
+        Debug.Log("LeaderboardCleared");
+
         if (PlayerAccount.IsAuthorized == false)
             return;
 
-        Agava.YandexGames.Leaderboard.GetEntries(LeaderboardName, result =>
+        Debug.Log("LeaderboardStart fill");
+
+        Leaderboard.GetEntries(LeaderboardName, result =>
         {
             foreach (var entry in result.entries)
             {
@@ -41,6 +48,8 @@ public class Leaderboard : MonoBehaviour
                     name = AnonymousName;
 
                 _leaderboardPlayers.Add(new LeaderboardPlayer(rank, name, score));
+
+                Debug.Log("Player -" + rank + "" + name + "" + score);
             }
 
             _leaderboardView.ConstructLeaderboard(_leaderboardPlayers);

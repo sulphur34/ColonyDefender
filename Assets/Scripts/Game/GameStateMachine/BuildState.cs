@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BuildState : GameState
 {
+    [SerializeField] protected Timer TimerInstance;
     [SerializeField] private List<ColumnUI> _columnButtons;
     [SerializeField] private AddTurretADButton _addTurretButton;
     [SerializeField] private OffTimerADButton _offTimerButton;
-    [SerializeField] private Timer _timer;
     [SerializeField] private EnemyPowerUI _enemyPowerUI;
 
     private float _turretsLimit;
@@ -34,25 +34,27 @@ public class BuildState : GameState
         base.Enter();
         SetBuildParameters();
         _enemyPowerUI.Show();
-        _timer.Initialize(_buildTime);
-        _timer.Begin();
-        _timer.Ended += Switcher.SwitchState<DefenceState>;
+        TimerInstance.Initialize(_buildTime);
+        TimerInstance.Begin();
+        TimerInstance.Ended += Switcher.SwitchState<DefenceState>;
         _addTurretButton.gameObject.SetActive(true);
         _offTimerButton.gameObject.SetActive(true);
+        SetUIColumnStatus(true);
     }
 
     public override void Exit() 
     { 
         base.Exit();
+        SetUIColumnStatus(false);
         _enemyPowerUI.Hide();
-        _timer.Stop();
+        TimerInstance.Stop();
         _addTurretButton.gameObject.SetActive(false);
         _offTimerButton.gameObject.SetActive(false);
     }
 
     private void OnColumnClick(int columnIndex)
     {
-        if (_turretsLimit > 0 && _timer.TimeLeft > 0)
+        if (_turretsLimit > 0 && TimerInstance.TimeLeft > 0)
         {
             CellBoard.AddTurret(columnIndex, _turretLevel);
             _turretsLimit--;
@@ -61,8 +63,8 @@ public class BuildState : GameState
 
         if (_turretsLimit == 0)
         {
-            _timer.Ended -= Switcher.SwitchState<DefenceState>;
-            _timer.Stop();
+            TimerInstance.Ended -= Switcher.SwitchState<DefenceState>;
+            TimerInstance.Stop();
             Switcher.SwitchState<DefenceState>();
         }
     }
@@ -88,6 +90,14 @@ public class BuildState : GameState
 
     private void OnOffTimerADGain()
     {
-        _timer.Pause();
+        TimerInstance.Pause();
+    }
+
+    private void SetUIColumnStatus(bool isActive)
+    {
+        foreach (ColumnUI button in _columnButtons)
+        {
+            button.gameObject.SetActive(isActive);
+        }
     }
 }

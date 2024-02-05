@@ -4,6 +4,7 @@ using UnityEngine;
 public class WinState : ResultState
 {
     [SerializeField] ParticleSystem _winAnimation;
+    [SerializeField] YandexLeaderboard _leaderboard;
 
     private Coroutine _coroutine;
 
@@ -14,6 +15,8 @@ public class WinState : ResultState
 
     public override void Exit() 
     {
+        _leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
+
         if (_coroutine != null)
             StopCoroutine(_coroutine);
 

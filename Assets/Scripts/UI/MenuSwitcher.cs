@@ -7,7 +7,7 @@ public class MenuSwitcher : MonoBehaviour
 
     public void Switch()
     {
-        _deactivatedMenu.Close();
-        _activatedMenu.Open();
+        _deactivatedMenu?.Close();
+        _activatedMenu?.Open();
     }
 }
