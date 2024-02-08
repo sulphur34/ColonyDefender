@@ -35,6 +35,7 @@ public class BuildState : GameState
         SetBuildParameters();
         _enemyPowerUI.Show();
         TimerInstance.Initialize(_buildTime);
+        TimerInstance.Reset();
         TimerInstance.Begin();
         TimerInstance.Ended += Switcher.SwitchState<DefenceState>;
         _addTurretButton.gameObject.SetActive(true);
@@ -47,7 +48,7 @@ public class BuildState : GameState
         base.Exit();
         SetUIColumnStatus(false);
         _enemyPowerUI.Hide();
-        TimerInstance.Stop();
+        TimerInstance.Pause();
         _addTurretButton.gameObject.SetActive(false);
         _offTimerButton.gameObject.SetActive(false);
     }

@@ -30,10 +30,11 @@ public class WinState : ResultState
 
     private IEnumerator PlayWinAnimation()
     {
-        Instantiate(_winAnimation).GetComponent<ParticleSystem>().Play();
+        var animation = Instantiate(_winAnimation).GetComponent<ParticleSystem>();
+        animation.Play();
         yield return new WaitForSeconds(3f);
+        Destroy(animation);
         base.Enter();
-        float reward = _rewardGenerator.GetLevelWinReward();
         EnhancementSystem.Upgrade<GameLevel>();
     }
 }

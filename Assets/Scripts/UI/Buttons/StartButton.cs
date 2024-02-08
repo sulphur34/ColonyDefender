@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class StartButton : MenuSwitchButton
 {
-    public const float TrainingLevelsValue = 1;
+    public const float TrainingLevelsValue = 2;
 
     [SerializeField] private GameStateMachine _gameStateMachine;
     [SerializeField] private EnhancementSystem _enhancementSystem;

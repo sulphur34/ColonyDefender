@@ -1,20 +1,25 @@
 using Agava.YandexGames;
 using System.Collections.Generic;
 using UnityEngine;
+using Lean.Localization;
 
 public class YandexLeaderboard : MonoBehaviour
 {
-    private const string AnonymousName = "Anonymous";
     private const string LeaderboardName = "Leaderboard";
 
     [SerializeField] private LeaderboardView _leaderboardView;
+    [SerializeField] private LeanPhrase _anonymousLeanPhrase;
 
     private readonly List<LeaderboardPlayer> _leaderboardPlayers = new();
+    private string _anonymousName;
+
+    private void Awake()
+    {
+        _anonymousName = LeanLocalization.GetTranslationText(_anonymousLeanPhrase.name);
+    }
 
     public void SetPLayerScore(int score)
     {
-        Debug.Log("Score value - " + score);
-
         if (PlayerAccount.IsAuthorized == false)
             return;
 
@@ -29,12 +34,8 @@ public class YandexLeaderboard : MonoBehaviour
     {
         _leaderboardPlayers.Clear();
 
-        Debug.Log("LeaderboardCleared");
-
         if (PlayerAccount.IsAuthorized == false)
             return;
-
-        Debug.Log("LeaderboardStart fill");
 
         Leaderboard.GetEntries(LeaderboardName, result =>
         {
@@ -45,11 +46,9 @@ public class YandexLeaderboard : MonoBehaviour
                 var name = entry.player.publicName;
 
                 if (string.IsNullOrEmpty(name))
-                    name = AnonymousName;
+                    name = _anonymousName;
 
                 _leaderboardPlayers.Add(new LeaderboardPlayer(rank, name, score));
-
-                Debug.Log("Player -" + rank + "" + name + "" + score);
             }
 
             _leaderboardView.ConstructLeaderboard(_leaderboardPlayers);

@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 5917723283457247600}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -159.6535, y: -2.5334015}
-  m_SizeDelta: {x: -364.317, y: -25.2}
+  m_AnchorMin: {x: 0.048, y: 0.09}
+  m_AnchorMax: {x: 0.30600002, y: 0.86}
+  m_AnchoredPosition: {x: -0.6535034, y: -0.03340149}
+  m_SizeDelta: {x: 1.6830139, y: -2.2000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8082408761640274309
 CanvasRenderer:
@@ -168,10 +168,10 @@ RectTransform:
   m_Father: {fileID: 5917723283457247600}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 96.035065, y: 16.400002}
-  m_SizeDelta: {x: -192.07, y: -64.933}
+  m_AnchorMin: {x: 0.39100003, y: 0.5}
+  m_AnchorMax: {x: 0.96000004, y: 0.86}
+  m_AnchoredPosition: {x: -0.34799194, y: -1.5999985}
+  m_SizeDelta: {x: 1.1600037, y: -0.93299866}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7249888827664822210
 CanvasRenderer:
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.15
+  m_fontSize: 26.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -303,10 +303,10 @@ RectTransform:
   m_Father: {fileID: 5917723283457247600}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 96.035065, y: -20.483}
-  m_SizeDelta: {x: -192.07, y: -61.1}
+  m_AnchorMin: {x: 0.642, y: 0.09}
+  m_AnchorMax: {x: 0.96000004, y: 0.5}
+  m_AnchoredPosition: {x: -62.093, y: 0.016998291}
+  m_SizeDelta: {x: 124.65, y: -2.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &736696140644385856
 CanvasRenderer:
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3333333
+  m_text: 333333333
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
   m_sharedMaterial: {fileID: -4367223255068891767, guid: 32c5d8975544df44cae95432e01e1334, type: 2}
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.1
+  m_fontSize: 29.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

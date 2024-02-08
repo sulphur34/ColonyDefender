@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using Unity.AI.Navigation;
 using UnityEngine;
 
@@ -9,7 +8,9 @@ public class LevelFactory : MonoBehaviour, IFactory<Level>
     [SerializeField] private EnemyData[] _enemies;
     [SerializeField] private Barrier barrier;
     [SerializeField] private NavMeshSurface _surface;
-    [SerializeField] private WaveFactory _waveFactory;   
+    [SerializeField] private WaveFactory _waveFactory;
+
+    private int _levelBatchValue = 5;
 
     public event Action<Level> Built;
 
@@ -31,21 +32,25 @@ public class LevelFactory : MonoBehaviour, IFactory<Level>
 
     private T GetElement<T>(float levelIndex, T[] elements)
     {
-       int index = GetIndexFromLevel(levelIndex, elements.Length);
-       return elements[index];
-    }   
+        int index = GetIndexFromLevel(levelIndex, elements.Length);
+        return elements[index];
+    }
 
     private int GetIndexFromLevel(float levelIndex, int maxIndex)
     {
-        int index = Mathf.CeilToInt(levelIndex / maxIndex);
+        int combinationsIndex = _levelBatchValue * maxIndex;
         int firstElement = 0;
+        int index = firstElement;
 
-        if (index >= maxIndex)
+        if (combinationsIndex < levelIndex)
         {
             index = UnityEngine.Random.Range(firstElement, maxIndex);
-            return index;
+        }
+        else
+        {
+            index = Mathf.FloorToInt((levelIndex - 1) % combinationsIndex / _levelBatchValue);
         }
 
-        return index - 1;
-    }    
+        return index;
+    }
 }

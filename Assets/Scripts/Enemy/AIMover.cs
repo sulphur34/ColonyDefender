@@ -9,7 +9,7 @@ public class AIMover : MonoBehaviour
     private IRoute _route;
     private NavMeshAgent _navMeshAgent;
     private Vector3 _currentPoint;
-    private float _distanceTolerance = 0.5f;
+    private float _distanceTolerance = 1f;
     private Coroutine _coroutine;
 
     private void Awake()

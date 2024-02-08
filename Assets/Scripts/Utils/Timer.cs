@@ -43,7 +43,7 @@ public class Timer : MonoBehaviour
 
     public void Reset()
     {
-        Stop();
+        Pause();
         TimeLeft = _timeFull;
         Changed?.Invoke(TimeLeft);
     }

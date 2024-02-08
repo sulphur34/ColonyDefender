@@ -20,7 +20,7 @@ MonoBehaviour:
     _scale: 0.325
     _material: {fileID: 2100000, guid: 9c41555c3df9ffb4c89444abc609e2c3, type: 2}
   _large:
-    _scale: 0.40625
+    _scale: 0.4
     _material: {fileID: 2100000, guid: 650cbbeda19bc2e42aabe4b3076ce340, type: 2}
   _boss:
     _scale: 1

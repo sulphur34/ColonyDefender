@@ -101,12 +101,26 @@ public class CellBoard : MonoBehaviour
     {
         foreach (IColumn column in _cells)
         {
-            column.Collapse();
+            column.Collapse();            
         }
+
+        foreach (IColumn column in _cells)
+        {
+            foreach (ICell cell in column)
+            {
+                if (cell.TurretLevel > 0 && TryMerge(cell))
+                {
+                    CollapseAll();
+                }
+            }
+        }
+        
     }
 
     private void SetMaxTurreteLevel(float turretLevel)
     {
         MaxTurretLevel = MaxTurretLevel < turretLevel ? turretLevel : MaxTurretLevel;
     }
+    
+
 }

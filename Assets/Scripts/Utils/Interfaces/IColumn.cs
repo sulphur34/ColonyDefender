@@ -1,8 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public interface IColumn
 {
     Vector3 SpawnPosition { get; }
+
+    IEnumerator GetEnumerator();
 
     void Collapse();
 

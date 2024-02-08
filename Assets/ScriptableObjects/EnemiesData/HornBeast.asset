@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 6934301707266327093, guid: c5620b5b3b855164d8b7ce7a95b2661d, type: 3}
   _small:
-    _scale: 1.9
+    _scale: 2.2
     _material: {fileID: 2100000, guid: a8d91c90d0308da4db7088fd9ae0675a, type: 2}
   _medium:
-    _scale: 2.375
+    _scale: 2.75
     _material: {fileID: 2100000, guid: 1ae4fa961d563154d972ea243c0ac3ef, type: 2}
   _large:
-    _scale: 2.96875
+    _scale: 3.75
     _material: {fileID: 2100000, guid: b49f060d59a86f94fae19cfbb6946bbc, type: 2}
   _boss:
     _scale: 7

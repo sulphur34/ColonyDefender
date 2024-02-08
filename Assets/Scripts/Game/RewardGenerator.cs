@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class RewardGenerator
 {
-    private float _enhancementRatio;
-    private float _levelValue;
     private float _baseLevelIncomeValue = 10;
     private float _advertIncomeValue = 2000;
     private float _advertUpgradeThreshold = 10;
