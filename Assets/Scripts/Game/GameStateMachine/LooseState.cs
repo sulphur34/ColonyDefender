@@ -4,20 +4,10 @@ using UnityEngine;
 public class LooseState : ResultState
 {
     [SerializeField] private BurstWave _burstWave;
-
-    private Coroutine _coroutine;
-
+    
     public override void Enter()
     {
-        _coroutine = StartCoroutine(PlayLooseAnimation());
-    }
-
-    public override void Exit()
-    {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-        
-        base.Exit();
+        _coroutine = StartCoroutine(PlayAnimation());
     }
 
     protected override float GenerateReward()
@@ -25,10 +15,10 @@ public class LooseState : ResultState
         return _rewardGenerator.GetLevelLooseReward();
     }
 
-    private IEnumerator PlayLooseAnimation()
+    protected override IEnumerator PlayAnimation()
     {
         _burstWave.PlayParticle();
-        yield return new WaitForSeconds(3f);
+        yield return WaitForSeconds;
         base.Enter();
     }
 }

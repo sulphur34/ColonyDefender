@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1031ec5a37c68b74ea873f0c84b38c7d, type: 3}
   m_Name: Spider
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 5535628545826536844, guid: 685ef32b6b81ecb44bc7fa10190e992f, type: 3}
+  _enemyPrefab: {fileID: 7448263180610865669, guid: 685ef32b6b81ecb44bc7fa10190e992f, type: 3}
   _small:
     _scale: 0.3
     _material: {fileID: 2100000, guid: 867341fc72851274db8ae3c9427485aa, type: 2}

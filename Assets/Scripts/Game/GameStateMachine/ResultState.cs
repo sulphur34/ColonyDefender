@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public abstract class ResultState : GameState
@@ -7,11 +8,18 @@ public abstract class ResultState : GameState
     [SerializeField] private LevelEndADButton _aDButton;
     [SerializeField] private SkipMultiplierButton _skipButton;
 
-    private event Action _rewardMultiplied;
-
+    protected WaitForSeconds WaitForSeconds;
     protected RewardGenerator _rewardGenerator;
+    private event Action _rewardMultiplied;
+    protected Coroutine _coroutine;
+    private float _animationDelay = 2f;
 
     public float Reward { get; protected set; }
+
+    private void Awake()
+    {
+        WaitForSeconds = new WaitForSeconds(_animationDelay);
+    }
 
     private void Start()
     {
@@ -29,15 +37,20 @@ public abstract class ResultState : GameState
 
     public override void Exit() 
     {
-        base.Exit();
-        _resourceSystem.Add(Reward);
-    }
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
 
-    protected abstract float GenerateReward();
+        _resourceSystem.Add(Reward);
+        base.Exit();
+    }
 
     protected void MultiplyReward(float multiplier)
     {
         Reward *= multiplier;
         _rewardMultiplied.Invoke();
     }
+
+    protected abstract float GenerateReward();
+
+    protected abstract IEnumerator PlayAnimation();
 }

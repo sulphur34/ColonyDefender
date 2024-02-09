@@ -7,8 +7,8 @@ public class SignalArrow : MonoBehaviour
 {
     private Image _image;
     private Tween _signalTween;
-    private float _fadeValue = 0f;
-    private float _duration = 1f;
+    private float _fadeValue = 0.1f;
+    private float _duration = 2f;
 
     private void Awake()
     {

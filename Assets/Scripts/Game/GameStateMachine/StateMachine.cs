@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class StateMachine : IStateSwitcher
 {
@@ -25,6 +26,7 @@ public class StateMachine : IStateSwitcher
 
         if(_states.TryGetValue(type, out var newState))
         {
+            UnityEngine.Debug.Log("Switch from " + CurrentState?.GetType() + " to " + newState.GetType());
             CurrentState?.Exit();
             newState.Enter();
             CurrentState = newState;

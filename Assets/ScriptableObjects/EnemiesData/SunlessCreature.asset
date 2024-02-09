@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1031ec5a37c68b74ea873f0c84b38c7d, type: 3}
   m_Name: SunlessCreature
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 6934301707266327093, guid: d965204111722564584632fd1adab1b9, type: 3}
+  _enemyPrefab: {fileID: 1061204933485798345, guid: d965204111722564584632fd1adab1b9, type: 3}
   _small:
     _scale: 1
     _material: {fileID: 2100000, guid: 1cf932435563116428d574d148d1bf47, type: 2}

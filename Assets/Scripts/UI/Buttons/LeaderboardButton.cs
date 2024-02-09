@@ -1,5 +1,4 @@
 using Agava.YandexGames;
-using UnityEngine;
 
 public class LeaderboardButton : MenuSwitchButton
 {    

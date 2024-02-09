@@ -6,20 +6,14 @@ public class WinState : ResultState
     [SerializeField] ParticleSystem _winAnimation;
     [SerializeField] YandexLeaderboard _leaderboard;
 
-    private Coroutine _coroutine;
-
     public override void Enter()
     {
-        _coroutine = StartCoroutine(PlayWinAnimation());
+        _coroutine = StartCoroutine(PlayAnimation());
     }
 
     public override void Exit() 
     {
-        //_leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
-
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
+        _leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
         base.Exit();
     }
 
@@ -28,12 +22,12 @@ public class WinState : ResultState
         return _rewardGenerator.GetLevelWinReward();
     }
 
-    private IEnumerator PlayWinAnimation()
+    protected override IEnumerator PlayAnimation()
     {
-        var animation = Instantiate(_winAnimation).GetComponent<ParticleSystem>();
+        ParticleSystem animation = Instantiate(_winAnimation).GetComponent<ParticleSystem>();
         animation.Play();
-        yield return new WaitForSeconds(3f);
-        Destroy(animation);
+        yield return WaitForSeconds;
+        Destroy(animation.gameObject);
         base.Enter();
         EnhancementSystem.Upgrade<GameLevel>();
     }

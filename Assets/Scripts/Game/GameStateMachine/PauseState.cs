@@ -8,14 +8,12 @@ public class PauseState : GameState
     public override void Enter()
     {
         base.Enter();
-        Time.timeScale = 0;
         Level?.Clear();
     }
 
     public override void Exit() 
     {
         base.Exit();
-        Time.timeScale = 1;
         Level = LevelFactory.Build(EnhancementSystem.GameLevelValue);
     }
 }

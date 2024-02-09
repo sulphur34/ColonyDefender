@@ -8,16 +8,29 @@ public class TrainingState : GameState
     [SerializeField] private Button _trainingSpawnButton;
     [SerializeField] private ColumnUI _columnUI;
     [SerializeField] private EnemyPowerUI _enemyPowerUI;
+    [SerializeField] private AddTurretADButton _addTurretButton;
+    [SerializeField] private OffTimerADButton _offTimerButton;
 
     private readonly int _firstLevel = 1;
     private readonly int _secondLevel = 2;
 
+    private void OnEnable()
+    {
+        _trainingSpawnButton.onClick.AddListener(SpawnTrainingTurret);
+    }
+
+    private void OnDisable()
+    {
+        _trainingSpawnButton.onClick.RemoveListener(SpawnTrainingTurret);
+    }
+
     public override void Enter()
     {
         base.Enter();
+        _addTurretButton.enabled = true;
+        _offTimerButton.enabled = true;
         _firstLevelTrainingMenu.enabled = true;
         _secondLevelTrainingMenu.enabled = true;
-        Time.timeScale = 0f;
         _enemyPowerUI.Show();
         Initialize();
     }
@@ -26,6 +39,7 @@ public class TrainingState : GameState
     {
         _firstLevelTrainingMenu.enabled = false;
         _secondLevelTrainingMenu.enabled = false;
+        _trainingSpawnButton.gameObject.SetActive(false);
         base.Exit();
     }
 
@@ -34,8 +48,6 @@ public class TrainingState : GameState
         if (EnhancementSystem.GameLevelValue == _firstLevel)
         {
             _firstLevelTrainingMenu.Open();
-            _trainingSpawnButton.gameObject.SetActive(true);
-            _trainingSpawnButton.onClick.AddListener(SpawnTrainingTurret);
         }
         else if (EnhancementSystem.GameLevelValue == _secondLevel)
         {
@@ -46,7 +58,6 @@ public class TrainingState : GameState
     
     private void SpawnTrainingTurret()
     {
-        _trainingSpawnButton.gameObject.SetActive(false);
         _firstLevelTrainingMenu.Close();
         SwitchToGame();
         _columnUI.SpawnTurret();

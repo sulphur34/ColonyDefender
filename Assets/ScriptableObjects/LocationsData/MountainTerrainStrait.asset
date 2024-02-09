@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc9e924c8234cd4a87b07f9546b64a3, type: 3}
   m_Name: MountainTerrainStrait
   m_EditorClassIdentifier: 
-  _location: {fileID: 3692075470904281854, guid: a1354f410e46d92459ada127b7e51ab5, type: 3}
+  _location: {fileID: 6594210225335058105, guid: a1354f410e46d92459ada127b7e51ab5, type: 3}
   _skyboxMaterial: {fileID: 2100000, guid: 2158456c35912e9478840be8e76c561a, type: 2}

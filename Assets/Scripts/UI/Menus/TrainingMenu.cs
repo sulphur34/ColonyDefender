@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class TrainingMenu : Menu
 {
-    [SerializeField] private ExplanationPanel _firstExplanationPanel;
-    [SerializeField] private ExplanationPanel _lastExplanationPanel;
+    [SerializeField] private ExplanationPanel[] _explanationPanels;
 
     public override void Open()
     {
         base.Open();
-        _firstExplanationPanel.Open();
-        _lastExplanationPanel.Closed += Close;
+        _explanationPanels[0].Open();
     }
 
     public override void Close()
     {
-        _lastExplanationPanel.Close();
+        CloseAllPanels();
         base.Close();
+    }
+
+    private void CloseAllPanels()
+    {
+        foreach (var panel in _explanationPanels)
+        {
+            panel.Close();
+        }
     }
 }

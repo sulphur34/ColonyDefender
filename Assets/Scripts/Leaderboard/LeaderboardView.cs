@@ -10,6 +10,8 @@ public class LeaderboardView : MonoBehaviour
 
     public void ConstructLeaderboard(List<LeaderboardPlayer> leaderboardPlayers)
     {
+        ClearLeaderboard();
+
         foreach (LeaderboardPlayer player in leaderboardPlayers)
         {
             LeaderboardElement leaderboardElementInstance = Instantiate(_leaderboardElementPrefab, _container);
@@ -23,7 +25,7 @@ public class LeaderboardView : MonoBehaviour
     {
         foreach (var element in _spawnedElements)
         {
-            Destroy(element);
+            Destroy(element.gameObject);
         }
 
         _spawnedElements = new List<LeaderboardElement>();

@@ -19,6 +19,8 @@ public class EnhansementPanel : MonoBehaviour
 
     public event Action EnhancementPurchased;
 
+    public bool CanBuy => _purchase.CanBuy;
+
     private void Awake()
     {
         _purchase = GetComponent<Purchase>();
