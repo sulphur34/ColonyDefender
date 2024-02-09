@@ -248,9 +248,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -403,7 +403,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 158.3579, y: 120}
+  m_SizeDelta: {x: 130, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3631378339940034865
 CanvasRenderer:
@@ -472,6 +472,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 5228287069228485808}
   _multiplier: 3
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &1802272250887938400
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +588,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 174.39673, y: 120}
+  m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &169808170575180725
 CanvasRenderer:
@@ -655,6 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 5496638041249084861}
   _multiplier: 2
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &3836938883024281761
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,9 +755,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -964,9 +968,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1099,9 +1103,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1176,7 +1180,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 158.3579, y: 120}
+  m_SizeDelta: {x: 130, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4621904712521052412
 CanvasRenderer:
@@ -1245,6 +1249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 1202127866321713291}
   _multiplier: 3
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &4367560735339768195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1445,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 174.72699, y: 120}
+  m_SizeDelta: {x: 150, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7054599049084232860
 CanvasRenderer:
@@ -1508,6 +1514,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 1765605479224583195}
   _multiplier: 2
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &5187333367042352673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,9 +1612,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1812,12 +1820,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 36.9
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1970,7 +1978,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 142.35791, y: 120}
+  m_SizeDelta: {x: 110, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4680262191991079540
 CanvasRenderer:
@@ -2039,6 +2047,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 9012690956865070558}
   _multiplier: 4
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &6973876669084986265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,8 +2093,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1018, y: 120}
+  m_AnchoredPosition: {x: -85.71539, y: 0}
+  m_SizeDelta: {x: 770.1931, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7100331165452205840
 CanvasRenderer:
@@ -2170,6 +2180,8 @@ MonoBehaviour:
   - {fileID: 6948474235818300303}
   - {fileID: 111371234945607112}
   - {fileID: 6047432923053585339}
+  _multiplierArrow: {fileID: 0}
+  _resultState: {fileID: 0}
 --- !u!1 &7909584998096852698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,7 +2372,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 142.35791, y: 120}
+  m_SizeDelta: {x: 110, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1896078119410927545
 CanvasRenderer:
@@ -2429,6 +2441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 7701362545388764949}
   _multiplier: 4
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &8055686341704664282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,7 +2481,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 67.516, y: 120}
+  m_SizeDelta: {x: 80, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8967977878064038017
 CanvasRenderer:
@@ -2536,6 +2550,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _labelTransform: {fileID: 4064053255192821972}
   _multiplier: 5
+  _scaleFactor: 2
+  _animationTime: 0.2
 --- !u!1 &8676134658704378399
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,9 +2804,9 @@ MonoBehaviour:
   m_fontSize: 40
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 0
-  m_fontSizeMax: 0
+  m_fontSizeMax: 40
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

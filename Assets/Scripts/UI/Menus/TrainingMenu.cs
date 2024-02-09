@@ -11,4 +11,10 @@ public class TrainingMenu : Menu
         _firstExplanationPanel.Open();
         _lastExplanationPanel.Closed += Close;
     }
+
+    public override void Close()
+    {
+        _lastExplanationPanel.Close();
+        base.Close();
+    }
 }

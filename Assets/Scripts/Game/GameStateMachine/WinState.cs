@@ -15,7 +15,7 @@ public class WinState : ResultState
 
     public override void Exit() 
     {
-        _leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
+        //_leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
 
         if (_coroutine != null)
             StopCoroutine(_coroutine);
