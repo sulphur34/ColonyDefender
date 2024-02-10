@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1031ec5a37c68b74ea873f0c84b38c7d, type: 3}
   m_Name: HornBeast
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 1941297312959733548, guid: c5620b5b3b855164d8b7ce7a95b2661d, type: 3}
+  _enemyPrefab: {fileID: 4978827772778217441, guid: c5620b5b3b855164d8b7ce7a95b2661d, type: 3}
   _small:
     _scale: 2.2
     _material: {fileID: 2100000, guid: a8d91c90d0308da4db7088fd9ae0675a, type: 2}

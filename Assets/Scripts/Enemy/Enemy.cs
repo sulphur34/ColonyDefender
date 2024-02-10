@@ -3,10 +3,13 @@ using UnityEngine;
 
 [RequireComponent(typeof(AIMover))]
 [RequireComponent (typeof(SkinnedMeshRenderer))]
+[RequireComponent (typeof (BoxCollider))]
 public class Enemy : MonoBehaviour
 {
     private Health _health;
     private AIMover _mover;
+    private BoxCollider _boxCollider;
+    private Transform _transform;
         
     public event Action<Enemy> Died;
     public event Action<Enemy> Destroyed;
@@ -15,10 +18,14 @@ public class Enemy : MonoBehaviour
     public IHealth Health => _health;
     public IDamageable Damager => _health;
 
+    public Vector3 AimPoint => _transform.TransformPoint(_boxCollider.center);
+
 
     private void Awake()
     {
+        _transform = transform;
         _mover = GetComponent<AIMover>();
+        _boxCollider = GetComponent<BoxCollider>();
     }
 
     private void OnDestroy()

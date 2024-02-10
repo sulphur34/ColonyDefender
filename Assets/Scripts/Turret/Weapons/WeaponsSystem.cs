@@ -9,7 +9,7 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
 
     private Transform _transform;
     private MeshRenderer _meshRenderer;
-    private Transform _target;
+    private Enemy _target;
     private Coroutine _aimCoroutine;
     private Coroutine _activationCoroutine;
     private WaitForSeconds _weaponsActivationDelay;
@@ -40,7 +40,7 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
         }
     }
 
-    public void Activate(Transform target)
+    public void Activate(Enemy target)
     {        
         _target = target;
         _aimCoroutine = StartCoroutine(StayOnTarget());
@@ -64,7 +64,7 @@ public class WeaponsSystem: MonoBehaviour, IWeaponSystem
 
         while (targetObject != null)
         {
-            _transform.LookAt(_target.transform.position);
+            _transform.LookAt(_target.AimPoint);
             yield return null;
         }
     }

@@ -45,8 +45,8 @@ public class WaveFactory : IFactory<IWave>
 
     private void SetHealthMultiplier(float levelIndex)
     {
-        float healthRate = 25;
-        _healthMultiplier = levelIndex * levelIndex / healthRate;
+        float healthRate = 2;
+        _healthMultiplier = levelIndex * (levelIndex + 1) / healthRate;
     }
 
     private float GetHealthValue(float enemyTypeMultiplier)

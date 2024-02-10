@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent (typeof(MeshRenderer))]
 public class RocketTurret : Projectile
 {
-    private readonly float _damageRadius = 3f;
+    private readonly float _damageRadius = 4f;
     private MeshRenderer _meshRenderer;
 
     protected override void Awake()
