@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 579276161195961176}
   - component: {fileID: 8452554148120451235}
   - component: {fileID: 6746698996220639275}
+  - component: {fileID: -4710391392239906415}
   m_Layer: 0
   m_Name: SunlessCreature
   m_TagString: Untagged
@@ -814,6 +815,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.69, y: 1.51, z: 1.33}
   m_Center: {x: 0, y: 0.75, z: 0.09}
+--- !u!114 &-4710391392239906415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6452178058074070541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e021ba3d4b6d498cc172e6314f7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathAnimation: {fileID: 8094578495313698726, guid: d25d9e813a270b34a81bd7e29df50fa0, type: 3}
 --- !u!1 &6730578860464891706
 GameObject:
   m_ObjectHideFlags: 0

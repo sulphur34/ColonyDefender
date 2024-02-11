@@ -45,7 +45,7 @@ public class WaveFactory : IFactory<IWave>
 
     private void SetHealthMultiplier(float levelIndex)
     {
-        float healthRate = 2;
+        float healthRate = 2.5f;
         _healthMultiplier = levelIndex * (levelIndex + 1) / healthRate;
     }
 

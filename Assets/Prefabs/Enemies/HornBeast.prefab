@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 4978827772778217441}
   - component: {fileID: 7525584870783668098}
   - component: {fileID: 1640647331404381482}
+  - component: {fileID: -3485472449907120518}
   m_Layer: 0
   m_Name: HornBeast
   m_TagString: Untagged
@@ -426,6 +427,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.33, y: 0.35, z: 0.54}
   m_Center: {x: 0, y: 0.18, z: 0}
+--- !u!114 &-3485472449907120518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093679303092718554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e021ba3d4b6d498cc172e6314f7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _deathAnimation: {fileID: 8094578495313698726, guid: d25d9e813a270b34a81bd7e29df50fa0, type: 3}
 --- !u!1 &3273220482547288012
 GameObject:
   m_ObjectHideFlags: 0

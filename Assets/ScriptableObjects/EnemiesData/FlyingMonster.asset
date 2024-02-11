@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 5562538254015986870, guid: 1077cbba44247304bb59fa0ee0c7eb03, type: 3}
   _small:
-    _scale: 0.26
+    _scale: 0.35
     _material: {fileID: 2100000, guid: 6704a454aa5213e48ba64f339990da11, type: 2}
   _medium:
-    _scale: 0.325
+    _scale: 0.5
     _material: {fileID: 2100000, guid: 9c41555c3df9ffb4c89444abc609e2c3, type: 2}
   _large:
-    _scale: 0.4
+    _scale: 0.6
     _material: {fileID: 2100000, guid: 650cbbeda19bc2e42aabe4b3076ce340, type: 2}
   _boss:
-    _scale: 1
+    _scale: 1.2
     _material: {fileID: 2100000, guid: 4c2ae546e9066cb499e5178c5a0a09cc, type: 2}

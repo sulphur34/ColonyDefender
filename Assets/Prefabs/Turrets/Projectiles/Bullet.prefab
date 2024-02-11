@@ -4984,7 +4984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionParticle: {fileID: 4758432001107814068}
   _projectileParticle: {fileID: 8268102087676959115}
-  _damage: 1
+  _damage: 1.2
 --- !u!1001 &8905703843337149016
 PrefabInstance:
   m_ObjectHideFlags: 0

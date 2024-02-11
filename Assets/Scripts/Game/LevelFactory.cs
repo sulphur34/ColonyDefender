@@ -16,7 +16,7 @@ public class LevelFactory : MonoBehaviour, IFactory<Level>
 
     public Level Build(float levelIndex)
     {
-        LocationData locationData = GetElement(levelIndex, _locationsData);
+        LocationData locationData = GetElement(levelIndex, _locationsData, false);
         Location location = Instantiate(locationData.Location);
         RenderSettings.skybox = locationData.skyboxMaterial;
         barrier.gameObject.SetActive(false);
@@ -30,25 +30,30 @@ public class LevelFactory : MonoBehaviour, IFactory<Level>
         return level;
     }
 
-    private T GetElement<T>(float levelIndex, T[] elements)
+    private T GetElement<T>(float levelIndex, T[] elements, bool isPositiveOffcet = true)
     {
-        int index = GetIndexFromLevel(levelIndex, elements.Length);
+        int index = GetIndexFromLevel(levelIndex, elements.Length, isPositiveOffcet);
         return elements[index];
     }
 
-    private int GetIndexFromLevel(float levelIndex, int maxIndex)
+    private int GetIndexFromLevel(float levelIndex, int maxIndex, bool isPositiveOffcet = true)
     {
-        int combinationsIndex = _levelBatchValue * maxIndex;
-        int firstElement = 0;
-        int index = firstElement;
+        int combinationsValue = _levelBatchValue * maxIndex;
+        int index = Mathf.FloorToInt((levelIndex - 1) % combinationsValue / _levelBatchValue);
+        int offcetValue = Mathf.FloorToInt((levelIndex - 1) / combinationsValue);
 
-        if (combinationsIndex < levelIndex)
+        if (levelIndex <= combinationsValue)
         {
-            index = UnityEngine.Random.Range(firstElement, maxIndex);
+            return index;
         }
         else
         {
-            index = Mathf.FloorToInt((levelIndex - 1) % combinationsIndex / _levelBatchValue);
+            index = (index + offcetValue) % maxIndex;
+
+            if (isPositiveOffcet)
+                return index;
+            else
+                index = maxIndex - index - 1;
         }
 
         return index;
