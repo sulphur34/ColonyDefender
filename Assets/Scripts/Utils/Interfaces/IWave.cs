@@ -5,9 +5,9 @@ public interface IWave
 {
     public event Action EnemiesDestroyed;
 
-    IReadOnlyList<float> RouteData { get; }
-    bool IsSpawned { get; }
-    Enemy GetNextEnenmyToSpawn();
+    public IReadOnlyList<float> RouteData { get; }
+    public bool IsSpawned { get; }
+    public Enemy GetNextEnenmyToSpawn();
 
-    void Clear();
+    public void Clear();
 }

@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class ExitButton : MenuSwitchButton
@@ -15,7 +14,6 @@ public class ExitButton : MenuSwitchButton
         Button.onClick.AddListener(ClearLevel);
         Button.onClick.AddListener(_gameStateMachine.SwitchState<PauseState>);
         base.Start();
-
     }
 
     private void ClearLevel()

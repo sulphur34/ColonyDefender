@@ -6,8 +6,7 @@ public class StartButton : MenuSwitchButton
 
     [SerializeField] private GameStateMachine _gameStateMachine;
     [SerializeField] private EnhancementSystem _enhancementSystem;
-
-        
+            
     protected override void Start()
     {
         base.Start();

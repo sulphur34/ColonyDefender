@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class LeaderboardMenu : Menu
 {
-    [SerializeField] YandexLeaderboard _leaderboard;
+    [SerializeField] private YandexLeaderboard _leaderboard;
+
     public override void Open()
     {
         base.Open();

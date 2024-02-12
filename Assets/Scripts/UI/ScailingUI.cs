@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class ScailingArrow : MonoBehaviour
+public class ScailingUI : MonoBehaviour
 {
     [SerializeField] private Vector2 _scale;
 

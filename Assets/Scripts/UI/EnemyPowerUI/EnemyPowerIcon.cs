@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class EnemyPowerIcon : MonoBehaviour
 {
     [SerializeField] private EnemyPowerLabel _powerLabel;
-    [SerializeField] private SignalArrow _signalArrow;
+    [SerializeField] private FaidingUI _signalArrow;
     [SerializeField] private Image _enemyImage;
 
     public void Set(float powerValue)

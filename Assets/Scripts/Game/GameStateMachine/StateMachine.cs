@@ -26,15 +26,9 @@ public class StateMachine : IStateSwitcher
 
         if(_states.TryGetValue(type, out var newState))
         {
-            UnityEngine.Debug.Log("Switch from " + CurrentState?.GetType() + " to " + newState.GetType());
             CurrentState?.Exit();
             newState.Enter();
             CurrentState = newState;
         }
     }
-
-    public void Run()
-    {
-        CurrentState?.Run();
-    }    
 }

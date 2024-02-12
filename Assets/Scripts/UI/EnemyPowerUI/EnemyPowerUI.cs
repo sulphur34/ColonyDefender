@@ -7,7 +7,7 @@ public class EnemyPowerUI : MonoBehaviour
     [SerializeField] private EnemyPowerIcon[] _powerIcons;
     [SerializeField] private LevelFactory _levelFactory;
 
-    IReadOnlyList<float> _powerValues;
+    private IReadOnlyList<float> _powerValues;
     private Canvas _canvas;
 
     private void Awake()

@@ -1,6 +1,6 @@
 public interface IWeapon
 {
-    void StartFire();
+    public void StartFire();
 
-    void EndFire();
+    public void EndFire();
 }

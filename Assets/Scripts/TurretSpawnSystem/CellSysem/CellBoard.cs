@@ -120,7 +120,5 @@ public class CellBoard : MonoBehaviour
     private void SetMaxTurreteLevel(float turretLevel)
     {
         MaxTurretLevel = MaxTurretLevel < turretLevel ? turretLevel : MaxTurretLevel;
-    }
-    
-
+    }  
 }

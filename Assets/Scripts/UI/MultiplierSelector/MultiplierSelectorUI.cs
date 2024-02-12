@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MultiplierSelectorUI : MonoBehaviour
 {
@@ -10,9 +7,9 @@ public class MultiplierSelectorUI : MonoBehaviour
     [SerializeField] private MultiplierArrow _multiplierArrow;
     [SerializeField] private ResultState _resultState;
 
-    public float Multiplier { get; private set; }
-
     public event Action<float> MultiplierChanged;
+
+    public float Multiplier { get; private set; }
 
     private void Start()
     {

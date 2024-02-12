@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IRoute
 {
-    Vector3 SpawnPoint { get; }
+    public Vector3 SpawnPoint { get; }
 
-    Vector3 GetNextPoint();
+    public Vector3 GetNextPoint();
 }

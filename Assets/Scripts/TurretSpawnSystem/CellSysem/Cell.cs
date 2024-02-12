@@ -15,11 +15,8 @@ public class Cell : MonoBehaviour, ICell
     }
 
     public int Row { get; private set; }
-
     public int Column { get; private set; }
-
     public float TurretLevel => _turret == null ? 0 : _turret.TurretLevel;
-
     public Vector3 Position { get; private set; }
 
     public void AddTurret(Turret turret)

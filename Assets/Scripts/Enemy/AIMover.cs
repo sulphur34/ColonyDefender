@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -35,7 +34,6 @@ public class AIMover : MonoBehaviour
 
         _navMeshAgent.isStopped = true;        
     }
-
     
     private IEnumerator CheckDestination()
     {

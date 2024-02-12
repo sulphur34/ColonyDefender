@@ -2,22 +2,22 @@ using UnityEngine;
 
 public interface ICell 
 {
-    int Row { get; }
-    int Column { get; }
-    Vector3 Position { get; }    
-    float TurretLevel { get; }
+    public int Row { get; }
+    public int Column { get; }
+    public Vector3 Position { get; }
+    public float TurretLevel { get; }
 
-    void Initialize(int row, int column);
+    public void Initialize(int row, int column);
 
-    bool CanMerge(ICell cellToMerge);
+    public bool CanMerge(ICell cellToMerge);
 
-    void ReceiveTurret(ICell cellToSwap);
+    public void ReceiveTurret(ICell cellToSwap);
 
-    void AddTurret(Turret turret);
+    public void AddTurret(Turret turret);
 
-    void PassTurret(ICell cell);
+    public void PassTurret(ICell cell);
 
-    void RemoveTurret();
+    public void RemoveTurret();
 
-    void Clear();
+    public void Clear();
 }

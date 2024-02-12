@@ -5,7 +5,7 @@ using Lean.Localization;
 
 public class YandexLeaderboard : MonoBehaviour
 {
-    private const string LeaderboardName = "Leaderboard";
+    public const string LeaderboardName = "Leaderboard";
 
     [SerializeField] private LeaderboardView _leaderboardView;
     [SerializeField] private LeanPhrase _anonymousLeanPhrase;

@@ -11,7 +11,6 @@ public class Enhancement : MonoBehaviour, ISaveable
     public event Action<float> ValueChanged;
 
     public float CurrentValue { get; private set; }
-
     public float UpgradeLevel { get; private set; }
 
     public virtual void Increase()
@@ -33,11 +32,6 @@ public class Enhancement : MonoBehaviour, ISaveable
         return true;
     }
 
-    protected void SetValue(float value)
-    {
-        CurrentValue = value;
-    }
-
     public virtual void Save()
     {
         PlayerPrefs.SetFloat(SaveToken, CurrentValue);
@@ -53,5 +47,10 @@ public class Enhancement : MonoBehaviour, ISaveable
         }
         else
             Reset();
+    }
+
+    private void SetValue(float value)
+    {
+        CurrentValue = value;
     }
 }

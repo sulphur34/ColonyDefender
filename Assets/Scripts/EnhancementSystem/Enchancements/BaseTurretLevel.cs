@@ -4,13 +4,13 @@ public class BaseTurretLevel : Enhancement
 {
     [SerializeField] private float _upgradeRequirementStep;
     [SerializeField] private EnhancementSystem _enhancementData;
+    
+    public float UpgradeRequirement => CurrentValue + _upgradeRequirementStep;
 
     private void Awake()
     {
         SaveToken = SaveData.BaseTurretLevel;
     }
-
-    public float UpgradeRequirement => CurrentValue + _upgradeRequirementStep;
 
     public override bool IsAvailable()
     {

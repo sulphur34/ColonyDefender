@@ -10,7 +10,6 @@ public class SaveHandler : MonoBehaviour
     [SerializeField] private ResultState[] _resultStates;
     [SerializeField] private EnhancementMenu _enhancementMenu;
 
-
     private static SaveHandler _instance;
     private List<ISaveable> _saveables;
 

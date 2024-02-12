@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 
 [RequireComponent(typeof(Image))]
-public class SignalArrow : MonoBehaviour
+public class FaidingUI : MonoBehaviour
 {
     private Image _image;
     private Tween _signalTween;

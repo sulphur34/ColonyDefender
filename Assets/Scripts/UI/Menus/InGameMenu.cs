@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,40 +8,41 @@ public class InGameMenu : Menu
     [SerializeField] private BuildState _buildState;
     [SerializeField] private TurretsAmountLabel _turretsAmountLabel;
     [SerializeField] private BuildingTimerLabel _buildingTimerLabel;
+    [SerializeField] private AddTurretADButton _addTurretButton;
+    [SerializeField] private OffTimerADButton _offTimerButton;
 
 
     private void OnEnable()
     {
-        _buildState.Entered += Open;
-        _buildState.Exited += DeactivateBuildStateUI;
-        _defenceState.Exited += Close;
+        _buildState.Entered += () => SetBuildStateUI(true);
+        _trainingState.Entered += () => SetBuildStateUI(true);
         _trainingState.Entered += () => SetAllButtonsStatus(false);
         _trainingState.Exited += () => SetAllButtonsStatus(true);
+        _defenceState.Entered += () => SetBuildStateUI(false);
+        _defenceState.Exited += Close;
     }
 
     private void OnDisable()
     {
-        _buildState.Entered -= Open;
-        _buildState.Exited -= DeactivateBuildStateUI;
+        _buildState.Entered -= () => SetBuildStateUI(true);
+        _trainingState.Entered -= () => SetBuildStateUI(true);
+        _trainingState.Entered -= () => SetAllButtonsStatus(false);
+        _trainingState.Exited -= () => SetAllButtonsStatus(true);
+        _defenceState.Entered -= () => SetBuildStateUI(false);
         _defenceState.Exited -= Close;
     }
 
-    public override void Open()
+    private void SetBuildStateUI(bool isActive)
     {
-        base.Open();
-        _turretsAmountLabel.gameObject.SetActive(true);
-        _buildingTimerLabel.gameObject.SetActive(true);
+        _turretsAmountLabel.gameObject.SetActive(isActive);
+        _buildingTimerLabel.gameObject.SetActive(isActive);
+        _addTurretButton.gameObject.SetActive(isActive);
+        _offTimerButton.gameObject.SetActive(isActive);
     }
 
-    private void DeactivateBuildStateUI()
+    private void SetAllButtonsStatus(bool isActive)
     {
-        _turretsAmountLabel.gameObject.SetActive(false);
-        _buildingTimerLabel.gameObject.SetActive(false);
-    }
-
-    private void SetAllButtonsStatus( bool isActive)
-    {
-        foreach(Button button in GetComponentsInChildren<Button>())
+        foreach (Button button in GetComponentsInChildren<Button>())
         {
             button.enabled = isActive;
         }

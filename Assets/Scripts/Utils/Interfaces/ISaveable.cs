@@ -1,6 +1,6 @@
 public interface ISaveable
 {
-    void Save();
+    public void Save();
 
-    void Load();
+    public void Load();
 }

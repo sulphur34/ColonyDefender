@@ -24,13 +24,6 @@ public class AudioManager : MonoBehaviour, ISaveable
         VolumeChanged?.Invoke(volumeValue);
     }
 
-    private void SwichSound(AudioClip audioClip)
-    {
-        _audioSource.Stop();
-        _audioSource.clip = audioClip;
-        _audioSource.Play();
-    }
-
     public void Save()
     {
         PlayerPrefs.SetFloat(SaveData.VolumeLevel, _audioSource.volume);
@@ -42,6 +35,13 @@ public class AudioManager : MonoBehaviour, ISaveable
             _audioSource.volume = PlayerPrefs.GetFloat(SaveData.VolumeLevel);
         else
             _audioSource.volume = 0.5f;
+    }
+
+    private void SwichSound(AudioClip audioClip)
+    {
+        _audioSource.Stop();
+        _audioSource.clip = audioClip;
+        _audioSource.Play();
     }
 
     private AudioClip GetRandomClip()

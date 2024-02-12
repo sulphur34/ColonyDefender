@@ -39,11 +39,6 @@ public class Projectile : MonoBehaviour
         _coroutine = StartCoroutine(DisableAfterDelay(_disableDelay));
     }
 
-    public void Initialize(float damageMultiplier)
-    {
-        _damage *= damageMultiplier;
-    }
-
     private void OnDisable()
     {
         StopCoroutine(_coroutine);
@@ -56,6 +51,11 @@ public class Projectile : MonoBehaviour
         {            
             OnEnemyCollision(enemy);
         }
+    }
+
+    public void Initialize(float damageMultiplier)
+    {
+        _damage *= damageMultiplier;
     }
 
     public void ApplyForce(Vector3 force)
@@ -90,16 +90,16 @@ public class Projectile : MonoBehaviour
         enemy.Damager.TakeDamage(_damage);
     }
 
+    protected void PlayCollisionParticle()
+    {
+        _collisionParticle.Play();
+    }
+
     private IEnumerator DisableAfterDelay(WaitForSeconds delay)
     {        
         yield return delay;
         _projectileParticle.Clear();
         gameObject.SetActive(false);
-    }
-
-    protected void PlayCollisionParticle()
-    {
-        _collisionParticle.Play();
     }
 
     protected virtual void DisableOnEnemyCollision()

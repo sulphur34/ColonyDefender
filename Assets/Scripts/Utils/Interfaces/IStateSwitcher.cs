@@ -1,4 +1,4 @@
 public interface IStateSwitcher
 {
-    void SwitchState<T>() where T : State;
+    public void SwitchState<T>() where T : State;
 }

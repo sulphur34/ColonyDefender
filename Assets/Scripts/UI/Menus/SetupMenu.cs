@@ -1,4 +1,3 @@
-
 public class SetupMenu : Menu
 {
 }

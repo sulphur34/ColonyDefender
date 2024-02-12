@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class CostLabel : TextSetter
 {
     private Purchase _purchase;

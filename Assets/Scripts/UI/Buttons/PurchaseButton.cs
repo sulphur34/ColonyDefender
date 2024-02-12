@@ -15,7 +15,6 @@ public class PurchaseButton : MonoBehaviour
     public void Initialize(Purchase purchase)
     {
         _purchase = purchase;
-
     }
 
     public void Enable()

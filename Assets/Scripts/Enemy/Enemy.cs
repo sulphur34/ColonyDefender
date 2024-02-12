@@ -17,9 +17,7 @@ public class Enemy : MonoBehaviour
     public bool IsAlive => Health.CurrentHealth > 0;
     public IHealth Health => _health;
     public IDamageable Damager => _health;
-
     public Vector3 AimPoint => _transform.TransformPoint(_boxCollider.center);
-
 
     private void Awake()
     {

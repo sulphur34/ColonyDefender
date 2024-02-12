@@ -3,13 +3,13 @@ using UnityEngine;
 
 public interface IColumn
 {
-    Vector3 SpawnPosition { get; }
+    public Vector3 SpawnPosition { get; }
 
-    IEnumerator GetEnumerator();
+    public IEnumerator GetEnumerator();
 
-    void Collapse();
+    public void Collapse();
 
-    bool TryGetFreeCell(out ICell cell);
+    public bool TryGetFreeCell(out ICell cell);
 
-    bool TryGetNextOccupiedCell(ICell Cell, out ICell nextCell);
+    public bool TryGetNextOccupiedCell(ICell Cell, out ICell nextCell);
 }

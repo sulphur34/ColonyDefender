@@ -25,6 +25,7 @@ public class Column : IEnumerable, IColumn
             return cell;
         }
     }
+
     public bool TryGetFreeCell(out ICell cell)
     {
         for (int i = 0; i < _cells.Length; i++)

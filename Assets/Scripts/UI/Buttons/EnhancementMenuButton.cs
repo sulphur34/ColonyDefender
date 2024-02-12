@@ -5,8 +5,8 @@ public class EnhancementMenuButton : MenuSwitchButton
 {
     [SerializeField] private MainMenu _mainMenu;
     [SerializeField] private EnhansementPanel[] _enhancementPanels;
-    [SerializeField] private ScailingArrow _scailingArrow;
-    [SerializeField] private SignalArrow _signalArrow;
+    [SerializeField] private ScailingUI _scailingArrow;
+    [SerializeField] private FaidingUI _signalArrow;
 
     private void OnEnable()
     {
@@ -15,7 +15,7 @@ public class EnhancementMenuButton : MenuSwitchButton
 
     private void OnDisable()
     {
-        
+        _mainMenu.Opened -= SetState;
     }
 
     private void SetState()

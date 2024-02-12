@@ -13,13 +13,11 @@ public class BuildState : GameState
     private float _turretsLimit;
     private float _turretLevel;
     private float _buildTime;
-    private IReadOnlyList<float> _routeData;
         
     public event Action<float> TurretsAmountChanged;
 
     private void Awake()
     {
-        LevelFactory.Built += SetRouteData;
         _addTurretButton.RewardGained += OnAddTurretADGain;
         _offTimerButton.RewardGained += OnOffTimerADGain;
 
@@ -76,11 +74,6 @@ public class BuildState : GameState
         _buildTime = EnhancementSystem.BuiltTimeValue;
         _turretsLimit = EnhancementSystem.GameLevelValue - _turretLevel + 1;
         TurretsAmountChanged.Invoke(_turretsLimit);
-    }
-
-    private void SetRouteData(Level level)
-    {
-        _routeData = level.Wave.RouteData;
     }
 
     private void OnAddTurretADGain()

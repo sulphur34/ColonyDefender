@@ -1,6 +1,5 @@
 using Agava.YandexGames;
 using Lean.Localization;
-using Lean;
 using UnityEngine;
 
 namespace Source.Yandex
