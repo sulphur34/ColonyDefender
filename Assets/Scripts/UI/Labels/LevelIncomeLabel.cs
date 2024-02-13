@@ -12,5 +12,6 @@ public class LevelIncomeLabel : TextSetter
     private void SetIncome()
     {
         SetText(_resultState.Reward);
+        ResizeText();
     }
 }

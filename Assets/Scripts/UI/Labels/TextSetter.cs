@@ -5,6 +5,13 @@ public class TextSetter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _label;
 
+    private RectTransform _rectTransform;
+
+    private void Awake()
+    {
+        _rectTransform = _label.GetComponent<RectTransform>();
+    }
+
     public void Show()
     {
         _label.enabled = true;
@@ -39,5 +46,13 @@ public class TextSetter : MonoBehaviour
     protected void SetColor(Color color)
     {
         _label.color = color;
+    }
+
+    protected void ResizeText()
+    {
+        float preferredWidth = _label.preferredWidth;
+        float preferredHeight = _label.preferredHeight;
+
+        _rectTransform.sizeDelta = new Vector2(preferredWidth, preferredHeight);
     }
 }

@@ -1,6 +1,6 @@
 using System;
 
-public class AddTurretADButton : ADButton
+public class AddTurretADButton : ADRewardedButton
 {
     public event Action RewardGained;
 
@@ -9,7 +9,10 @@ public class AddTurretADButton : ADButton
         RewardGained?.Invoke();
     }
 
-    protected override void OnRewardGained() { }
+    protected override void OnRewardGained() 
+    {
+        gameObject.SetActive(false);
+    }
 
     protected override void OnVideoClose() { }
 }

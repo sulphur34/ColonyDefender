@@ -6,9 +6,14 @@ public class VideoAD : MonoBehaviour
     public event Action RewardGained;
     public event Action Closed;
 
-    public void Show()
+    public void ShowRewarded()
     {
-        Agava.YandexGames.VideoAd.Show(OnOpenCallBack, OnRewardCallBack, OnCloseCallBack);
+        Agava.YandexGames.VideoAd.Show(OnOpenCallBack, OnRewardCallBack, OnCloseCallBack);        
+    }
+
+    public void ShowInter()
+    {
+        Agava.YandexGames.InterstitialAd.Show(OnOpenCallBack, OnCloseCallBack);
     }
 
     private void OnOpenCallBack()
@@ -27,5 +32,10 @@ public class VideoAD : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.volume = 1f;
         Closed.Invoke();
+    }
+
+    private void OnCloseCallBack(bool isShown)
+    {
+        OnCloseCallBack();
     }
 }

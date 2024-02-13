@@ -1,6 +1,6 @@
 using System;
 
-public class OffTimerADButton : ADButton
+public class OffTimerADButton : ADRewardedButton
 {
     public event Action RewardGained;
 
@@ -9,7 +9,10 @@ public class OffTimerADButton : ADButton
         RewardGained?.Invoke();
     }
 
-    protected override void OnRewardGained() { }
+    protected override void OnRewardGained() 
+    {
+        gameObject.SetActive(false);
+    }
 
     protected override void OnVideoClose() { }
 }

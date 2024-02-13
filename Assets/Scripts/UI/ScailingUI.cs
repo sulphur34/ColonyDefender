@@ -8,10 +8,12 @@ public class ScailingUI : MonoBehaviour
 
     private RectTransform _transform;
     private Tween _tween;
+    private Vector3 _defaultScale;
 
     private void Awake()
     {
         _transform = GetComponent<RectTransform>();
+        _defaultScale = _transform.localScale;
     }
 
     private void OnEnable()
@@ -22,5 +24,6 @@ public class ScailingUI : MonoBehaviour
     private void OnDisable()
     {
         _tween.Kill();
+        _transform.localScale = _defaultScale;
     }
 }

@@ -2,25 +2,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Button))]
-[RequireComponent (typeof(VideoAD))]
+[RequireComponent(typeof(VideoAD))]
 public abstract class ADButton : MonoBehaviour
 {
-    private VideoAD _videoAD;
+    protected VideoAD VideoAD;
     private Button _button;
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        _videoAD = GetComponent<VideoAD>();
+        VideoAD = GetComponent<VideoAD>();
         _button = GetComponent<Button>();
         _button.onClick.AddListener(OnButtonClick);
-        _button.onClick.AddListener(_videoAD.Show);
-        _videoAD.RewardGained += OnRewardGained;
-        _videoAD.Closed += OnVideoClose;
+        _button.onClick.AddListener(ShowAD);
+        VideoAD.Closed += OnVideoClose;
     }
 
-    protected abstract void OnButtonClick();
+    protected abstract void ShowAD();
 
-    protected abstract void OnRewardGained();
+    protected abstract void OnButtonClick();
 
     protected abstract void OnVideoClose();
 }

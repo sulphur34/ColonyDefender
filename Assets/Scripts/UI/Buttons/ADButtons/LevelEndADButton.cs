@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LevelEndADButton : ADButton
+public class LevelEndADButton : ADRewardedButton
 {
     [SerializeField] private MultiplierSelectorUI _selectorUI;
     [SerializeField] private MenuSwitcher _menuSwitcher;
