@@ -12,11 +12,11 @@ public abstract class ADButton : MonoBehaviour
     {
         VideoAD = GetComponent<VideoAD>();
         _button = GetComponent<Button>();
-        _button.onClick.AddListener(OnButtonClick);
         _button.onClick.AddListener(ShowAD);
+        _button.onClick.AddListener(OnButtonClick);
         VideoAD.Closed += OnVideoClose;
-    }
 
+    }
     protected abstract void ShowAD();
 
     protected abstract void OnButtonClick();

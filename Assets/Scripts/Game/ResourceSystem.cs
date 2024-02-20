@@ -18,6 +18,7 @@ public class ResourceSystem : MonoBehaviour, ISaveable
     {
         _availableRecourcesValue -= purchase.CurrentCost;
         AmountChanged.Invoke(_availableRecourcesValue);
+        Save();
     }
 
     public bool IsAffordable(float withdrawalValue)
@@ -29,6 +30,7 @@ public class ResourceSystem : MonoBehaviour, ISaveable
     {
         _availableRecourcesValue += rewardValue;
         AmountChanged.Invoke(_availableRecourcesValue);
+        Save();
     }
 
     public void Save()

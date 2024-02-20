@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class TestFocus : MonoBehaviour
 {
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioManager _audioManager;
+    [SerializeField] private VideoAD[] _videoADs;
 
     private void OnEnable()
     {
@@ -31,11 +32,44 @@ public class TestFocus : MonoBehaviour
 
     private void MuteAudio(bool value)
     {
-        _audioSource.volume = value ? 0f : 1f;
+        if (value)
+        {
+            _audioManager.PauseClip();
+        }
+        else
+        {
+            if (IsADPlaying() == false)
+            {
+                _audioManager.ResumeClip();
+            }
+        }
     }
 
     private void PauseGame(bool value)
     {
-        Time.timeScale = value ? 0f : 1f;
+        if (value)
+        {
+            Debug.Log("BUG TestFocus pause game");
+            Time.timeScale = 0f;
+        }
+        else
+        {            
+            if (IsADPlaying() == false)
+            {
+                Debug.Log("BUG TestFocus unpause game");
+                Time.timeScale = 1f;
+            }
+        }        
+    }
+
+    private bool IsADPlaying()
+    {
+        foreach (VideoAD videoAD in _videoADs)
+        {
+            if (videoAD.IsPlaying)
+                return true;
+        }
+
+        return false;
     }
 }

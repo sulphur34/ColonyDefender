@@ -53,6 +53,7 @@ public class EnhancementSystem : MonoBehaviour, ISaveable
     public void SetMaxTurretLevel(CellBoard cellBoard)
     {
         MaxTurretLevelValue = cellBoard.MaxTurretLevel;
+        Save();
     }
 
     public void Save()

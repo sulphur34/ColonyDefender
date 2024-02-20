@@ -32,6 +32,7 @@ public abstract class ResultState : GameState
     public override void Enter()
     {
         Reward = GenerateReward();
+        _resourceSystem.Add(Reward);
         base.Enter();
     }
 
@@ -46,7 +47,7 @@ public abstract class ResultState : GameState
 
     protected void MultiplyReward(float multiplier)
     {
-        Reward *= multiplier;
+        Reward *= (multiplier - 1);
         _rewardMultiplied.Invoke();
     }
 

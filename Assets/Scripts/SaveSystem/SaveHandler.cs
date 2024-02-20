@@ -64,6 +64,7 @@ public class SaveHandler : MonoBehaviour
         _saveables.Add(_enhancementSystem);
         _saveables.Add(_resourceSystem);
         _saveables.Add(_audioManager);
+
         _enhancementMenu.Closed += SaveAll;
 
         foreach (ResultState resultState in _resultStates)

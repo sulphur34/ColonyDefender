@@ -6,13 +6,20 @@ public class AudioManager : MonoBehaviour, ISaveable
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip[] _clips;
 
+    private bool _isPaused = false;
+
     public event Action<float> VolumeChanged;
 
-    public float Volume => _audioSource.volume;
+    public float Volume => GetVolume();
+
+    private void Start()
+    {
+        SwichSound(GetRandomClip());
+    }
 
     private void Update()
     {
-        if (_audioSource.isPlaying == false)
+        if (_audioSource.isPlaying == false && _isPaused == false)
         {
             SwichSound(GetRandomClip());
         }
@@ -22,6 +29,7 @@ public class AudioManager : MonoBehaviour, ISaveable
     {
         _audioSource.volume = volumeValue;
         VolumeChanged?.Invoke(volumeValue);
+        Save();
     }
 
     public void Save()
@@ -31,22 +39,45 @@ public class AudioManager : MonoBehaviour, ISaveable
 
     public void Load()
     {
-        if (PlayerPrefs.HasKey(SaveData.VolumeLevel))
-            _audioSource.volume = PlayerPrefs.GetFloat(SaveData.VolumeLevel);
-        else
-            _audioSource.volume = 0.5f;
+        _audioSource.volume = GetVolume();
+    }
+
+    public void PauseClip()
+    {
+        if (_audioSource.isPlaying)
+        {
+            _audioSource.Pause();
+            _isPaused = true;
+        }
+    }
+
+    public void ResumeClip()
+    {
+        if (_audioSource.isPlaying == false)
+        {
+            _audioSource.Play();
+            _isPaused = false;
+        }
     }
 
     private void SwichSound(AudioClip audioClip)
     {
         _audioSource.Stop();
         _audioSource.clip = audioClip;
-        _audioSource.Play();
+        ResumeClip();
     }
 
     private AudioClip GetRandomClip()
     {
         int clipIndex = UnityEngine.Random.Range(0, _clips.Length);
         return _clips[clipIndex];
+    }
+
+    private float GetVolume()
+    {
+        if (PlayerPrefs.HasKey(SaveData.VolumeLevel))
+            return PlayerPrefs.GetFloat(SaveData.VolumeLevel);
+        else
+            return 0.5f;
     }
 }

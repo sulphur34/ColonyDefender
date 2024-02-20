@@ -24,11 +24,11 @@ public class WinState : ResultState
 
     protected override IEnumerator PlayAnimation()
     {
+        EnhancementSystem.Upgrade<GameLevel>();
         ParticleSystem animation = Instantiate(_winAnimation).GetComponent<ParticleSystem>();
         animation.Play();
         yield return WaitForSeconds;
         Destroy(animation.gameObject);
-        base.Enter();
-        EnhancementSystem.Upgrade<GameLevel>();
+        base.Enter();        
     }
 }

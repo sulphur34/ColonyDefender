@@ -15,6 +15,11 @@ public class MenuSwitchButton : MonoBehaviour
 
     protected virtual void Start()
     {
-        Button.onClick.AddListener(_menuSwitcher.Switch);
+        Button.onClick.AddListener(Switch);
+    }
+
+    public void Switch()
+    {
+        _menuSwitcher.Switch();
     }
 }

@@ -11,7 +11,7 @@ namespace Source.Yandex
 
         private void Awake()
         {
-            YandexGamesSdk.CallbackLogging = true;
+            YandexGamesSdk.CallbackLogging = false;
         }
 
         private IEnumerator Start()

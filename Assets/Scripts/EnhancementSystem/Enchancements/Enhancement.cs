@@ -16,6 +16,7 @@ public class Enhancement : MonoBehaviour, ISaveable
     public virtual void Increase()
     {
         SetValue(CurrentValue += _upgradeStep);
+        Save();
         UpgradeLevel++;
         ValueChanged?.Invoke(UpgradeLevel);
     }
@@ -25,6 +26,7 @@ public class Enhancement : MonoBehaviour, ISaveable
         UpgradeLevel = 0;
         SetValue(_defaultValue);
         ValueChanged?.Invoke(UpgradeLevel);
+        Save();
     }
 
     public virtual bool IsAvailable()

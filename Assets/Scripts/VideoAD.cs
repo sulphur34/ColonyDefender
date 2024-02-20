@@ -3,12 +3,21 @@ using UnityEngine;
 
 public class VideoAD : MonoBehaviour
 {
+    [SerializeField] private AudioManager _audioManager;
+
     public event Action RewardGained;
     public event Action Closed;
 
+    public bool IsPlaying { get; private set; }
+
+    private void Awake()
+    {
+        IsPlaying = false;
+    }
+
     public void ShowRewarded()
     {
-        Agava.YandexGames.VideoAd.Show(OnOpenCallBack, OnRewardCallBack, OnCloseCallBack);        
+        Agava.YandexGames.VideoAd.Show(OnOpenCallBack, OnRewardCallBack, OnCloseCallBack);
     }
 
     public void ShowInter()
@@ -18,8 +27,9 @@ public class VideoAD : MonoBehaviour
 
     private void OnOpenCallBack()
     {
+        IsPlaying = true;
         Time.timeScale = 0;
-        AudioListener.volume = 0f;
+        _audioManager.PauseClip();
     }
 
     private void OnRewardCallBack()
@@ -29,8 +39,9 @@ public class VideoAD : MonoBehaviour
 
     private void OnCloseCallBack()
     {
+        IsPlaying = false;
         Time.timeScale = 1;
-        AudioListener.volume = 1f;
+        _audioManager.ResumeClip();
         Closed.Invoke();
     }
 
