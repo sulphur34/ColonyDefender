@@ -1,23 +1,25 @@
-
-public static class RangeCalculator
+namespace Utils
 {
-    public static Range GetRangeByDivider(float value, float divider)
+    public static class RangeCalculator
     {
-        float maximum = GetMaxInRange(value, divider);
-        float minimum = maximum - divider + 1;
-
-        return new Range(minimum, maximum);
-    }
-    
-    private static float GetMaxInRange(float value, float divider)
-    {
-        float maximum = value;
-
-        while (maximum % divider != 0)
+        public static Range GetRangeByDivider(float value, float divider)
         {
-            maximum++;
+            float maximum = GetMaxInRange(value, divider);
+            float minimum = maximum - divider + 1;
+
+            return new Range(minimum, maximum);
         }
 
-        return maximum;
+        private static float GetMaxInRange(float value, float divider)
+        {
+            float maximum = value;
+
+            while (maximum % divider != 0)
+            {
+                maximum++;
+            }
+
+            return maximum;
+        }
     }
 }

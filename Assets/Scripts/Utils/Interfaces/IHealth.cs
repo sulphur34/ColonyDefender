@@ -1,9 +1,12 @@
 using System;
 
-public interface IHealth
+namespace Utils.Interfaces
 {
-    public event Action Died;
-    public event Action HealthChanged;
+    public interface IHealth
+    {
+        public event Action Died;
+        public event Action HealthChanged;
 
-    public float CurrentHealth { get; }
+        public float CurrentHealth { get; }
+    }
 }

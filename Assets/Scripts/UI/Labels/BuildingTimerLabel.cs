@@ -1,36 +1,40 @@
 using UnityEngine;
+using Utils;
 
-public class BuildingTimerLabel : TextSetter
+namespace UI.Labels
 {
-    [SerializeField] private Timer _timer;
-    [SerializeField] private Color _defaultColor;
-    [SerializeField] private Color _runningOutColor;
-
-    private int _timerAlarmThreshold = 5;
-
-    private void Awake()
+    public class BuildingTimerLabel : TextSetter
     {
-        _timer.Began += Enable;
-        _timer.Changed += OnTimerChange;
-        _timer.Ended += Disable;
-    }
+        [SerializeField] private Timer _timer;
+        [SerializeField] private Color _defaultColor;
+        [SerializeField] private Color _runningOutColor;
 
-    private void OnTimerChange(float timerValue)
-    {        
-        SetText(timerValue);
+        private int _timerAlarmThreshold = 5;
 
-        if (timerValue < _timerAlarmThreshold) 
-            SetColor(_runningOutColor);
-    }
+        private void Awake()
+        {
+            _timer.Began += Enable;
+            _timer.Changed += OnTimerChange;
+            _timer.Ended += Disable;
+        }
 
-    private void Disable()
-    {
-        gameObject.SetActive(false);
-    }
+        private void OnTimerChange(float timerValue)
+        {
+            SetText(timerValue);
 
-    private void Enable()
-    {
-        SetColor(_defaultColor);
-        gameObject.SetActive(true);
+            if (timerValue < _timerAlarmThreshold)
+                SetColor(_runningOutColor);
+        }
+
+        private void Disable()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void Enable()
+        {
+            SetColor(_defaultColor);
+            gameObject.SetActive(true);
+        }
     }
 }

@@ -1,13 +1,17 @@
+using UI.Menus;
 using UnityEngine;
 
-public class MenuSwitcher : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Menu _activatedMenu;
-    [SerializeField] private Menu _deactivatedMenu;
-
-    public void Switch()
+    public class MenuSwitcher : MonoBehaviour
     {
-        _deactivatedMenu?.Close();
-        _activatedMenu?.Open();
+        [SerializeField] private Menu _activatedMenu;
+        [SerializeField] private Menu _deactivatedMenu;
+
+        public void Switch()
+        {
+            _deactivatedMenu?.Close();
+            _activatedMenu?.Open();
+        }
     }
 }

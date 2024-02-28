@@ -1,25 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Button))]
-public class MenuSwitchButton : MonoBehaviour
+namespace UI.Buttons
 {
-    [SerializeField] private MenuSwitcher _menuSwitcher;
-
-    protected Button Button;
-
-    private void Awake()
+    [RequireComponent(typeof(Button))]
+    public class MenuSwitchButton : MonoBehaviour
     {
-        Button = GetComponent<Button>();
-    }
+        protected Button Button;
 
-    protected virtual void Start()
-    {
-        Button.onClick.AddListener(Switch);
-    }
+        [SerializeField] private MenuSwitcher _menuSwitcher;
 
-    public void Switch()
-    {
-        _menuSwitcher.Switch();
+        private void Awake()
+        {
+            Button = GetComponent<Button>();
+        }
+
+        protected virtual void Start()
+        {
+            Button.onClick.AddListener(Switch);
+        }
+
+        protected void Switch()
+        {
+            _menuSwitcher.Switch();
+        }
     }
 }

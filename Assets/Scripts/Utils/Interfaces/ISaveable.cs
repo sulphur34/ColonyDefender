@@ -1,6 +1,10 @@
-public interface ISaveable
+namespace Utils.Interfaces
 {
-    public void Save();
+    public interface ISavable
+    {
+        public string Token { get; }
+        public void Save();
 
-    public void Load();
+        public void Load();
+    }
 }

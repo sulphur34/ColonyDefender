@@ -1,18 +1,22 @@
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
-public class WinMenu : Menu
+namespace UI.Menus
 {
-    [SerializeField] private WinState _winState;
-
-    private void OnEnable()
+    public class WinMenu : Menu
     {
-        _winState.Entered += Open;
-        _winState.Exited += Close;
-    }
+        [SerializeField] private WinState _winState;
 
-    private void OnDisable()
-    {
-        _winState.Entered -= Open;
-        _winState.Exited -= Close;
+        private void OnEnable()
+        {
+            _winState.Entered += Open;
+            _winState.Exited += Close;
+        }
+
+        private void OnDisable()
+        {
+            _winState.Entered -= Open;
+            _winState.Exited -= Close;
+        }
     }
 }

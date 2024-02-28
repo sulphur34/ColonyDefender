@@ -1,47 +1,51 @@
+using EnemySystem;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils.Interfaces;
 
-public class Healthbar : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Slider _slider;
-    [SerializeField] private Gradient _gradient;
-    [SerializeField] private Image _healthLine;
-    [SerializeField] private float _changeStep;
-
-    private Enemy _enemy;
-    private IHealth _health;
-    private Transform _transform;
-        
-    private void Start()
+    public class Healthbar : MonoBehaviour
     {
-        _transform = transform;
-        _enemy = GetComponentInParent<Enemy>();
-        _health = _enemy.Health;
-        _health.HealthChanged += OnHealthChanged;
-        SetStartValues();
-    }
+        [SerializeField] private Slider _slider;
+        [SerializeField] private Gradient _gradient;
+        [SerializeField] private Image _healthLine;
 
-    private void Update()
-    {
-        _transform.forward = Camera.main.transform.forward;
-    }
+        private Enemy _enemy;
+        private IHealth _health;
+        private Transform _transform;
 
-    private void OnDisable()
-    {
-        if (_health != null)
-            _health.HealthChanged -= OnHealthChanged;
-    }
+        private void Start()
+        {
+            _transform = transform;
+            _enemy = GetComponentInParent<Enemy>();
+            _health = _enemy.Health;
+            _health.HealthChanged += OnHealthChanged;
+            SetStartValues();
+        }
 
-    public void SetStartValues()
-    {
-        _slider.maxValue = _health.CurrentHealth;
-        _slider.value = _health.CurrentHealth;
-        _healthLine.color = _gradient.Evaluate(1f);
-    }
+        private void Update()
+        {
+            _transform.forward = Camera.main.transform.forward;
+        }
 
-    public void OnHealthChanged()
-    {
-        _slider.value = _health.CurrentHealth;
-        _healthLine.color = _gradient.Evaluate(_slider.normalizedValue);
+        private void OnDisable()
+        {
+            if (_health != null)
+                _health.HealthChanged -= OnHealthChanged;
+        }
+
+        private void SetStartValues()
+        {
+            _slider.maxValue = _health.CurrentHealth;
+            _slider.value = _health.CurrentHealth;
+            _healthLine.color = _gradient.Evaluate(1f);
+        }
+
+        private void OnHealthChanged()
+        {
+            _slider.value = _health.CurrentHealth;
+            _healthLine.color = _gradient.Evaluate(_slider.normalizedValue);
+        }
     }
 }

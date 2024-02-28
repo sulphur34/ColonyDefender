@@ -1,7 +1,12 @@
-public class EnhancementLeveLabel : TextSetter
+using EnhancementSystem.Enhancements;
+
+namespace UI.Labels
 {
-    public void Initialize(Enhancement enhancement)
+    public class EnhancementLeveLabel : TextSetter
     {
-        enhancement.ValueChanged += SetText;
+        public void Initialize(Enhancement enhancement)
+        {
+            enhancement.ValueChanged += SetText;
+        }
     }
 }

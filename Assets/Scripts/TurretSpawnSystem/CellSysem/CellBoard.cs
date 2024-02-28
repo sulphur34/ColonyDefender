@@ -1,124 +1,128 @@
 using System.Collections.Generic;
+using TurretSystem;
 using UnityEngine;
+using Utils.Interfaces;
 
-public class CellBoard : MonoBehaviour
+namespace TurretSpawnSystem.CellSystem
 {
-    [SerializeField] private Column[] _cells;
-    [SerializeField] private TurretFactory _turretFactory;
-
-    private readonly float _rows = 5;
-    private readonly float _columns = 5;
-
-    public float MaxTurretLevel { get; private set; }
-            
-    private void Awake()
+    public class CellBoard : MonoBehaviour
     {
-        Initialize();
-    }
+        private readonly float _rows = 5;
+        private readonly float _columns = 5;
 
-    public void AddTurret(int columnIndex, float turretLevel)
-    {
-        if (_cells[columnIndex].TryGetFreeCell(out ICell cell))
+        [SerializeField] private Column[] _cells;
+        [SerializeField] private TurretFactory _turretFactory;
+
+        public float MaxTurretLevel { get; private set; }
+
+        private void Awake()
         {
-            SetMaxTurreteLevel(turretLevel);
-            Turret turret = _turretFactory.Build(turretLevel);
-            turret.transform.position = _cells[cell.Column].SpawnPosition;
-            cell.AddTurret(turret);
-            TryMerge(cell);
-            CollapseAll();
-        }            
-    }
+            Initialize();
+        }
 
-    public void Clear()
-    {
-        MaxTurretLevel = 0;
-
-        for (int i = 0; i < _rows; i++)
+        public void AddTurret(int columnIndex, float turretLevel)
         {
-            for (int j = 0; j < _columns; j++)
+            if (_cells[columnIndex].TryGetFreeCell(out ICell cell))
             {
-                _cells[i][j].RemoveTurret();
+                SetMaxTurretLevel(turretLevel);
+                Turret turret = _turretFactory.Build(turretLevel);
+                turret.transform.position = _cells[cell.Column].SpawnPosition;
+                cell.AddTurret(turret);
+                TryMerge(cell);
+                CollapseAll();
             }
         }
-    }    
 
-    private void Initialize()
-    {
-        for (int i = 0; i < _rows; i++)
-            for (int j = 0; j < _columns; j++)
-                _cells[i][j].Initialize(j, i);
-    }
-
-    private bool TryGetMergeableCells(ICell cell, out List<ICell> mergeableCells)
-    {
-        mergeableCells = new List<ICell>();
-
-        for (int i = -1; i <= 1; i++)
+        public void Clear()
         {
-            for (int j = -1; j < 1; j++)
+            MaxTurretLevel = 0;
+
+            for (int i = 0; i < _rows; i++)
             {
-                if (Mathf.Abs(i) != Mathf.Abs(j) &&
-                    TryGetCellByPosition(cell.Row + j, cell.Column + i, out ICell adjacentCell))
+                for (int j = 0; j < _columns; j++)
                 {
-                    if (cell.CanMerge(adjacentCell))
-                        mergeableCells.Add(adjacentCell);
+                    _cells[i][j].RemoveTurret();
                 }
             }
         }
 
-        return mergeableCells.Count > 0;
-    }
-
-    private bool TryGetCellByPosition(int row, int column, out ICell cell)
-    {
-        if (row >= 0 && column >= 0 && row < _rows && column < _columns)
+        private void Initialize()
         {
-            cell = _cells[column][row];
-            return true;
+            for (int i = 0; i < _rows; i++)
+                for (int j = 0; j < _columns; j++)
+                    _cells[i][j].Initialize(j, i);
         }
 
-        cell = null;
-        return false;
-    }
-
-    private bool TryMerge(ICell cell)
-    {
-        if (TryGetMergeableCells(cell, out List<ICell> mergeableCells))
+        private bool TryGetMergeableCells(ICell cell, out List<ICell> mergeableCells)
         {
-            float mergedTurretLevel = 2 * mergeableCells.Count + (cell.TurretLevel - 1);
-            cell.RemoveTurret();
+            mergeableCells = new List<ICell>();
 
-            foreach (ICell mergedCell in mergeableCells)
-                mergedCell.RemoveTurret();
-
-            AddTurret(cell.Column, mergedTurretLevel);
-        }
-
-        return false;
-    }
-
-    private void CollapseAll()
-    {
-        foreach (IColumn column in _cells)
-        {
-            column.Collapse();            
-        }
-
-        foreach (IColumn column in _cells)
-        {
-            foreach (ICell cell in column)
+            for (int i = -1; i <= 1; i++)
             {
-                if (cell.TurretLevel > 0 && TryMerge(cell))
+                for (int j = -1; j < 1; j++)
                 {
-                    CollapseAll();
+                    if (Mathf.Abs(i) != Mathf.Abs(j) &&
+                        TryGetCellByPosition(cell.Row + j, cell.Column + i, out ICell adjacentCell))
+                    {
+                        if (cell.CanMerge(adjacentCell))
+                            mergeableCells.Add(adjacentCell);
+                    }
+                }
+            }
+
+            return mergeableCells.Count > 0;
+        }
+
+        private bool TryGetCellByPosition(int row, int column, out ICell cell)
+        {
+            if (row >= 0 && column >= 0 && row < _rows && column < _columns)
+            {
+                cell = _cells[column][row];
+                return true;
+            }
+
+            cell = null;
+            return false;
+        }
+
+        private bool TryMerge(ICell cell)
+        {
+            if (TryGetMergeableCells(cell, out List<ICell> mergeableCells))
+            {
+                float mergedTurretLevel = 2 * mergeableCells.Count + (cell.TurretLevel - 1);
+                cell.RemoveTurret();
+
+                foreach (ICell mergedCell in mergeableCells)
+                    mergedCell.RemoveTurret();
+
+                AddTurret(cell.Column, mergedTurretLevel);
+            }
+
+            return false;
+        }
+
+        private void CollapseAll()
+        {
+            foreach (IColumn column in _cells)
+            {
+                column.Collapse();
+            }
+
+            foreach (IColumn column in _cells)
+            {
+                foreach (ICell cell in column)
+                {
+                    if (cell.TurretLevel > 0 && TryMerge(cell))
+                    {
+                        CollapseAll();
+                    }
                 }
             }
         }
-        
-    }
 
-    private void SetMaxTurreteLevel(float turretLevel)
-    {
-        MaxTurretLevel = MaxTurretLevel < turretLevel ? turretLevel : MaxTurretLevel;
-    }  
+        private void SetMaxTurretLevel(float turretLevel)
+        {
+            MaxTurretLevel = MaxTurretLevel < turretLevel ? turretLevel : MaxTurretLevel;
+        }
+    }
 }

@@ -1,4 +1,9 @@
-public interface IStateSwitcher
+using GameSystem.GameStateMachineSystem;
+
+namespace Utils.Interfaces
 {
-    public void SwitchState<T>() where T : State;
+    public interface IStateSwitcher
+    {
+        public void SwitchState<T>() where T : State;
+    }
 }

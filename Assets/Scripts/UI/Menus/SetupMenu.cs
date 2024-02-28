@@ -1,3 +1,6 @@
-public class SetupMenu : Menu
+namespace UI.Menus
 {
+    public class SetupMenu : Menu
+    {
+    }
 }

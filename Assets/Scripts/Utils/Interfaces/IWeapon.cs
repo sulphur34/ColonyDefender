@@ -1,6 +1,8 @@
-public interface IWeapon
+namespace Utils.Interfaces
 {
-    public void StartFire();
-
-    public void EndFire();
+    public interface IWeapon
+    {
+        public void StartFire();
+        public void EndFire();
+    }
 }

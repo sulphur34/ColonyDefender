@@ -1,75 +1,96 @@
+using AudioSystem;
+using EnhancementSystem;
+using EnhancementSystem.Enhancements;
+using GameSystem;
+using GameSystem.GameStateMachineSystem;
 using System.Collections.Generic;
+using UI.Menus;
 using UnityEngine;
+using Utils.Interfaces;
 
-public class SaveHandler : MonoBehaviour
+namespace SaveSystem
 {
-    [SerializeField] private Enhancement[] _enhancements;
-    [SerializeField] private ResourceSystem _resourceSystem;
-    [SerializeField] private EnhancementSystem _enhancementSystem;
-    [SerializeField] private AudioManager _audioManager;
-    [SerializeField] private ResultState[] _resultStates;
-    [SerializeField] private EnhancementMenu _enhancementMenu;
-
-    private static SaveHandler _instance;
-    private List<ISaveable> _saveables;
-
-    private void Awake()
+    public class SaveHandler : MonoBehaviour
     {
-        if (_instance == null)
+        private static SaveHandler _instance;
+
+        [SerializeField] private Enhancement[] _enhancements;
+        [SerializeField] private ResourceSystem _resourceSystem;
+        [SerializeField] private EnhancementManager _enhancementSystem;
+        [SerializeField] private AudioManager _audioManager;
+        [SerializeField] private ResultState[] _resultStates;
+        [SerializeField] private EnhancementMenu _enhancementMenu;
+
+        private List<ISavable> _savable;
+
+        private void Awake()
         {
-            _instance = this;
-            Initialize();
-            return;
+            if (_instance == null)
+            {
+                _instance = this;
+                Initialize();
+                return;
+            }
+
+            Destroy(gameObject);
         }
 
-        Destroy(this.gameObject);
-    }
-
-    private void Start()
-    {
-        LoadAll();
-    }
-
-    public void SaveAll()
-    {
-        foreach (ISaveable savable in _saveables)
+        private void Start()
         {
-            savable.Save();
-        }
-    }
-
-    public void LoadAll()
-    {
-        foreach (ISaveable savable in _saveables)
-        {
-            savable.Load();
-        }
-    }
-
-    public void Reset()
-    {
-        PlayerPrefs.DeleteAll();
-        LoadAll();
-    }
-    
-    private void Initialize()
-    {
-        _saveables = new List<ISaveable>();
-
-        foreach (Enhancement enhancement in _enhancements)
-        {
-            _saveables.Add(enhancement);
+            LoadAll();
         }
 
-        _saveables.Add(_enhancementSystem);
-        _saveables.Add(_resourceSystem);
-        _saveables.Add(_audioManager);
-
-        _enhancementMenu.Closed += SaveAll;
-
-        foreach (ResultState resultState in _resultStates)
+        private void OnDestroy()
         {
-            resultState.Exited += SaveAll;
+            _enhancementMenu.Closed -= SaveAll;
+
+            foreach (ResultState resultState in _resultStates)
+            {
+                resultState.Exited -= SaveAll;
+            }
+        }
+
+        public void ResetProgress()
+        {
+            PlayerPrefs.DeleteAll();
+            LoadAll();
+        }
+
+        private void SaveAll()
+        {
+            foreach (ISavable savable in _savable)
+            {
+                savable.Save();
+            }
+        }
+
+        private void LoadAll()
+        {
+            foreach (ISavable savable in _savable)
+            {
+                savable.Load();
+            }
+        }
+
+        private void Initialize()
+        {
+            _savable = new List<ISavable>();
+
+            foreach (Enhancement enhancement in _enhancements)
+            {
+                _savable.Add(enhancement);
+            }
+
+            _savable.Add(_enhancementSystem);
+            _savable.Add(_resourceSystem);
+            _savable.Add(_audioManager);
+
+            _enhancementMenu.Closed += SaveAll;
+
+            foreach (ResultState resultState in _resultStates)
+            {
+                resultState.Exited += SaveAll;
+            }
         }
     }
 }

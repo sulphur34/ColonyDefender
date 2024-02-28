@@ -1,38 +1,41 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
-[RequireComponent(typeof(Image))]
-public class FaidingUI : MonoBehaviour
+namespace UI.EnemyPowerUI
 {
-    private Image _image;
-    private Tween _signalTween;
-    private float _fadeValue = 0.1f;
-    private float _duration = 2f;
-
-    private void Awake()
+    [RequireComponent(typeof(Image))]
+    public class FadingUI : MonoBehaviour
     {
-        _image = GetComponent<Image>();
-    }
+        private Image _image;
+        private Tween _signalTween;
+        private float _fadeValue = 0.1f;
+        private float _duration = 2f;
 
-    private void OnEnable()
-    {
-        _signalTween = _image.DOFade(_fadeValue, _duration).SetLoops(-1, LoopType.Yoyo)
-            .SetEase(Ease.Flash);
-    }
+        private void Awake()
+        {
+            _image = GetComponent<Image>();
+        }
 
-    private void OnDisable()
-    {
-        _signalTween.Kill();
-    }
+        private void OnEnable()
+        {
+            _signalTween = _image.DOFade(_fadeValue, _duration).SetLoops(-1, LoopType.Yoyo)
+                .SetEase(Ease.Flash);
+        }
 
-    public void Show()
-    {
-        _image.enabled = true;
-    }
+        private void OnDisable()
+        {
+            _signalTween.Kill();
+        }
 
-    public void Hide()
-    {
-        _image.enabled = false;
+        public void Show()
+        {
+            _image.enabled = true;
+        }
+
+        public void Hide()
+        {
+            _image.enabled = false;
+        }
     }
 }

@@ -1,24 +1,28 @@
-using UnityEngine;
+using EnhancementSystem.Enhancements;
 using Lean.Localization;
+using UnityEngine;
 
-public class TurretLevelRequirementLabel : CostLabel
+namespace UI.Labels
 {
-    [SerializeField] private BaseTurretLevel _baseTurretLevel;
-    [SerializeField] private LeanPhrase _phrase;
-
-    private void OnEnable()
+    public class TurretLevelRequirementLabel : CostLabel
     {
-        LeanLocalization.OnLocalizationChanged += SetLabelValue;
-    }
+        [SerializeField] private BaseTurretLevel _baseTurretLevel;
+        [SerializeField] private LeanPhrase _phrase;
 
-    private void OnDisable()
-    {
-        LeanLocalization.OnLocalizationChanged -= SetLabelValue;
-    }
+        private void OnEnable()
+        {
+            LeanLocalization.OnLocalizationChanged += SetLabelValue;
+        }
 
-    public override void SetLabelValue()
-    {
-        string prefix = LeanLocalization.GetTranslationText(_phrase.name);
-        SetTextWithPrefix(prefix, _baseTurretLevel.UpgradeRequirement);
+        private void OnDisable()
+        {
+            LeanLocalization.OnLocalizationChanged -= SetLabelValue;
+        }
+
+        public override void SetLabelValue()
+        {
+            string prefix = LeanLocalization.GetTranslationText(_phrase.name);
+            SetTextWithPrefix(prefix, _baseTurretLevel.UpgradeRequirement);
+        }
     }
 }

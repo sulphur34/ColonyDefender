@@ -1,25 +1,30 @@
+using GameSystem.GameStateMachineSystem;
+using UI.LevelProgressUI;
 using UnityEngine;
 
-public class MainMenu : Menu
+namespace UI.Menus
 {
-    [SerializeField] private PauseState _pauseState;
-    [SerializeField] private LevelProgressUI _levelProgressUI;
-
-    private void OnEnable()
+    public class MainMenu : Menu
     {
-        _pauseState.Entered += Open;
-        _pauseState.Exited += Close;
-    }
+        [SerializeField] private PauseState _pauseState;
+        [SerializeField] private LevelProgressPanel _levelProgressUI;
 
-    private void OnDisable()
-    {
-        _pauseState.Entered -= Open;
-        _pauseState.Exited -= Close;
-    }
+        private void OnEnable()
+        {
+            _pauseState.Entered += Open;
+            _pauseState.Exited += Close;
+        }
 
-    public override void Open()
-    {
-        base.Open();
-        _levelProgressUI.Reset();
+        private void OnDisable()
+        {
+            _pauseState.Entered -= Open;
+            _pauseState.Exited -= Close;
+        }
+
+        public override void Open()
+        {
+            base.Open();
+            _levelProgressUI.ResetPanel();
+        }
     }
 }

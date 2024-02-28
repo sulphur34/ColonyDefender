@@ -1,15 +1,20 @@
-public class CostLabel : TextSetter
-{
-    private Purchase _purchase;
+using GameSystem;
 
-    public void Initialize(Purchase purchase)
+namespace UI.Labels
+{
+    public class CostLabel : TextSetter
     {
-        _purchase = purchase;
-        _purchase.Completed += SetLabelValue;
-    }
-    
-    public virtual void SetLabelValue()
-    {
-        SetText(_purchase.CurrentCost);
+        private Purchase _purchase;
+
+        public void Initialize(Purchase purchase)
+        {
+            _purchase = purchase;
+            _purchase.Completed += SetLabelValue;
+        }
+
+        public virtual void SetLabelValue()
+        {
+            SetText(_purchase.CurrentCost);
+        }
     }
 }

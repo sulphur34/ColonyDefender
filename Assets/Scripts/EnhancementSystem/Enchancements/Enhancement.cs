@@ -1,58 +1,66 @@
 using System;
 using UnityEngine;
+using Utils.Interfaces;
 
-public class Enhancement : MonoBehaviour, ISaveable
+namespace EnhancementSystem.Enhancements
 {
-    [SerializeField] private float _defaultValue;
-    [SerializeField] private float _upgradeStep;
-
-    protected string SaveToken;
-
-    public event Action<float> ValueChanged;
-
-    public float CurrentValue { get; private set; }
-    public float UpgradeLevel { get; private set; }
-
-    public virtual void Increase()
+    public class Enhancement : MonoBehaviour, ISavable
     {
-        SetValue(CurrentValue += _upgradeStep);
-        Save();
-        UpgradeLevel++;
-        ValueChanged?.Invoke(UpgradeLevel);
-    }
+        [SerializeField] private string _token;
+        [SerializeField] private float _defaultValue;
+        [SerializeField] private float _upgradeStep;
 
-    public virtual void Reset()
-    {
-        UpgradeLevel = 0;
-        SetValue(_defaultValue);
-        ValueChanged?.Invoke(UpgradeLevel);
-        Save();
-    }
+        public event Action<float> ValueChanged;
 
-    public virtual bool IsAvailable()
-    {
-        return true;
-    }
+        public string Token => _token;
 
-    public virtual void Save()
-    {
-        PlayerPrefs.SetFloat(SaveToken, CurrentValue);
-    }
+        public float CurrentValue { get; private set; }
+        public float UpgradeLevel { get; private set; }
 
-    public virtual void Load()
-    {
-        if (PlayerPrefs.HasKey(SaveToken))
+        public virtual void Increase()
         {
-            CurrentValue = PlayerPrefs.GetFloat(SaveToken);
-            UpgradeLevel = Mathf.Round((CurrentValue - _defaultValue) / _upgradeStep);
+            SetValue(CurrentValue += _upgradeStep);
+            Save();
+            UpgradeLevel++;
             ValueChanged?.Invoke(UpgradeLevel);
         }
-        else
-            Reset();
-    }
 
-    private void SetValue(float value)
-    {
-        CurrentValue = value;
+        public virtual void Reset()
+        {
+            UpgradeLevel = 0;
+            SetValue(_defaultValue);
+            ValueChanged?.Invoke(UpgradeLevel);
+            Save();
+        }
+
+        public virtual bool IsAvailable()
+        {
+            return true;
+        }
+
+        public virtual void Save()
+        {
+            PlayerPrefs.SetFloat(_token, CurrentValue);
+        }
+
+        public virtual void Load()
+        {
+            if (PlayerPrefs.HasKey(_token))
+            {
+
+                CurrentValue = PlayerPrefs.GetFloat(_token);
+                UpgradeLevel = Mathf.Round((CurrentValue - _defaultValue) / _upgradeStep);
+                ValueChanged?.Invoke(UpgradeLevel);
+            }
+            else
+            {
+                Reset();
+            }
+        }
+
+        private void SetValue(float value)
+        {
+            CurrentValue = value;
+        }
     }
 }

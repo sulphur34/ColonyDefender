@@ -1,24 +1,30 @@
+using GameSystem;
+using GameSystem.GameStateMachineSystem;
+using TurretSpawnSystem.CellSystem;
 using UnityEngine;
 
-public class ExitButton : MenuSwitchButton
+namespace UI.Buttons
 {
-    [SerializeField] private LevelFactory _levelFactory;
-    [SerializeField] private CellBoard _cellBoard;
-    [SerializeField] private GameStateMachine _gameStateMachine;
-
-    private Level _level;
-
-    protected override void Start()
+    public class ExitButton : MenuSwitchButton
     {
-        _levelFactory.Built += (level) => _level = level;
-        Button.onClick.AddListener(ClearLevel);
-        Button.onClick.AddListener(_gameStateMachine.SwitchState<PauseState>);
-        base.Start();
-    }
+        [SerializeField] private LevelFactory _levelFactory;
+        [SerializeField] private CellBoard _cellBoard;
+        [SerializeField] private GameStateMachine _gameStateMachine;
 
-    private void ClearLevel()
-    {
-        _level.Clear();
-        _cellBoard.Clear();
+        private Level _level;
+
+        protected override void Start()
+        {
+            _levelFactory.Built += (level) => _level = level;
+            Button.onClick.AddListener(ClearLevel);
+            Button.onClick.AddListener(_gameStateMachine.SwitchState<PauseState>);
+            base.Start();
+        }
+
+        private void ClearLevel()
+        {
+            _level.Clear();
+            _cellBoard.Clear();
+        }
     }
 }

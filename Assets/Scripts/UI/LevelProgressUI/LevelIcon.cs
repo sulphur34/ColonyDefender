@@ -2,18 +2,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelIcon : MonoBehaviour
+namespace UI.LevelProgressUI
 {
-    [SerializeField] private Image _image;
-    [SerializeField] private TextMeshProUGUI _text;
-
-    public void SetColor(Color color)
+    public class LevelIcon : MonoBehaviour
     {
-        _image.color = color;
-    }
+        [SerializeField] private Image _image;
+        [SerializeField] private TextMeshProUGUI _text;
 
-    public void SetText(string text)
-    {
-        _text.text = text;
+        public void SetColor(Color color)
+        {
+            _image.color = color;
+        }
+
+        public void SetText(string text)
+        {
+            _text.text = text;
+        }
     }
 }

@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class SpawnExplanationPanel : ExplanationPanel
+namespace UI.Menus
 {
-    [SerializeField] GameObject _spawnButtonGameobject;
-
-    public override void Open()
+    public class SpawnExplanationPanel : ExplanationPanel
     {
-        _spawnButtonGameobject.SetActive(true);
-        base.Open();
-    }
+        [SerializeField] private GameObject _spawnButtonGameobject;
 
-    public override void Close()
-    {
-        _spawnButtonGameobject.SetActive(false);
-        base.Close();
+        public override void Open()
+        {
+            _spawnButtonGameobject.SetActive(true);
+            base.Open();
+        }
+
+        public override void Close()
+        {
+            _spawnButtonGameobject.SetActive(false);
+            base.Close();
+        }
     }
 }

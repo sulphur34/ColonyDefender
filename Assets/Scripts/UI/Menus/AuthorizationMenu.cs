@@ -1,3 +1,6 @@
-public class AuthorizationMenu : Menu
+namespace UI.Menus
 {
+    public class AuthorizationMenu : Menu
+    {
+    }
 }

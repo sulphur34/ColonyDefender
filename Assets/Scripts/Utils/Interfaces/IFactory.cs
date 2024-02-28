@@ -1,4 +1,7 @@
-public interface IFactory<T>
+namespace Utils.Interfaces
 {
-    public T Build(float levelIndex);
+    public interface IFactory<T>
+    {
+        public T Build(float levelIndex);
+    }
 }

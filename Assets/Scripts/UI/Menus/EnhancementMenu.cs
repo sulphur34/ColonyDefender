@@ -1,28 +1,32 @@
+using UI.Labels;
 using UnityEngine;
 
-public class EnhancementMenu : Menu
+namespace UI.Menus
 {
-    [SerializeField] EnhansementPanel[] _enhansementPanels;
-
-    private void Start()
+    public class EnhancementMenu : Menu
     {
-        Initialize();
-        Opened += RefreshValues;
-    }
+        [SerializeField] private EnhansementPanel[] _enhancementPanels;
 
-    private void Initialize()
-    {
-        foreach (EnhansementPanel panel in _enhansementPanels)
+        private void Start()
         {
-            panel.EnhancementPurchased += RefreshValues;
+            Initialize();
+            Opened += RefreshValues;
         }
-    }
 
-    private void RefreshValues()
-    {
-        foreach (EnhansementPanel panel in _enhansementPanels)
+        private void Initialize()
         {
-            panel.SetState();
+            foreach (EnhansementPanel panel in _enhancementPanels)
+            {
+                panel.EnhancementPurchased += RefreshValues;
+            }
+        }
+
+        private void RefreshValues()
+        {
+            foreach (EnhansementPanel panel in _enhancementPanels)
+            {
+                panel.SetState();
+            }
         }
     }
 }

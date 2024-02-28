@@ -1,21 +1,25 @@
 using UnityEngine;
+using Utils.Interfaces;
 
-public class Location : MonoBehaviour
+namespace Terrain
 {
-    [SerializeField] private Route[] _routes;
-
-    public int RoutesAmount => _routes.Length;
-
-    public bool TryGetRoute(int routeIndex, out IRoute route)
+    public class Location : MonoBehaviour
     {
-        route = null;
+        [SerializeField] private Route[] _routes;
 
-        if (routeIndex < _routes.Length) 
+        public int RoutesAmount => _routes.Length;
+
+        public bool TryGetRoute(int routeIndex, out IRoute route)
         {
-            route = _routes[routeIndex];
-            return true;
-        }
+            route = null;
 
-        return false;
+            if (routeIndex < _routes.Length)
+            {
+                route = _routes[routeIndex];
+                return true;
+            }
+
+            return false;
+        }
     }
 }

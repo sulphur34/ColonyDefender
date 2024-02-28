@@ -1,27 +1,30 @@
 using Agava.YandexGames;
 using UnityEngine;
 
-public class LeaderboardButton : MenuSwitchButton
+namespace UI.Buttons
 {
-    [SerializeField] MenuSwitcher _authorizationSwitcher;
-
-    protected override void Start()
+    public class LeaderboardButton : MenuSwitchButton
     {
-        Button.onClick.AddListener(OpenLeaderboard);        
-    }
+        [SerializeField] private MenuSwitcher _authorizationSwitcher;
 
-    private void OpenLeaderboard()
-    {
-        if (PlayerAccount.IsAuthorized)
+        protected override void Start()
         {
-            PlayerAccount.RequestPersonalProfileDataPermission();
-            Switch();
-            return;
+            Button.onClick.AddListener(OpenLeaderboard);
         }
-        
-        _authorizationSwitcher.Switch();
 
-        if (PlayerAccount.IsAuthorized == false)
-            return;
+        private void OpenLeaderboard()
+        {
+            if (PlayerAccount.IsAuthorized)
+            {
+                PlayerAccount.RequestPersonalProfileDataPermission();
+                Switch();
+                return;
+            }
+
+            _authorizationSwitcher.Switch();
+
+            if (PlayerAccount.IsAuthorized == false)
+                return;
+        }
     }
 }

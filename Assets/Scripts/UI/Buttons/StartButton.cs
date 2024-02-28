@@ -1,23 +1,28 @@
+using EnhancementSystem;
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
-public class StartButton : MenuSwitchButton
+namespace UI.Buttons
 {
-    public const float TrainingLevelsValue = 2;
-
-    [SerializeField] private GameStateMachine _gameStateMachine;
-    [SerializeField] private EnhancementSystem _enhancementSystem;
-            
-    protected override void Start()
+    public class StartButton : MenuSwitchButton
     {
-        base.Start();
-        Button.onClick.AddListener(StartGame);        
-    }
+        private const float TrainingLevelsValue = 2;
 
-    private void StartGame()
-    {
-        if (_enhancementSystem.GameLevelValue <= TrainingLevelsValue)
-            _gameStateMachine.SwitchState<TrainingState>();
-        else
-            _gameStateMachine.SwitchState<BuildState>();
+        [SerializeField] private GameStateMachine _gameStateMachine;
+        [SerializeField] private EnhancementManager _enhancementSystem;
+
+        protected override void Start()
+        {
+            base.Start();
+            Button.onClick.AddListener(StartGame);
+        }
+
+        private void StartGame()
+        {
+            if (_enhancementSystem.GameLevelValue <= TrainingLevelsValue)
+                _gameStateMachine.SwitchState<TrainingState>();
+            else
+                _gameStateMachine.SwitchState<BuildState>();
+        }
     }
 }

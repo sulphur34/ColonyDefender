@@ -1,4 +1,7 @@
-public interface IDamageable
+namespace Utils.Interfaces
 {
-    public void TakeDamage(float damage);
+    public interface IDamageable
+    {
+        public void TakeDamage(float damage);
+    }
 }

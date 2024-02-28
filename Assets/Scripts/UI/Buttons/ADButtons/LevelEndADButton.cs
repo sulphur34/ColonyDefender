@@ -1,29 +1,33 @@
 using System;
+using UI.MultiplierSelector;
 using UnityEngine;
 
-public class LevelEndADButton : ADRewardedButton
+namespace UI.Buttons.ADButtons
 {
-    [SerializeField] private MultiplierSelectorUI _selectorUI;
-    [SerializeField] private MenuSwitcher _menuSwitcher;
-
-    private float _multiplier;
-
-    public event Action<float> RewardGained;
-       
-    protected override void OnButtonClick()
+    public class LevelEndADButton : ADRewardedButton
     {
-        _multiplier = _selectorUI.Multiplier;
-        _selectorUI.Deactivate();
-    }
+        [SerializeField] private MultiplierSelectorUI _selectorUI;
+        [SerializeField] private MenuSwitcher _menuSwitcher;
 
-    protected override void OnRewardGained()
-    {
-        RewardGained.Invoke(_multiplier);
-        _menuSwitcher.Switch();
-    }
+        private float _multiplier;
 
-    protected override void OnVideoClose()
-    {
-        _selectorUI.Activate();
+        public event Action<float> RewardGained;
+
+        protected override void OnButtonClick()
+        {
+            _multiplier = _selectorUI.Multiplier;
+            _selectorUI.Deactivate();
+        }
+
+        protected override void OnRewardGained()
+        {
+            RewardGained?.Invoke(_multiplier);
+            _menuSwitcher.Switch();
+        }
+
+        protected override void OnVideoClose()
+        {
+            _selectorUI.Activate();
+        }
     }
 }

@@ -1,15 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public interface IColumn
+namespace Utils.Interfaces
 {
-    public Vector3 SpawnPosition { get; }
+    public interface IColumn
+    {
+        public Vector3 SpawnPosition { get; }
 
-    public IEnumerator GetEnumerator();
+        public IEnumerator GetEnumerator();
 
-    public void Collapse();
+        public void Collapse();
 
-    public bool TryGetFreeCell(out ICell cell);
+        public bool TryGetFreeCell(out ICell cell);
 
-    public bool TryGetNextOccupiedCell(ICell Cell, out ICell nextCell);
+        public bool TryGetNextOccupiedCell(ICell Cell, out ICell nextCell);
+    }
 }

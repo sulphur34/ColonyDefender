@@ -1,12 +1,16 @@
+using LeaderboardSystem;
 using UnityEngine;
 
-public class LeaderboardMenu : Menu
+namespace UI.Menus
 {
-    [SerializeField] private YandexLeaderboard _leaderboard;
-
-    public override void Open()
+    public class LeaderboardMenu : Menu
     {
-        base.Open();
-        _leaderboard.Fill();
+        [SerializeField] private YandexLeaderboard _leaderboard;
+
+        public override void Open()
+        {
+            base.Open();
+            _leaderboard.Fill();
+        }
     }
 }

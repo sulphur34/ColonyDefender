@@ -1,7 +1,12 @@
-public class EnemyPowerLabel : TextSetter
+using UI.Labels;
+
+namespace UI.EnemyPowerUI
 {
-    public void SetPowerValue(float powerValue)
+    public class EnemyPowerLabel : TextSetter
     {
-        SetText(powerValue);
+        public void SetPowerValue(float powerValue)
+        {
+            SetText(powerValue);
+        }
     }
 }

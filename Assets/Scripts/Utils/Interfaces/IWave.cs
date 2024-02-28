@@ -1,13 +1,17 @@
+using EnemySystem;
 using System;
 using System.Collections.Generic;
 
-public interface IWave
+namespace Utils.Interfaces
 {
-    public event Action EnemiesDestroyed;
+    public interface IWave
+    {
+        public event Action EnemiesDestroyed;
 
-    public IReadOnlyList<float> RouteData { get; }
-    public bool IsSpawned { get; }
-    public Enemy GetNextEnenmyToSpawn();
+        public IReadOnlyList<float> RouteData { get; }
+        public bool IsSpawned { get; }
+        public Enemy GetNextEnenmyToSpawn();
 
-    public void Clear();
+        public void Clear();
+    }
 }

@@ -1,17 +1,21 @@
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
-public class LevelIncomeLabel : TextSetter
+namespace UI.Labels
 {
-    [SerializeField] private ResultState _resultState;
-
-    private void Start()
+    public class LevelIncomeLabel : TextSetter
     {
-        _resultState.Entered += SetIncome;
-    }
+        [SerializeField] private ResultState _resultState;
 
-    private void SetIncome()
-    {
-        SetText(_resultState.Reward);
-        ResizeText();
+        private void Start()
+        {
+            _resultState.Entered += SetIncome;
+        }
+
+        private void SetIncome()
+        {
+            SetText(_resultState.Reward);
+            ResizeText();
+        }
     }
 }

@@ -1,18 +1,21 @@
 using System;
 
-public class OffTimerADButton : ADRewardedButton
+namespace UI.Buttons.ADButtons
 {
-    public event Action RewardGained;
-
-    protected override void OnButtonClick()
+    public class OffTimerADButton : ADRewardedButton
     {
-        RewardGained?.Invoke();
-    }
+        public event Action RewardGained;
 
-    protected override void OnRewardGained() 
-    {
-        gameObject.SetActive(false);
-    }
+        protected override void OnButtonClick()
+        {
+            RewardGained?.Invoke();
+        }
 
-    protected override void OnVideoClose() { }
+        protected override void OnRewardGained()
+        {
+            gameObject.SetActive(false);
+        }
+
+        protected override void OnVideoClose() { }
+    }
 }

@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class TurretNumber : MonoBehaviour
+namespace UI
 {
-    private Transform _transform;
-
-    private void Start()
+    public class TurretNumber : MonoBehaviour
     {
-        _transform = transform;
-    }
+        private Transform _transform;
 
-    private void Update()
-    {
-        _transform.forward = Vector3.up;
+        private void Start()
+        {
+            _transform = transform;
+        }
+
+        private void Update()
+        {
+            _transform.forward = Vector3.up;
+        }
     }
 }

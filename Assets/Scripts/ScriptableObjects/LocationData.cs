@@ -1,11 +1,15 @@
+using Terrain;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Location Data", fileName = "new location data", order = 55)]
-public class LocationData : ScriptableObject
+namespace ScriptableObjects
 {
-    [SerializeField] Location _location;
-    [SerializeField] Material _skyboxMaterial;
+    [CreateAssetMenu(menuName = "Location Data", fileName = "new location data", order = 55)]
+    public class LocationData : ScriptableObject
+    {
+        [SerializeField] private Location _location;
+        [SerializeField] private Material _skyboxMaterial;
 
-    public Location Location => _location;
-    public Material skyboxMaterial => _skyboxMaterial;
+        public Location Location => _location;
+        public Material SkyboxMaterial => _skyboxMaterial;
+    }
 }

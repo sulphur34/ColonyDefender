@@ -1,18 +1,22 @@
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
-public class LooseMenu : Menu
+namespace UI.Menus
 {
-    [SerializeField] private LooseState _looseState;
-
-    private void OnEnable()
+    public class LooseMenu : Menu
     {
-        _looseState.Entered += Open;
-        _looseState.Exited += Close;
-    }
+        [SerializeField] private LooseState _looseState;
 
-    private void OnDisable()
-    {
-        _looseState.Entered -= Open;
-        _looseState.Exited -= Close;
+        private void OnEnable()
+        {
+            _looseState.Entered += Open;
+            _looseState.Exited += Close;
+        }
+
+        private void OnDisable()
+        {
+            _looseState.Entered -= Open;
+            _looseState.Exited -= Close;
+        }
     }
 }

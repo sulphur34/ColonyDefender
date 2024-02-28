@@ -1,62 +1,68 @@
+using EnhancementSystem.Enhancements;
+using GameSystem;
 using System;
+using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-public class EnhansementPanel : MonoBehaviour
+namespace UI.Labels
 {
-    [SerializeField] private PurchaseButton _purchaseButton;
-    [SerializeField] private EnhancementLeveLabel _enchancementLeveLabel;
-    [SerializeField] private CostLabel _costLabel;
-    [SerializeField] private Image _upgradeAvailableImage;
-    [SerializeField] private ResourceSystem _resourceSystem;
-    [SerializeField] private Enhancement _enhancement;
-    [SerializeField] private Color _enableColor;
-    [SerializeField] private Color _disableColor;
-
-    private Purchase _purchase;
-    private Image _image;
-
-    public event Action EnhancementPurchased;
-
-    public bool CanBuy => _purchase.CanBuy;
-
-    private void Awake()
+    [RequireComponent(typeof(Image))]
+    public class EnhansementPanel : MonoBehaviour
     {
-        _purchase = GetComponent<Purchase>();
-        _image = GetComponent<Image>();
-        Initialize();
-    }
+        [SerializeField] private PurchaseButton _purchaseButton;
+        [SerializeField] private EnhancementLeveLabel _enchancementLeveLabel;
+        [SerializeField] private CostLabel _costLabel;
+        [SerializeField] private Image _upgradeAvailableImage;
+        [SerializeField] private ResourceSystem _resourceSystem;
+        [SerializeField] private Enhancement _enhancement;
+        [SerializeField] private Color _enableColor;
+        [SerializeField] private Color _disableColor;
 
-    public void SetState()
-    {
-        if (_purchase.CanBuy)
+        private Purchase _purchase;
+        private Image _image;
+
+        public event Action EnhancementPurchased;
+
+        public bool CanBuy => _purchase.CanBuy;
+
+        private void Awake()
         {
-            _purchaseButton.Enable();
-            _upgradeAvailableImage.enabled = true;
-            _image.color = _enableColor;
-        }
-        else
-        {
-            _purchaseButton.Disable();
-            _upgradeAvailableImage.enabled = false;
-            _image.color = _disableColor;
+            _purchase = GetComponent<Purchase>();
+            _image = GetComponent<Image>();
+            Initialize();
         }
 
-        _costLabel.SetLabelValue();
-    }
+        public void SetState()
+        {
+            if (_purchase.CanBuy)
+            {
+                _purchaseButton.Enable();
+                _upgradeAvailableImage.enabled = true;
+                _image.color = _enableColor;
+            }
+            else
+            {
+                _purchaseButton.Disable();
+                _upgradeAvailableImage.enabled = false;
+                _image.color = _disableColor;
+            }
 
-    private void Initialize()
-    {
-        _purchase.Initialize(_resourceSystem, _enhancement);
-        _purchaseButton.Initialize(_purchase);
-        _enchancementLeveLabel.Initialize(_enhancement);
-        _costLabel.Initialize(_purchase);
-        _purchase.Completed += OnPurchaseCompleted;
-    }
-    
-    private void OnPurchaseCompleted()
-    {
-        EnhancementPurchased?.Invoke();
+            _costLabel.SetLabelValue();
+        }
+
+        private void Initialize()
+        {
+            _purchase.Initialize(_resourceSystem, _enhancement);
+            _purchaseButton.Initialize(_purchase);
+            _enchancementLeveLabel.Initialize(_enhancement);
+            _costLabel.Initialize(_purchase);
+            _purchase.Completed += OnPurchaseCompleted;
+        }
+
+        private void OnPurchaseCompleted()
+        {
+            EnhancementPurchased?.Invoke();
+        }
     }
 }

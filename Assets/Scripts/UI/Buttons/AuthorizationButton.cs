@@ -1,39 +1,41 @@
 using Agava.YandexGames;
 using UnityEngine;
 
-public class AuthorizationButton : MenuSwitchButton
+namespace UI.Buttons
 {
-    [SerializeField] private MenuSwitcher _mainMenuSwitcher;
-    [SerializeField] private GameObject _waitingPanel;
-
-    protected override void Start()
+    public class AuthorizationButton : MenuSwitchButton
     {
-        Button.onClick.AddListener(OpenAuthorization);
-    }
+        [SerializeField] private MenuSwitcher _mainMenuSwitcher;
+        [SerializeField] private GameObject _waitingPanel;
 
-    private void OpenAuthorization()
-    {
-        if (PlayerAccount.IsAuthorized)
+        protected override void Start()
         {
-            PlayerAccount.RequestPersonalProfileDataPermission();
-            Switch();
-            return;
+            Button.onClick.AddListener(OpenAuthorization);
         }
 
-        PlayerAccount.Authorize(OnSuccessCallback, OnErrorCallback);
-        _waitingPanel.SetActive(true);
+        private void OpenAuthorization()
+        {
+            if (PlayerAccount.IsAuthorized)
+            {
+                PlayerAccount.RequestPersonalProfileDataPermission();
+                Switch();
+                return;
+            }
 
-    }
+            PlayerAccount.Authorize(OnSuccessCallback, OnErrorCallback);
+            _waitingPanel.SetActive(true);
+        }
 
-    private void OnSuccessCallback()
-    {
-        _waitingPanel.SetActive(false);
-        Switch();
-    }
+        private void OnSuccessCallback()
+        {
+            _waitingPanel.SetActive(false);
+            Switch();
+        }
 
-    private void OnErrorCallback(string errorMessage)
-    {
-        _waitingPanel.SetActive(false);
-        _mainMenuSwitcher.Switch();
+        private void OnErrorCallback(string errorMessage)
+        {
+            _waitingPanel.SetActive(false);
+            _mainMenuSwitcher.Switch();
+        }
     }
 }

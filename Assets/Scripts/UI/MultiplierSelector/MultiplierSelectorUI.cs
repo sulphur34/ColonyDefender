@@ -1,49 +1,53 @@
+using GameSystem.GameStateMachineSystem;
 using System;
 using UnityEngine;
 
-public class MultiplierSelectorUI : MonoBehaviour
+namespace UI.MultiplierSelector
 {
-    [SerializeField] private MultiplierField[] _multiplierFields;
-    [SerializeField] private MultiplierArrow _multiplierArrow;
-    [SerializeField] private ResultState _resultState;
-
-    public event Action<float> MultiplierChanged;
-
-    public float Multiplier { get; private set; }
-
-    private void Start()
+    public class MultiplierSelectorUI : MonoBehaviour
     {
-        Initialize();
-        _resultState.Entered += Activate;
-        _resultState.Exited += Deactivate;
-    }
+        [SerializeField] private MultiplierField[] _multiplierFields;
+        [SerializeField] private MultiplierArrow _multiplierArrow;
+        [SerializeField] private ResultState _resultState;
 
-    public void Activate()
-    {
-        _multiplierArrow.Reset();
-    }
+        public event Action<float> MultiplierChanged;
 
-    public void Stop()
-    {
-        _multiplierArrow.Stop();
-    }
-    
-    public void Deactivate()
-    {
-        _multiplierArrow.Stop();
-    }
+        public float Multiplier { get; private set; }
 
-    private void Initialize()
-    {
-        foreach (MultiplierField field in _multiplierFields)
+        private void Start()
         {
-            field.Entered += SetMultiplier;
+            Initialize();
+            _resultState.Entered += Activate;
+            _resultState.Exited += Deactivate;
         }
-    }
 
-    private void SetMultiplier(float multiplier)
-    {
-        Multiplier = multiplier;
-        MultiplierChanged.Invoke(Multiplier);
+        public void Activate()
+        {
+            _multiplierArrow.Restart();
+        }
+
+        public void Stop()
+        {
+            _multiplierArrow.Stop();
+        }
+
+        public void Deactivate()
+        {
+            _multiplierArrow.Stop();
+        }
+
+        private void Initialize()
+        {
+            foreach (MultiplierField field in _multiplierFields)
+            {
+                field.Entered += SetMultiplier;
+            }
+        }
+
+        private void SetMultiplier(float multiplier)
+        {
+            Multiplier = multiplier;
+            MultiplierChanged?.Invoke(Multiplier);
+        }
     }
 }

@@ -1,17 +1,21 @@
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
-public class TurretsAmountLabel : TextSetter
+namespace UI.Labels
 {
-    [SerializeField] private BuildState _buildState;
-
-    private void Awake()
+    public class TurretsAmountLabel : TextSetter
     {
-        _buildState.TurretsAmountChanged += SetText;
-        _buildState.Exited += OnBuildFinished;
-    }
+        [SerializeField] private BuildState _buildState;
 
-    private void OnBuildFinished()
-    {
-        gameObject.SetActive(false);
+        private void Awake()
+        {
+            _buildState.TurretsAmountChanged += SetText;
+            _buildState.Exited += OnBuildFinished;
+        }
+
+        private void OnBuildFinished()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

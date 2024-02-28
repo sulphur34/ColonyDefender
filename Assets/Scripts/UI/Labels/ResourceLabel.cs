@@ -1,11 +1,15 @@
+using GameSystem;
 using UnityEngine;
 
-public class ResourceLabel : TextSetter
+namespace UI.Labels
 {
-    [SerializeField] private ResourceSystem _resourceSystem;
-
-    private void Awake()
+    public class ResourceLabel : TextSetter
     {
-        _resourceSystem.AmountChanged += SetText;
+        [SerializeField] private ResourceSystem _resourceSystem;
+
+        private void Awake()
+        {
+            _resourceSystem.AmountChanged += SetText;
+        }
     }
 }

@@ -1,16 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
-[RequireComponent(typeof(Button))]
-[RequireComponent(typeof(VideoAD))]
-public class ADInterstitialButton : ADButton
+namespace UI.Buttons.ADButtons
 {
-    protected override void OnButtonClick() {}
-
-    protected override void OnVideoClose() {}
-
-    protected override void ShowAD()
+    [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(VideoAD))]
+    public class ADInterstitialButton : ADButton
     {
-        VideoAD.ShowInter();
+        protected override void OnButtonClick() { }
+
+        protected override void OnVideoClose() { }
+
+        protected override void ShowAD()
+        {
+            VideoAD.ShowInter();
+        }
     }
 }

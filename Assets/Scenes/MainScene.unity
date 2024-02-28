@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071756ad5881af842b8784a50a02674a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enhansementPanels:
+  _enhancementPanels:
   - {fileID: 1665810258}
   - {fileID: 1487671748}
   - {fileID: 847873609}
@@ -2641,7 +2641,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 282950373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ec75f318ed31941b28ad4656f98bd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 40a3bb1945ae44e458c89fd86d97e650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EnhancementSystem: {fileID: 1154679556}
@@ -2767,7 +2767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd1a134c14c08e4991d15667ffd0e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defenceState: {fileID: 282950376}
+  _defenseState: {fileID: 282950376}
 --- !u!65 &286282409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3146,7 +3146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b01d5639bfa92469d2e426d0abd7e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defenceState: {fileID: 282950376}
+  _defenseState: {fileID: 282950376}
   _trainingState: {fileID: 282950381}
   _buildState: {fileID: 282950377}
   _turretsAmountLabel: {fileID: 500423286}
@@ -3881,8 +3881,8 @@ GameObject:
   - component: {fileID: 386576792}
   - component: {fileID: 386576791}
   - component: {fileID: 386576790}
-  - component: {fileID: 386576795}
   - component: {fileID: 386576794}
+  - component: {fileID: 386576796}
   m_Layer: 5
   m_Name: SkipButton
   m_TagString: Untagged
@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026a382da0de87f48bc8d55a6f0d7e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &386576795
+--- !u!114 &386576796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4027,7 +4027,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 386576788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e8e17cadba85438df35b97c00e653, type: 3}
+  m_Script: {fileID: 11500000, guid: a83d1aae4cffa364080728411191d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
@@ -8040,7 +8040,7 @@ GameObject:
   - component: {fileID: 750399031}
   - component: {fileID: 750399030}
   - component: {fileID: 750399033}
-  - component: {fileID: 750399034}
+  - component: {fileID: 750399035}
   m_Layer: 5
   m_Name: OffTimerButton
   m_TagString: Untagged
@@ -8164,7 +8164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fcd563371649847828dc66a6e8652b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &750399034
+--- !u!114 &750399035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8173,7 +8173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 750399028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e8e17cadba85438df35b97c00e653, type: 3}
+  m_Script: {fileID: 11500000, guid: a83d1aae4cffa364080728411191d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
@@ -12409,6 +12409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelBatchValue: 5
+  _token: MaxTurretBuilt
 --- !u!4 &1154679557
 Transform:
   m_ObjectHideFlags: 0
@@ -12433,9 +12434,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154679555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef08e736c001aa5428c471c908edb532, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fbe7b49abe95b43924cfe780fb7a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _token: IncomeUpgrade
   _defaultValue: 1
   _upgradeStep: 0.1
 --- !u!114 &1154679559
@@ -12447,9 +12449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154679555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 591efba9e79d6bb4bafdf45e2a249ac8, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fbe7b49abe95b43924cfe780fb7a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _token: ProgressLevel
   _defaultValue: 1
   _upgradeStep: 1
 --- !u!114 &1154679560
@@ -12461,9 +12464,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154679555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99f0a4900b3d1a24a96c45dec94dc35f, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fbe7b49abe95b43924cfe780fb7a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _token: FireRateUpgrade
   _defaultValue: 1
   _upgradeStep: 0.05
 --- !u!114 &1154679561
@@ -12475,9 +12479,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154679555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39a19b8c19df9c44f95c155b29d52a2c, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fbe7b49abe95b43924cfe780fb7a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _token: DamageUpgrade
   _defaultValue: 2
   _upgradeStep: 0.05
 --- !u!114 &1154679562
@@ -12489,9 +12494,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1154679555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b63ecf83ff7311442bae5705407a3b42, type: 3}
+  m_Script: {fileID: 11500000, guid: 41fbe7b49abe95b43924cfe780fb7a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _token: TimeUpgrade
   _defaultValue: 20
   _upgradeStep: 1
 --- !u!114 &1154679563
@@ -12506,6 +12512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768244edc574f1e4d923d5bc862cdada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _token: TurretLevel
   _defaultValue: 1
   _upgradeStep: 1
   _upgradeRequirementStep: 8
@@ -15304,17 +15311,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1359453560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1299d80faac9da54992e8a43055843fe, type: 3}
+  m_Script: {fileID: 11500000, guid: e92efd1409775b049b3a0797df244e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
   _videoADs:
-  - {fileID: 1466635733}
-  - {fileID: 1770985599}
   - {fileID: 1389873270}
-  - {fileID: 750399034}
-  - {fileID: 386576795}
-  - {fileID: 1788661188}
+  - {fileID: 1466635734}
+  - {fileID: 1770985600}
+  - {fileID: 1788661189}
+  - {fileID: 750399035}
+  - {fileID: 386576796}
 --- !u!4 &1359453562
 Transform:
   m_ObjectHideFlags: 0
@@ -15778,7 +15785,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1389873264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e8e17cadba85438df35b97c00e653, type: 3}
+  m_Script: {fileID: 11500000, guid: a83d1aae4cffa364080728411191d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
@@ -16422,7 +16429,7 @@ GameObject:
   - component: {fileID: 1466635730}
   - component: {fileID: 1466635729}
   - component: {fileID: 1466635732}
-  - component: {fileID: 1466635733}
+  - component: {fileID: 1466635734}
   m_Layer: 5
   m_Name: AdvertButton
   m_TagString: Untagged
@@ -16548,7 +16555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _selectorUI: {fileID: 1573541143}
   _menuSwitcher: {fileID: 1080897926}
---- !u!114 &1466635733
+--- !u!114 &1466635734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16557,7 +16564,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1466635727}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e8e17cadba85438df35b97c00e653, type: 3}
+  m_Script: {fileID: 11500000, guid: a83d1aae4cffa364080728411191d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
@@ -18660,7 +18667,7 @@ GameObject:
   - component: {fileID: 1770985597}
   - component: {fileID: 1770985596}
   - component: {fileID: 1770985595}
-  - component: {fileID: 1770985599}
+  - component: {fileID: 1770985600}
   m_Layer: 5
   m_Name: AdvertButton
   m_TagString: Untagged
@@ -18786,7 +18793,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770985593}
   m_CullTransparentMesh: 1
---- !u!114 &1770985599
+--- !u!114 &1770985600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18795,7 +18802,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1770985593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e8e17cadba85438df35b97c00e653, type: 3}
+  m_Script: {fileID: 11500000, guid: a83d1aae4cffa364080728411191d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
@@ -19009,8 +19016,8 @@ GameObject:
   - component: {fileID: 1788661183}
   - component: {fileID: 1788661182}
   - component: {fileID: 1788661186}
-  - component: {fileID: 1788661188}
   - component: {fileID: 1788661187}
+  - component: {fileID: 1788661189}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -19175,7 +19182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 026a382da0de87f48bc8d55a6f0d7e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1788661188
+--- !u!114 &1788661189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -19184,10 +19191,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 1788661180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c1e8e17cadba85438df35b97c00e653, type: 3}
+  m_Script: {fileID: 11500000, guid: a83d1aae4cffa364080728411191d3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 701681901}
+--- !u!1 &1790346308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790346310}
+  - component: {fileID: 1790346309}
+  m_Layer: 0
+  m_Name: EnhancementNames
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1790346309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790346308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33ef66245dabe9419262936ccaf0931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _saveParams: 0
+--- !u!4 &1790346310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790346308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 308.31952, y: 440.05298, z: -50.176952}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1795970878
 GameObject:
   m_ObjectHideFlags: 0
@@ -22703,7 +22755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67de2a461cfa42544a476bac97636229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _availableRecourcesValue: 0
+  _availableResourcesValue: 0
 --- !u!1 &2120320744
 GameObject:
   m_ObjectHideFlags: 0

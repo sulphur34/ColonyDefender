@@ -1,17 +1,21 @@
+using UI.MultiplierSelector;
 using UnityEngine;
 
-public class MultiplierLabel : TextSetter
+namespace UI.Labels
 {
-    [SerializeField] private MultiplierSelectorUI _selectorUI;
-    [SerializeField] private string _prefix;
-
-    private void Start()
+    public class MultiplierLabel : TextSetter
     {
-        _selectorUI.MultiplierChanged += SetMultiplierMessage;
-    }
+        [SerializeField] private MultiplierSelectorUI _selectorUI;
+        [SerializeField] private string _prefix;
 
-    private void SetMultiplierMessage(float multiplierValue)
-    {
-        SetTextWithPrefix(_prefix, multiplierValue);
+        private void Start()
+        {
+            _selectorUI.MultiplierChanged += SetMultiplierMessage;
+        }
+
+        private void SetMultiplierMessage(float multiplierValue)
+        {
+            SetTextWithPrefix(_prefix, multiplierValue);
+        }
     }
 }

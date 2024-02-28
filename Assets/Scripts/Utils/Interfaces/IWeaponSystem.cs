@@ -1,8 +1,12 @@
+using EnemySystem;
+using TurretSystem.Weapons;
 using UnityEngine;
 
-public interface IWeaponSystem
+namespace Utils.Interfaces
 {
-    public void Initialize(Material material, Weapon weapon, GunScheme gunsPosition, WeaponMultipliers weaponParameters);
-    public void Activate(Enemy target);
-    public void Deactivate();    
+    public interface IWeaponSystem
+    {
+        public void Initialize(Material material, Weapon weapon, GunScheme gunsPosition, WeaponMultipliers weaponParameters);
+        public void Activate(Enemy target); public void Deactivate();
+    }
 }

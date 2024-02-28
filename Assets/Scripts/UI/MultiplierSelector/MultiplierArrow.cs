@@ -1,51 +1,54 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-[RequireComponent(typeof(RectTransform))]  
-public class MultiplierArrow : MonoBehaviour
+namespace UI.MultiplierSelector
 {
-    [SerializeField] private Vector2 _moveOffcet;
-    [SerializeField] private float _animationTime = 0.5f;
-
-    private RectTransform _rectTransform;
-    private Sequence _sequence;
-    private Vector2 _startPosition;
-
-    private void Start()
+    [RequireComponent(typeof(RectTransform))]
+    public class MultiplierArrow : MonoBehaviour
     {
-        _rectTransform = GetComponent<RectTransform>();
-        _startPosition = _rectTransform.anchoredPosition;
-    }
+        [SerializeField] private Vector2 _moveOffcet;
+        [SerializeField] private float _animationTime = 0.5f;
 
-    private void OnDisable()
-    {
-        _sequence.Kill();
-    }
+        private RectTransform _rectTransform;
+        private Sequence _sequence;
+        private Vector2 _startPosition;
 
-    public void Stop()
-    {
-        _sequence.Pause();
-    }
+        private void Start()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            _startPosition = _rectTransform.anchoredPosition;
+        }
 
-    public void Play()
-    {
-        _sequence.Play();
-    }
+        private void OnDisable()
+        {
+            _sequence.Kill();
+        }
 
-    public void Reset()
-    {
-        _rectTransform.anchoredPosition = _startPosition;
-        _sequence?.Kill();
-        _sequence = DOTween.Sequence();
-        _sequence.Append(GetTweenAnimation(_startPosition + _moveOffcet));
-        _sequence.Append(GetTweenAnimation(_startPosition - _moveOffcet));
-        _sequence.SetLoops(-1, LoopType.Restart);
-    }
+        public void Stop()
+        {
+            _sequence.Pause();
+        }
 
-    private Tween GetTweenAnimation(Vector2 destination)
-    {
-        return _rectTransform.DOAnchorPos(destination, _animationTime)
-            .SetLoops(2, LoopType.Yoyo)
-            .SetEase(Ease.Flash);
+        public void Play()
+        {
+            _sequence.Play();
+        }
+
+        public void Restart()
+        {
+            _rectTransform.anchoredPosition = _startPosition;
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence();
+            _sequence.Append(GetTweenAnimation(_startPosition + _moveOffcet));
+            _sequence.Append(GetTweenAnimation(_startPosition - _moveOffcet));
+            _sequence.SetLoops(-1, LoopType.Restart);
+        }
+
+        private Tween GetTweenAnimation(Vector2 destination)
+        {
+            return _rectTransform.DOAnchorPos(destination, _animationTime)
+                .SetLoops(2, LoopType.Yoyo)
+                .SetEase(Ease.Flash);
+        }
     }
 }

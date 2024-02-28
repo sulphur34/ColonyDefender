@@ -1,20 +1,24 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
-[RequireComponent(typeof(Button))]
-[RequireComponent (typeof(VideoAD))]
-public abstract class ADRewardedButton : ADButton
+namespace UI.Buttons.ADButtons
 {
-    protected override void Awake()
+    [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(VideoAD))]
+    public abstract class ADRewardedButton : ADButton
     {
-        base.Awake();
-        VideoAD.RewardGained += OnRewardGained;
-    }
+        protected override void Awake()
+        {
+            base.Awake();
+            VideoAD.RewardGained += OnRewardGained;
+        }
 
-    protected override void ShowAD()
-    {
-        VideoAD.ShowRewarded();
-    }
+        protected override void ShowAD()
+        {
+            VideoAD.ShowRewarded();
+        }
 
-    protected abstract void OnRewardGained();
+        protected abstract void OnRewardGained();
+    }
 }

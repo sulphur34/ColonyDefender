@@ -1,28 +1,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyPowerIcon : MonoBehaviour
+namespace UI.EnemyPowerUI
 {
-    [SerializeField] private EnemyPowerLabel _powerLabel;
-    [SerializeField] private FaidingUI _signalArrow;
-    [SerializeField] private Image _enemyImage;
-
-    public void Set(float powerValue)
+    public class EnemyPowerIcon : MonoBehaviour
     {
-        _powerLabel.SetPowerValue(powerValue);
-    }
+        [SerializeField] private EnemyPowerLabel _powerLabel;
+        [SerializeField] private FadingUI _signalArrow;
+        [SerializeField] private Image _enemyImage;
 
-    public void Show()
-    {
-        _powerLabel.Show();
-        _signalArrow.Show();
-        _enemyImage.enabled = true;
-    }
+        public void Set(float powerValue)
+        {
+            _powerLabel.SetPowerValue(powerValue);
+        }
 
-    public void Hide()
-    {
-        _powerLabel.Hide();
-        _signalArrow.Hide();
-        _enemyImage.enabled = false;
+        public void Show()
+        {
+            _powerLabel.Show();
+            _signalArrow.Show();
+            _enemyImage.enabled = true;
+        }
+
+        public void Hide()
+        {
+            _powerLabel.Hide();
+            _signalArrow.Hide();
+            _enemyImage.enabled = false;
+        }
     }
 }

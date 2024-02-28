@@ -1,19 +1,17 @@
 using UnityEngine;
 
-public class BaseTurretLevel : Enhancement
+namespace EnhancementSystem.Enhancements
 {
-    [SerializeField] private float _upgradeRequirementStep;
-    [SerializeField] private EnhancementSystem _enhancementData;
-    
-    public float UpgradeRequirement => CurrentValue + _upgradeRequirementStep;
-
-    private void Awake()
+    public class BaseTurretLevel : Enhancement
     {
-        SaveToken = SaveData.BaseTurretLevel;
-    }
+        [SerializeField] private float _upgradeRequirementStep;
+        [SerializeField] private EnhancementManager _enhancementData;
 
-    public override bool IsAvailable()
-    {
-        return _enhancementData.MaxTurretLevelValue >= UpgradeRequirement;
+        public float UpgradeRequirement => CurrentValue + _upgradeRequirementStep;
+
+        public override bool IsAvailable()
+        {
+            return _enhancementData.MaxTurretLevelValue >= UpgradeRequirement;
+        }
     }
 }

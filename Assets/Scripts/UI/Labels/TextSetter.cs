@@ -1,58 +1,61 @@
 using TMPro;
 using UnityEngine;
 
-public class TextSetter : MonoBehaviour
+namespace UI.Labels
 {
-    [SerializeField] private TextMeshProUGUI _label;
-
-    private RectTransform _rectTransform;
-
-    private void Awake()
+    public class TextSetter : MonoBehaviour
     {
-        _rectTransform = _label.GetComponent<RectTransform>();
-    }
+        [SerializeField] private TextMeshProUGUI _label;
 
-    public void Show()
-    {
-        _label.enabled = true;
-    }
+        private RectTransform _rectTransform;
 
-    public void Hide()
-    {
-        _label.enabled = false;
-    }
+        private void Awake()
+        {
+            _rectTransform = _label.GetComponent<RectTransform>();
+        }
 
-    protected void SetText(int amount)
-    {
-        _label.text = amount.ToString();
-    }
+        public void Show()
+        {
+            _label.enabled = true;
+        }
 
-    protected void SetText(float amount)
-    {
-        _label.text = amount.ToString();
-    }
+        public void Hide()
+        {
+            _label.enabled = false;
+        }
 
-    protected void SetText(string message)
-    {
-        _label.text = message;
-    }
+        protected void SetText(int amount)
+        {
+            _label.text = amount.ToString();
+        }
 
-    protected void SetTextWithPrefix(string prefix, float amount)
-    {
-        string message = prefix + amount.ToString();
-        SetText(message);
-    }
+        protected void SetText(float amount)
+        {
+            _label.text = amount.ToString();
+        }
 
-    protected void SetColor(Color color)
-    {
-        _label.color = color;
-    }
+        protected void SetText(string message)
+        {
+            _label.text = message;
+        }
 
-    protected void ResizeText()
-    {
-        float preferredWidth = _label.preferredWidth;
-        float preferredHeight = _label.preferredHeight;
+        protected void SetTextWithPrefix(string prefix, float amount)
+        {
+            string message = prefix + amount.ToString();
+            SetText(message);
+        }
 
-        _rectTransform.sizeDelta = new Vector2(preferredWidth, preferredHeight);
+        protected void SetColor(Color color)
+        {
+            _label.color = color;
+        }
+
+        protected void ResizeText()
+        {
+            float preferredWidth = _label.preferredWidth;
+            float preferredHeight = _label.preferredHeight;
+
+            _rectTransform.sizeDelta = new Vector2(preferredWidth, preferredHeight);
+        }
     }
 }
