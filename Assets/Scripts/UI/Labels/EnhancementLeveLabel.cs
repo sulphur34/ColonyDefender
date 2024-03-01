@@ -6,7 +6,15 @@ namespace UI.Labels
     {
         public void Initialize(Enhancement enhancement)
         {
-            enhancement.ValueChanged += SetText;
+            enhancement.ValueChanged += SetValue;
+        }
+
+        private void SetValue(float value)
+        {
+            if (value == 0)
+                SetText("");
+            else
+                SetText(value);
         }
     }
 }

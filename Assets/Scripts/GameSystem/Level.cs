@@ -20,6 +20,7 @@ namespace GameSystem
         {
             MonoBehaviour.Destroy(_location.gameObject);
             Wave.Clear();
+            RenderSettings.skybox = null;
         }
     }
 }

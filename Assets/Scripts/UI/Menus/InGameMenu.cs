@@ -16,6 +16,7 @@ namespace UI.Menus
         [SerializeField] private BuildingTimerLabel _buildingTimerLabel;
         [SerializeField] private AddTurretADButton _addTurretButton;
         [SerializeField] private OffTimerADButton _offTimerButton;
+        [SerializeField] private CountersPanel _countersPanel;
 
         private Action[] _uiHandlers;
 
@@ -53,6 +54,7 @@ namespace UI.Menus
             _buildingTimerLabel.gameObject.SetActive(isActive);
             _addTurretButton.gameObject.SetActive(isActive);
             _offTimerButton.gameObject.SetActive(isActive);
+            _countersPanel.gameObject.SetActive(isActive);
         }
 
         private void SetAllButtonsStatus(bool isActive)

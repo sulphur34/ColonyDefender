@@ -101,7 +101,7 @@ MonoBehaviour:
   _projectile: {fileID: 248433911588842482, guid: 1d5da1bd13ff13a4bb17be9e1dc22792, type: 3}
   _shootingPoint: {fileID: 924230096014794794}
   _fireForce: 3000
-  _fireRate: 1
+  _fireRate: 1.1
 --- !u!1 &5750261266329039980
 GameObject:
   m_ObjectHideFlags: 0

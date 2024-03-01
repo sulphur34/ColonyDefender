@@ -1,6 +1,6 @@
+using System.Collections;
 using LeaderboardSystem;
 using SaveSystem;
-using System.Collections;
 using UnityEngine;
 
 namespace GameSystem.GameStateMachineSystem

@@ -12,7 +12,7 @@ namespace GameSystem
     {
         [SerializeField] private LocationData[] _locationsData;
         [SerializeField] private EnemyData[] _enemies;
-        [SerializeField] private Barrier barrier;
+        [SerializeField] private Barrier _barrier;
         [SerializeField] private NavMeshSurface _surface;
         [SerializeField] private WaveFactory _waveFactory;
 
@@ -25,9 +25,9 @@ namespace GameSystem
             LocationData locationData = GetElement(levelIndex, _locationsData, false);
             Location location = Instantiate(locationData.Location);
             RenderSettings.skybox = locationData.SkyboxMaterial;
-            barrier.gameObject.SetActive(false);
+            _barrier.gameObject.SetActive(false);
             _surface.BuildNavMesh();
-            barrier.gameObject.SetActive(true);
+            _barrier.gameObject.SetActive(true);
             EnemyData enemyData = GetElement(levelIndex, _enemies);
             _waveFactory = new WaveFactory(location, enemyData);
             IWave wave = _waveFactory.Build(levelIndex);
@@ -46,11 +46,11 @@ namespace GameSystem
         {
             int combinationsValue = _levelBatchValue * maxIndex;
             int index = Mathf.FloorToInt((levelIndex - 1) % combinationsValue / _levelBatchValue);
-            int offcetValue = Mathf.FloorToInt((levelIndex - 1) / combinationsValue);
+            int offsetValue = Mathf.FloorToInt((levelIndex - 1) / combinationsValue);
 
             if (levelIndex > combinationsValue)
             {
-                index = (index + offcetValue) % maxIndex;
+                index = (index + offsetValue) % maxIndex;
 
                 if (isPositiveOffcet)
                     return index;

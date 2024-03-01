@@ -6,7 +6,7 @@ namespace UI.Buttons
 {
     public class StartButton : MenuSwitchButton
     {
-        private const float TrainingLevelsValue = 2;
+        private const float TrainingLevelValue = 1;
 
         [SerializeField] private GameStateMachine _gameStateMachine;
         [SerializeField] private EnhancementManager _enhancementSystem;
@@ -19,7 +19,7 @@ namespace UI.Buttons
 
         private void StartGame()
         {
-            if (_enhancementSystem.GameLevelValue <= TrainingLevelsValue)
+            if (_enhancementSystem.GameLevelValue == TrainingLevelValue)
                 _gameStateMachine.SwitchState<TrainingState>();
             else
                 _gameStateMachine.SwitchState<BuildState>();

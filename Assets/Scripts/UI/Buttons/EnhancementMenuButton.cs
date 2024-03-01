@@ -6,16 +6,31 @@ using UnityEngine;
 
 namespace UI.Buttons
 {
+    [RequireComponent(typeof(ScalingUI))]
     public class EnhancementMenuButton : MenuSwitchButton
     {
         [SerializeField] private MainMenu _mainMenu;
         [SerializeField] private EnhansementPanel[] _enhancementPanels;
-        [SerializeField] private ScalingUI _scailingArrow;
+        [SerializeField] private ScalingUI _scalingArrow;
         [SerializeField] private FadingUI _signalArrow;
+
+        private ScalingUI _scalingUI;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _scalingUI = GetComponent<ScalingUI>();
+        }
 
         private void OnEnable()
         {
             _mainMenu.Opened += SetState;
+        }
+
+        protected override void Start()
+        {
+            base.Start();
+            SetState();
         }
 
         private void OnDisable()
@@ -27,12 +42,14 @@ namespace UI.Buttons
         {
             if (CanBuy())
             {
-                _scailingArrow.enabled = true;
+                _scalingUI.enabled = true;
+                _scalingArrow.enabled = true;
                 _signalArrow.Show();
             }
             else
             {
-                _scailingArrow.enabled = false;
+                _scalingUI.enabled = false;
+                _scalingArrow.enabled = false;
                 _signalArrow.Hide();
             }
         }

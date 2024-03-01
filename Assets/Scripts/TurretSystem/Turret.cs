@@ -23,7 +23,6 @@ namespace TurretSystem
         private void Awake()
         {
             _weaponSystem = GetComponentInChildren<WeaponsSystem>();
-            _currentPosition = transform.position;
         }
 
         public void Initialize(EnemyTrackSystem enemyTrackSystem, float turretLevel)
@@ -31,7 +30,13 @@ namespace TurretSystem
             _enemyTrackSystem = enemyTrackSystem;
             TurretLevel = turretLevel;
             _turretLevelLabel.text = TurretLevel.ToString();
+            UpdatePosition();
             _coroutine = StartCoroutine(SearchForEnemy());
+        }
+
+        public void UpdatePosition()
+        {
+            _currentPosition = transform.position;
         }
 
         private IEnumerator SearchForEnemy()

@@ -6,8 +6,6 @@ namespace GameSystem
     public class RewardGenerator
     {
         private float _baseLevelIncomeValue = 10;
-        private float _advertIncomeValue = 2000;
-        private float _advertUpgradeThreshold = 10;
         private float _minRatio = 0.8f;
         private float _maxRatio = 1.1f;
         private float _looseDownGrade = 0.6f;

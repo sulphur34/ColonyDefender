@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collisionParticle: {fileID: 7083512650828022012}
   _projectileParticle: {fileID: 820825734130859191}
-  _damage: 1.2
+  _damage: 0.034
 --- !u!1 &8595288536662531808
 GameObject:
   m_ObjectHideFlags: 0

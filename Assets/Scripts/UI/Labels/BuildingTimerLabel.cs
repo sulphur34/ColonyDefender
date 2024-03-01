@@ -20,7 +20,11 @@ namespace UI.Labels
 
         private void OnTimerChange(float timerValue)
         {
-            SetText(timerValue);
+            float secondsInMinute = 60;
+            string minutes = Mathf.RoundToInt(timerValue / secondsInMinute).ToString();
+            string seconds = (timerValue % secondsInMinute).ToString();
+            string timerMessage = minutes + ":" + new string('0', (2 - seconds.Length)) + seconds;
+            SetText(timerMessage);
 
             if (timerValue < _timerAlarmThreshold)
                 SetColor(_runningOutColor);

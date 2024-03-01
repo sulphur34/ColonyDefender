@@ -7,6 +7,7 @@ namespace UI
     public class ScalingUI : MonoBehaviour
     {
         [SerializeField] private Vector2 _scale;
+        [SerializeField] private float _duration = 0.5f;
 
         private RectTransform _transform;
         private Tween _tween;
@@ -20,7 +21,7 @@ namespace UI
 
         private void OnEnable()
         {
-            _tween = _transform.DOScale(_scale, 0.5f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
+            _tween = _transform.DOScale(_scale, _duration).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Flash);
         }
 
         private void OnDisable()

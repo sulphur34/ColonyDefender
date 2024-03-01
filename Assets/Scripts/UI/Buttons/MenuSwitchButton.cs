@@ -10,7 +10,7 @@ namespace UI.Buttons
 
         [SerializeField] private MenuSwitcher _menuSwitcher;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             Button = GetComponent<Button>();
         }

@@ -3,12 +3,10 @@ using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Utils
+namespace Source.Yandex
 {
     public sealed class SDKInitializer : MonoBehaviour
     {
-        public object ScensesNames { get; private set; }
-
         private void Awake()
         {
             YandexGamesSdk.CallbackLogging = false;

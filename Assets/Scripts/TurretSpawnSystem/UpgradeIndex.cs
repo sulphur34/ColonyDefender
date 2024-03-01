@@ -34,7 +34,7 @@ namespace TurretSpawnSystem
             else
                 CountIndexes(LevelIndex);
 
-            DamageMultiplier = LevelIndex / _maxGradeIndex / (GunsIndex + 1);
+            DamageMultiplier = LevelIndex * 2;
         }
 
         private void CountIndexes(float levelIndex)

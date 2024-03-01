@@ -16,6 +16,7 @@ namespace GameSystem.GameStateMachineSystem
         [SerializeField] private OffTimerADButton _offTimerButton;
         [SerializeField] private EnemyPowerPanel _enemyPowerUI;
 
+        private float _defaultTurretLimit = 10;
         private float _turretsLimit;
         private float _turretLevel;
         private float _buildTime;
@@ -78,7 +79,7 @@ namespace GameSystem.GameStateMachineSystem
         {
             _turretLevel = EnhancementSystem.BaseTurretLevelValue;
             _buildTime = EnhancementSystem.BuiltTimeValue;
-            _turretsLimit = EnhancementSystem.GameLevelValue - _turretLevel + 1;
+            _turretsLimit = EnhancementSystem.GameLevelValue - _turretLevel + _defaultTurretLimit;
             TurretsAmountChanged?.Invoke(_turretsLimit);
         }
 

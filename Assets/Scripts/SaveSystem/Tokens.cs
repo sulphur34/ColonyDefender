@@ -13,5 +13,6 @@ namespace SaveSystem
         public const string MaxTurretBuilt = "MaxTurretBuilt";
         public const string AvailableResources = "AvailableResourses";
         public const string VolumeLevel = "VolumeLevel";
+        public const string IsMuted = "IsMuted";
     }
 }

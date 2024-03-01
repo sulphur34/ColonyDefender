@@ -11,7 +11,7 @@ namespace WaveSystem
     {
         private Location _location;
         private EnemyData _enemyData;
-        private float _defaultHealth = 60;
+        private float _defaultHealth = 1;
         private List<Queue<Enemy>> _enemiesByRoute;
         private float _healthMultiplier;
 
@@ -57,7 +57,7 @@ namespace WaveSystem
 
         private void SetHealthMultiplier(float levelIndex)
         {
-            float healthRate = 2.5f;
+            float healthRate = 500f;
             _healthMultiplier = levelIndex * (levelIndex + 1) / healthRate;
         }
 
@@ -105,7 +105,7 @@ namespace WaveSystem
         private IRoute GetRandomRoute(out int routeIndex)
         {
             int routesAmount = _location.RoutesAmount;
-            routeIndex = Random.Range(0, routesAmount - 1);
+            routeIndex = Random.Range(0, routesAmount);
 
             if (_location.TryGetRoute(routeIndex, out IRoute route))
                 return route;

@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using AudioSystem;
 using EnhancementSystem;
 using EnhancementSystem.Enhancements;
 using GameSystem;
 using GameSystem.GameStateMachineSystem;
-using System.Collections.Generic;
 using UI.Menus;
 using UnityEngine;
 using Utils.Interfaces;
@@ -21,7 +21,7 @@ namespace SaveSystem
         [SerializeField] private ResultState[] _resultStates;
         [SerializeField] private EnhancementMenu _enhancementMenu;
 
-        private List<ISavable> _savable;
+        private List<ISavable> _savables;
 
         private void Awake()
         {
@@ -52,13 +52,18 @@ namespace SaveSystem
 
         public void ResetProgress()
         {
-            PlayerPrefs.DeleteAll();
+            foreach (ISavable savable in _savables)
+            {
+                if (savable.Token != Tokens.VolumeLevel && savable.Token != Tokens.IsMuted)
+                    PlayerPrefs.DeleteKey(savable.Token);
+            }
+
             LoadAll();
         }
 
         private void SaveAll()
         {
-            foreach (ISavable savable in _savable)
+            foreach (ISavable savable in _savables)
             {
                 savable.Save();
             }
@@ -66,7 +71,7 @@ namespace SaveSystem
 
         private void LoadAll()
         {
-            foreach (ISavable savable in _savable)
+            foreach (ISavable savable in _savables)
             {
                 savable.Load();
             }
@@ -74,16 +79,16 @@ namespace SaveSystem
 
         private void Initialize()
         {
-            _savable = new List<ISavable>();
+            _savables = new List<ISavable>();
 
             foreach (Enhancement enhancement in _enhancements)
             {
-                _savable.Add(enhancement);
+                _savables.Add(enhancement);
             }
 
-            _savable.Add(_enhancementSystem);
-            _savable.Add(_resourceSystem);
-            _savable.Add(_audioManager);
+            _savables.Add(_enhancementSystem);
+            _savables.Add(_resourceSystem);
+            _savables.Add(_audioManager);
 
             _enhancementMenu.Closed += SaveAll;
 

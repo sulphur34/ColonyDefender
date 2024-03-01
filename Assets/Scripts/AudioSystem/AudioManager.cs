@@ -1,5 +1,5 @@
-using SaveSystem;
 using System;
+using SaveSystem;
 using UnityEngine;
 using Utils.Interfaces;
 
@@ -14,38 +14,56 @@ namespace AudioSystem
 
         public event Action<float> VolumeChanged;
 
+        public event Action<bool> MuteStatusChanged;
+
         public string Token => Tokens.VolumeLevel;
 
-        public float Volume => GetVolume();
+        public float Volume { get; private set; }
+        public bool IsMuted { get; private set; }
 
         private void Start()
         {
-            SwichSound(GetRandomClip());
+            SwitchSound(GetRandomClip());
         }
 
         private void Update()
         {
             if (_audioSource.isPlaying == false && _isPaused == false)
-            {
-                SwichSound(GetRandomClip());
-            }
+                SwitchSound(GetRandomClip());
         }
 
         public void SetVolumeLevel(float volumeValue)
         {
+            Volume = volumeValue;
             _audioSource.volume = volumeValue;
             VolumeChanged?.Invoke(volumeValue);
+
+            if (volumeValue > 0)
+                SetMuteState(false);
+
+            Save();
+        }
+
+        public void SwitchMuteState()
+        {
+            SetMuteState(!IsMuted);
+            SetVolumeLevel();
             Save();
         }
 
         public void Save()
         {
-            PlayerPrefs.SetFloat(Tokens.VolumeLevel, _audioSource.volume);
+            PlayerPrefs.SetFloat(Tokens.VolumeLevel, Volume);
+            PlayerPrefs.SetInt(Tokens.IsMuted, IsMuted ? 0 : 1);
         }
 
         public void Load()
         {
-            _audioSource.volume = GetVolume();
+            SetMuteState(GetMuteState());
+            MuteStatusChanged?.Invoke(IsMuted);
+            Volume = GetVolume();
+            VolumeChanged?.Invoke(Volume);
+            SetVolumeLevel();
         }
 
         public void PauseClip()
@@ -66,7 +84,7 @@ namespace AudioSystem
             }
         }
 
-        private void SwichSound(AudioClip audioClip)
+        private void SwitchSound(AudioClip audioClip)
         {
             _audioSource.Stop();
             _audioSource.clip = audioClip;
@@ -83,8 +101,30 @@ namespace AudioSystem
         {
             if (PlayerPrefs.HasKey(Tokens.VolumeLevel))
                 return PlayerPrefs.GetFloat(Tokens.VolumeLevel);
+
+            return 0.5f;
+        }
+
+        private bool GetMuteState()
+        {
+            if (PlayerPrefs.HasKey(Tokens.IsMuted))
+                return PlayerPrefs.GetInt(Tokens.IsMuted) == 0;
+
+            return false;
+        }
+
+        private void SetVolumeLevel()
+        {
+            if (IsMuted)
+                _audioSource.volume = 0;
             else
-                return 0.5f;
+                _audioSource.volume = Volume;
+        }
+
+        private void SetMuteState(bool isMuted)
+        {
+            IsMuted = isMuted;
+            MuteStatusChanged.Invoke(IsMuted);
         }
     }
 }

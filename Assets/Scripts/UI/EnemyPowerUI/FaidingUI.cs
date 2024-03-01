@@ -7,10 +7,11 @@ namespace UI.EnemyPowerUI
     [RequireComponent(typeof(Image))]
     public class FadingUI : MonoBehaviour
     {
+        [SerializeField] private float _fadeValue = 0.1f;
+        [SerializeField] private float _duration = 2f;
+
         private Image _image;
         private Tween _signalTween;
-        private float _fadeValue = 0.1f;
-        private float _duration = 2f;
 
         private void Awake()
         {

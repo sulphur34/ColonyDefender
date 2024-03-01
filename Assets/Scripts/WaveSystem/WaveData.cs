@@ -6,10 +6,13 @@ namespace WaveSystem
     {
         private readonly int _stageIndex = 5;
         private float _levelIndex;
+        private float _enemyPool;
+        private float _startEnemyPool = 9;
 
         public WaveData(float levelIndex)
         {
             _levelIndex = levelIndex;
+            _enemyPool = levelIndex + _startEnemyPool;
             Initialize();
             GenerateEnemiesData();
         }
@@ -34,7 +37,7 @@ namespace WaveSystem
 
         private void GenerateEnemiesData()
         {
-            float enemiesPool = _levelIndex;
+            float enemiesPool = _enemyPool;
 
             if (_levelIndex % _stageIndex == 0)
             {

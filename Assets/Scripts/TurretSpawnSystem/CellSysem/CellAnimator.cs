@@ -22,6 +22,7 @@ namespace TurretSpawnSystem.CellSystem
             }
 
             animationEnd(turret);
+            turret.UpdatePosition();
         }
 
         public IEnumerator ShrinkingTurret(Turret turret, AnimationEndEvent animationEnd)

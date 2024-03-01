@@ -1,5 +1,5 @@
-using SaveSystem;
 using System;
+using SaveSystem;
 using UnityEngine;
 using Utils.Interfaces;
 
@@ -15,6 +15,7 @@ namespace GameSystem
 
         private void Awake()
         {
+            Load();
             AmountChanged?.Invoke(_availableResourcesValue);
         }
 
@@ -45,9 +46,11 @@ namespace GameSystem
         public void Load()
         {
             if (PlayerPrefs.HasKey(Tokens.AvailableResources))
-                Add(PlayerPrefs.GetFloat(Tokens.AvailableResources));
+                _availableResourcesValue = PlayerPrefs.GetFloat(Tokens.AvailableResources);
             else
                 _availableResourcesValue = 0;
+
+            AmountChanged?.Invoke(_availableResourcesValue);
         }
     }
 }

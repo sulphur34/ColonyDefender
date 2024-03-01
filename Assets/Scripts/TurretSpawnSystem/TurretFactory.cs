@@ -36,7 +36,7 @@ namespace TurretSpawnSystem
         private WeaponMultipliers GetWeaponMultipliers(UpgradeIndex upgradeIndex)
         {
             float fireRate = _enhancementSystem.FireRateValue;
-            float damageMultiplier = _enhancementSystem.DamageValue + upgradeIndex.DamageMultiplier;
+            float damageMultiplier = _enhancementSystem.DamageValue * upgradeIndex.DamageMultiplier;
             return new WeaponMultipliers(fireRate, damageMultiplier);
         }
     }
