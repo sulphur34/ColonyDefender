@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using AudioSystem;
 using EnhancementSystem;
 using EnhancementSystem.Enhancements;
 using GameSystem;
 using GameSystem.GameStateMachineSystem;
-using System.Collections.Generic;
 using UI.Menus;
 using UnityEngine;
 using Utils.Interfaces;

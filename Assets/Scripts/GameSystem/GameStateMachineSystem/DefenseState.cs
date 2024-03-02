@@ -1,5 +1,5 @@
-using EnemySystem;
 using System.Collections;
+using EnemySystem;
 using UnityEngine;
 using Utils.Interfaces;
 
@@ -37,7 +37,7 @@ namespace GameSystem.GameStateMachineSystem
         {
             while (_wave.IsSpawned == false)
             {
-                Enemy enemy = _wave.GetNextEnenmyToSpawn();
+                Enemy enemy = _wave.GetNextEnemyToSpawn();
 
                 if (enemy != null)
                 {

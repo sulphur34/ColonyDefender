@@ -1,6 +1,6 @@
-using EnemySystem;
 using System.Collections;
 using System.Collections.Generic;
+using EnemySystem;
 using UnityEngine;
 using Utils.Interfaces;
 

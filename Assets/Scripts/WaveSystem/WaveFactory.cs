@@ -37,15 +37,18 @@ namespace WaveSystem
             }
             else
             {
-                GenerateEnemies(enemyPrefab,
+                GenerateEnemies(
+                    enemyPrefab,
                     _enemyData.Large,
                     GetHealthValue(waveData.LargeEnemyMultiplier),
                     waveData.LargeEnemyAmount);
-                GenerateEnemies(enemyPrefab,
+                GenerateEnemies(
+                    enemyPrefab,
                     _enemyData.Medium,
                     GetHealthValue(waveData.MediumEnemyMultiplier),
                     waveData.MediumEnemyAmount);
-                GenerateEnemies(enemyPrefab,
+                GenerateEnemies(
+                    enemyPrefab,
                     _enemyData.Small,
                     GetHealthValue(waveData.SmallEnemyMultiplier),
                     waveData.SmallEnemyAmount);

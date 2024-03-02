@@ -1,5 +1,5 @@
-using GameSystem.GameStateMachineSystem;
 using System;
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
 namespace UI.MultiplierSelector

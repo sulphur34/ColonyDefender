@@ -14,6 +14,7 @@ namespace EnemySystem
         }
 
         public event Action Died;
+
         public event Action HealthChanged;
 
         public float CurrentHealth => _currentValue;

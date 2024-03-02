@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Agava.YandexGames;
 using Lean.Localization;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LeaderboardSystem
@@ -9,7 +9,7 @@ namespace LeaderboardSystem
     {
         private const string LeaderboardName = "Leaderboard";
 
-        private readonly List<LeaderboardPlayer> _leaderboardPlayers = new();
+        private readonly List<LeaderboardPlayer> _leaderboardPlayers = new List<LeaderboardPlayer>();
 
         [SerializeField] private LeaderboardView _leaderboardView;
         [SerializeField] private LeanPhrase _anonymousLeanPhrase;

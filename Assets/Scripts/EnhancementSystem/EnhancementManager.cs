@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using EnhancementSystem.Enhancements;
 using SaveSystem;
-using System.Collections.Generic;
 using TurretSpawnSystem.CellSystem;
 using UnityEngine;
 using Utils.Interfaces;
@@ -55,6 +55,12 @@ namespace EnhancementSystem
                 MaxTurretLevelValue = 0;
         }
 
+        public void Upgrade(string token)
+        {
+            Enhancement enhancement = Get(token);
+            enhancement?.Increase();
+        }
+
         private void Initialize()
         {
             _enhancements = new Dictionary<string, Enhancement>();
@@ -68,12 +74,6 @@ namespace EnhancementSystem
         private Enhancement Get(string token)
         {
             return _enhancements.TryGetValue(token, out Enhancement enhancement) ? enhancement : null;
-        }
-
-        public void Upgrade(string token)
-        {
-            Enhancement enhancement = Get(token);
-            enhancement?.Increase();
         }
     }
 }

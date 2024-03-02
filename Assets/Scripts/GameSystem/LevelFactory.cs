@@ -46,17 +46,13 @@ namespace GameSystem
         {
             int combinationsValue = _levelBatchValue * maxIndex;
             int index = Mathf.FloorToInt((levelIndex - 1) % combinationsValue / _levelBatchValue);
-            int offcetValue = Mathf.FloorToInt((levelIndex - 1) / combinationsValue);
+            int offsetValue = Mathf.FloorToInt((levelIndex - 1) / combinationsValue);
 
             if (levelIndex > combinationsValue)
-            {
-                index = (index + offcetValue) % maxIndex;
+                index = (index + offsetValue) % maxIndex;
 
-                if (isPositiveOffcet)
-                    return index;
-                else
-                    index = maxIndex - index - 1;
-            }
+            if (isPositiveOffcet == false)
+                index = maxIndex - index - 1;
 
             return index;
         }

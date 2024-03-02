@@ -33,11 +33,11 @@ namespace TurretSpawnSystem.CellSystem
         {
             for (int i = 0; i < _cells.Length; i++)
             {
-                if (_cells[i].TurretLevel == 0)
-                {
-                    cell = _cells[i];
-                    return true;
-                }
+                if (_cells[i].TurretLevel != 0)
+                    continue;
+
+                cell = _cells[i];
+                return true;
             }
 
             cell = null;
@@ -65,11 +65,11 @@ namespace TurretSpawnSystem.CellSystem
 
             for (int i = cell.Row + 1; i < _cells.Length; i++)
             {
-                if (_cells[i].TurretLevel != 0)
-                {
-                    nextCell = _cells[i];
-                    return true;
-                }
+                if (_cells[i].TurretLevel == 0)
+                    continue;
+
+                nextCell = _cells[i];
+                return true;
             }
 
             return false;

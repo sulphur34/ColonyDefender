@@ -1,5 +1,5 @@
-using EnhancementSystem;
 using System;
+using EnhancementSystem;
 using TurretSpawnSystem.CellSystem;
 using UnityEngine;
 
@@ -12,6 +12,7 @@ namespace GameSystem.GameStateMachineSystem
         [SerializeField] protected LevelFactory LevelFactory;
 
         public event Action Entered;
+
         public event Action Exited;
 
         public override void Enter()

@@ -8,9 +8,11 @@ namespace UI.Buttons.ADButtons
     [RequireComponent(typeof(VideoAD))]
     public class ADInterstitialButton : ADButton
     {
-        protected override void OnButtonClick() { }
+        protected override void OnButtonClick()
+        { }
 
-        protected override void OnVideoClose() { }
+        protected override void OnVideoClose()
+        { }
 
         protected override void ShowAD()
         {

@@ -1,5 +1,5 @@
-using SaveSystem;
 using System;
+using SaveSystem;
 using UnityEngine;
 using Utils.Interfaces;
 
@@ -20,14 +20,14 @@ namespace AudioSystem
 
         private void Start()
         {
-            SwichSound(GetRandomClip());
+            SwitchSound(GetRandomClip());
         }
 
         private void Update()
         {
             if (_audioSource.isPlaying == false && _isPaused == false)
             {
-                SwichSound(GetRandomClip());
+                SwitchSound(GetRandomClip());
             }
         }
 
@@ -66,7 +66,7 @@ namespace AudioSystem
             }
         }
 
-        private void SwichSound(AudioClip audioClip)
+        private void SwitchSound(AudioClip audioClip)
         {
             _audioSource.Stop();
             _audioSource.clip = audioClip;

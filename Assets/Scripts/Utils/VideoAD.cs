@@ -1,5 +1,5 @@
-using AudioSystem;
 using System;
+using AudioSystem;
 using UnityEngine;
 
 namespace Utils

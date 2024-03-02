@@ -1,6 +1,6 @@
-using EnemySystem;
 using System;
 using System.Collections.Generic;
+using EnemySystem;
 
 namespace Utils.Interfaces
 {
@@ -10,7 +10,8 @@ namespace Utils.Interfaces
 
         public IReadOnlyList<float> RouteData { get; }
         public bool IsSpawned { get; }
-        public Enemy GetNextEnenmyToSpawn();
+
+        public Enemy GetNextEnemyToSpawn();
 
         public void Clear();
     }

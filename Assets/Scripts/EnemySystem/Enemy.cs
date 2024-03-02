@@ -15,6 +15,7 @@ namespace EnemySystem
         private Transform _transform;
 
         public event Action<Enemy> Died;
+
         public event Action<Enemy> Destroyed;
 
         public bool IsAlive => Health.CurrentHealth > 0;

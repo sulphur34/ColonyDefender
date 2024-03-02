@@ -1,5 +1,5 @@
-using EnhancementSystem.Enhancements;
 using System;
+using EnhancementSystem.Enhancements;
 using UnityEngine;
 
 namespace GameSystem
@@ -15,6 +15,7 @@ namespace GameSystem
         public event Action Completed;
 
         public float CurrentCost => GetCurrentCost();
+
         public bool CanBuy => _enhancement.IsAvailable()
             && _resourceSystem.IsAffordable(CurrentCost);
 

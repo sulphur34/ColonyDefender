@@ -1,7 +1,7 @@
-using EnemySystem;
-using GameSystem.GameStateMachineSystem;
 using System.Collections.Generic;
 using System.Linq;
+using EnemySystem;
+using GameSystem.GameStateMachineSystem;
 using UnityEngine;
 
 namespace TurretSystem
@@ -18,20 +18,6 @@ namespace TurretSystem
             _defenseState.Exited += Reset;
         }
 
-        public bool TryGetNearestEnemy(Vector3 originalPosition, out Enemy enemy)
-        {
-            enemy = null;
-
-            if (_enemiesInAttackZone.Count < 0)
-                return false;
-
-            enemy = _enemiesInAttackZone.
-                OrderBy(enemyInZone => Vector3.Distance(enemyInZone.transform.position, originalPosition))
-                .FirstOrDefault();
-
-            return enemy != null;
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out Enemy enemy))
@@ -46,6 +32,20 @@ namespace TurretSystem
             {
                 RemoveEnemy(enemy);
             }
+        }
+
+        public bool TryGetNearestEnemy(Vector3 originalPosition, out Enemy enemy)
+        {
+            enemy = null;
+
+            if (_enemiesInAttackZone.Count < 0)
+                return false;
+
+            enemy = _enemiesInAttackZone.
+                OrderBy(enemyInZone => Vector3.Distance(enemyInZone.transform.position, originalPosition))
+                .FirstOrDefault();
+
+            return enemy != null;
         }
 
         private void AddEnemy(Enemy enemy)

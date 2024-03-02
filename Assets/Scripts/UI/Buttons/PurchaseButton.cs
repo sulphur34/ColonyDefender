@@ -15,6 +15,16 @@ namespace UI.Buttons
             _button = GetComponent<Button>();
         }
 
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnClick);
+        }
+
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnClick);
+        }
+
         public void Initialize(Purchase purchase)
         {
             _purchase = purchase;
@@ -28,16 +38,6 @@ namespace UI.Buttons
         public void Disable()
         {
             _button.interactable = false;
-        }
-
-        private void OnEnable()
-        {
-            _button.onClick.AddListener(OnClick);
-        }
-
-        private void OnDisable()
-        {
-            _button.onClick.RemoveListener(OnClick);
         }
 
         private void OnClick()

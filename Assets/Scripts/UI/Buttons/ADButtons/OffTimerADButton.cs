@@ -16,6 +16,7 @@ namespace UI.Buttons.ADButtons
             gameObject.SetActive(false);
         }
 
-        protected override void OnVideoClose() { }
+        protected override void OnVideoClose()
+        { }
     }
 }

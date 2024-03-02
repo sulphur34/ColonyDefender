@@ -1,6 +1,6 @@
+using System;
 using EnhancementSystem.Enhancements;
 using GameSystem;
-using System;
 using UI.Buttons;
 using UnityEngine;
 using UnityEngine.UI;

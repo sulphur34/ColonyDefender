@@ -47,7 +47,6 @@ namespace EnhancementSystem.Enhancements
         {
             if (PlayerPrefs.HasKey(_token))
             {
-
                 CurrentValue = PlayerPrefs.GetFloat(_token);
                 UpgradeLevel = Mathf.Round((CurrentValue - _defaultValue) / _upgradeStep);
                 ValueChanged?.Invoke(UpgradeLevel);

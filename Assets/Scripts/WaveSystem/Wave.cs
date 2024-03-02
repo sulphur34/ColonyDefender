@@ -26,7 +26,7 @@ namespace WaveSystem
         public IReadOnlyList<float> RouteData => _routeData;
         public bool IsSpawned { get; private set; }
 
-        public Enemy GetNextEnenmyToSpawn()
+        public Enemy GetNextEnemyToSpawn()
         {
             if (_enemiesByRoute.Count <= 0)
             {
