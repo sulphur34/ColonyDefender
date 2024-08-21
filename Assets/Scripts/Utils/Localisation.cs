@@ -18,11 +18,12 @@ namespace Utils
 #if UNITY_WEBGL && !UNITY_EDITOR
     ChangeLanguage();
 #endif
+            LeanLocalization.SetCurrentLanguageAll(English);
         }
 
         private void ChangeLanguage()
         {
-            string languageCode = YandexGamesSdk.Environment.i18n.lang;
+            string languageCode = EnglishCode;
 
             string language = languageCode switch
             {
@@ -32,7 +33,7 @@ namespace Utils
                 _ => English
             };
 
-            LeanLocalization.SetCurrentLanguageAll(language);
+            LeanLocalization.SetCurrentLanguageAll(English);
         }
     }
 }

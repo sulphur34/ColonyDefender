@@ -8,7 +8,7 @@ namespace GameSystem.GameStateMachineSystem
     public class WinState : ResultState
     {
         [SerializeField] private ParticleSystem _winAnimation;
-        [SerializeField] private YandexLeaderboard _leaderboard;
+        //[SerializeField] private YandexLeaderboard _leaderboard;
 
         public override void Enter()
         {
@@ -17,7 +17,7 @@ namespace GameSystem.GameStateMachineSystem
 
         public override void Exit()
         {
-            _leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
+            //_leaderboard.SetPLayerScore(Mathf.RoundToInt(EnhancementSystem.GameLevelValue));
             base.Exit();
         }
 

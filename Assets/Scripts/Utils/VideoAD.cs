@@ -20,12 +20,17 @@ namespace Utils
 
         public void ShowRewarded()
         {
-            Agava.YandexGames.VideoAd.Show(OnOpenCallBack, OnRewardCallBack, OnCloseCallBack);
+            //Agava.YandexGames.VideoAd.Show(OnOpenCallBack, OnRewardCallBack, OnCloseCallBack);
+            OnOpenCallBack();
+            OnRewardCallBack();
+            OnCloseCallBack();
         }
 
         public void ShowInter()
         {
-            Agava.YandexGames.InterstitialAd.Show(OnOpenCallBack, OnCloseCallBack);
+            //Agava.YandexGames.InterstitialAd.Show(OnOpenCallBack, OnCloseCallBack);
+            OnOpenCallBack();
+            OnCloseCallBack();
         }
 
         private void OnOpenCallBack()
