@@ -14,7 +14,14 @@ namespace Source.Yandex
 
         private IEnumerator Start()
         {
-            yield return YandexGamesSdk.Initialize(OnInitialized);
+#if UNITY_EDITOR == false
+                yield return YandexGamesSdk.Initialize(OnInitialized);
+#else
+            
+                OnInitialized();
+                yield return null;
+            
+#endif
         }
 
         private void OnInitialized()

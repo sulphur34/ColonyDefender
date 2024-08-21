@@ -8,6 +8,7 @@ namespace Utils
         private void Awake()
         {
             OnCallGameReadyButtonClick();
+            DontDestroyOnLoad(gameObject);
         }
 
         private void OnCallGameReadyButtonClick()
